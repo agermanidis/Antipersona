@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4FC3CB2A1BC6EB7B00349E5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */; };
+		4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB2B1BC6EB7B00349E5E /* ViewController.swift */; };
+		4FC3CB2F1BC6EB7B00349E5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB2D1BC6EB7B00349E5E /* Main.storyboard */; };
+		4FC3CB311BC6EB7B00349E5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB301BC6EB7B00349E5E /* Images.xcassets */; };
+		4FC3CB341BC6EB7B00349E5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB321BC6EB7B00349E5E /* LaunchScreen.xib */; };
+		4FC3CB401BC6EB7B00349E5E /* PeoplePortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FC3CB3A1BC6EB7B00349E5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FC3CB1C1BC6EB7B00349E5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FC3CB231BC6EB7B00349E5E;
+			remoteInfo = PeoplePortal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4FC3CB241BC6EB7B00349E5E /* PeoplePortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplePortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC3CB281BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4FC3CB2B1BC6EB7B00349E5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4FC3CB2E1BC6EB7B00349E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4FC3CB301BC6EB7B00349E5E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4FC3CB331BC6EB7B00349E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeoplePortalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC3CB3E1BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePortalTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FC3CB211BC6EB7B00349E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC3CB361BC6EB7B00349E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4FC3CB1B1BC6EB7B00349E5E = {
+			isa = PBXGroup;
+			children = (
+				4FC3CB261BC6EB7B00349E5E /* PeoplePortal */,
+				4FC3CB3C1BC6EB7B00349E5E /* PeoplePortalTests */,
+				4FC3CB251BC6EB7B00349E5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4FC3CB251BC6EB7B00349E5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FC3CB241BC6EB7B00349E5E /* PeoplePortal.app */,
+				4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FC3CB261BC6EB7B00349E5E /* PeoplePortal */ = {
+			isa = PBXGroup;
+			children = (
+				4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */,
+				4FC3CB2B1BC6EB7B00349E5E /* ViewController.swift */,
+				4FC3CB2D1BC6EB7B00349E5E /* Main.storyboard */,
+				4FC3CB301BC6EB7B00349E5E /* Images.xcassets */,
+				4FC3CB321BC6EB7B00349E5E /* LaunchScreen.xib */,
+				4FC3CB271BC6EB7B00349E5E /* Supporting Files */,
+			);
+			path = PeoplePortal;
+			sourceTree = "<group>";
+		};
+		4FC3CB271BC6EB7B00349E5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FC3CB281BC6EB7B00349E5E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FC3CB3C1BC6EB7B00349E5E /* PeoplePortalTests */ = {
+			isa = PBXGroup;
+			children = (
+				4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */,
+				4FC3CB3D1BC6EB7B00349E5E /* Supporting Files */,
+			);
+			path = PeoplePortalTests;
+			sourceTree = "<group>";
+		};
+		4FC3CB3D1BC6EB7B00349E5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FC3CB3E1BC6EB7B00349E5E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4FC3CB231BC6EB7B00349E5E /* PeoplePortal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FC3CB431BC6EB7B00349E5E /* Build configuration list for PBXNativeTarget "PeoplePortal" */;
+			buildPhases = (
+				4FC3CB201BC6EB7B00349E5E /* Sources */,
+				4FC3CB211BC6EB7B00349E5E /* Frameworks */,
+				4FC3CB221BC6EB7B00349E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeoplePortal;
+			productName = PeoplePortal;
+			productReference = 4FC3CB241BC6EB7B00349E5E /* PeoplePortal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4FC3CB381BC6EB7B00349E5E /* PeoplePortalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FC3CB461BC6EB7B00349E5E /* Build configuration list for PBXNativeTarget "PeoplePortalTests" */;
+			buildPhases = (
+				4FC3CB351BC6EB7B00349E5E /* Sources */,
+				4FC3CB361BC6EB7B00349E5E /* Frameworks */,
+				4FC3CB371BC6EB7B00349E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FC3CB3B1BC6EB7B00349E5E /* PBXTargetDependency */,
+			);
+			name = PeoplePortalTests;
+			productName = PeoplePortalTests;
+			productReference = 4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4FC3CB1C1BC6EB7B00349E5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Anastasis Germanidis";
+				TargetAttributes = {
+					4FC3CB231BC6EB7B00349E5E = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					4FC3CB381BC6EB7B00349E5E = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 4FC3CB231BC6EB7B00349E5E;
+					};
+				};
+			};
+			buildConfigurationList = 4FC3CB1F1BC6EB7B00349E5E /* Build configuration list for PBXProject "PeoplePortal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4FC3CB1B1BC6EB7B00349E5E;
+			productRefGroup = 4FC3CB251BC6EB7B00349E5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4FC3CB231BC6EB7B00349E5E /* PeoplePortal */,
+				4FC3CB381BC6EB7B00349E5E /* PeoplePortalTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4FC3CB221BC6EB7B00349E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC3CB2F1BC6EB7B00349E5E /* Main.storyboard in Resources */,
+				4FC3CB341BC6EB7B00349E5E /* LaunchScreen.xib in Resources */,
+				4FC3CB311BC6EB7B00349E5E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC3CB371BC6EB7B00349E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4FC3CB201BC6EB7B00349E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */,
+				4FC3CB2A1BC6EB7B00349E5E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC3CB351BC6EB7B00349E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC3CB401BC6EB7B00349E5E /* PeoplePortalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FC3CB3B1BC6EB7B00349E5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FC3CB231BC6EB7B00349E5E /* PeoplePortal */;
+			targetProxy = 4FC3CB3A1BC6EB7B00349E5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4FC3CB2D1BC6EB7B00349E5E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FC3CB2E1BC6EB7B00349E5E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4FC3CB321BC6EB7B00349E5E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FC3CB331BC6EB7B00349E5E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4FC3CB411BC6EB7B00349E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4FC3CB421BC6EB7B00349E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4FC3CB441BC6EB7B00349E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PeoplePortal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4FC3CB451BC6EB7B00349E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PeoplePortal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4FC3CB471BC6EB7B00349E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PeoplePortalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeoplePortal.app/PeoplePortal";
+			};
+			name = Debug;
+		};
+		4FC3CB481BC6EB7B00349E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PeoplePortalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeoplePortal.app/PeoplePortal";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FC3CB1F1BC6EB7B00349E5E /* Build configuration list for PBXProject "PeoplePortal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FC3CB411BC6EB7B00349E5E /* Debug */,
+				4FC3CB421BC6EB7B00349E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FC3CB431BC6EB7B00349E5E /* Build configuration list for PBXNativeTarget "PeoplePortal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FC3CB441BC6EB7B00349E5E /* Debug */,
+				4FC3CB451BC6EB7B00349E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4FC3CB461BC6EB7B00349E5E /* Build configuration list for PBXNativeTarget "PeoplePortalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FC3CB471BC6EB7B00349E5E /* Debug */,
+				4FC3CB481BC6EB7B00349E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4FC3CB1C1BC6EB7B00349E5E /* Project object */;
+}
