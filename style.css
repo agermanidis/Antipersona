@@ -148,13 +148,20 @@ footer img {
     cursor: pointer;
 }
 
-#iphone-image {
-    width: 250px;
-    height: 500px;
+.feature.selected {
+    font-weight: 700;
 }
 
-.selected {
-    font-weight: 900;
+.screenshot.selected {
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-name: fadeInFromNone;
+    display: inline;
+}
+
+.screenshot {
+    width: 250px;
+    height: 500px;
+    display: none;
 }
 
 #final {
@@ -164,4 +171,21 @@ footer img {
 
 #appstore-image-end {
     width: 230px;
+}
+
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display:none; 
+        opacity: 0.5;
+    }
+
+    1% {
+        display: block ; 
+        opacity: 0.5;
+    }
+
+    100% {
+        display: block ; 
+        opacity: 1;
+    }
 }
