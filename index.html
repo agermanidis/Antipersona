@@ -3,44 +3,75 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 
     <meta property="og:title" content="People Portal" />
     <meta property="og:type" content="application" />
     <meta property="og:image" content="http://peopleportal.com/images/peopleportal.png" />
     <title>People Portal</title>
+
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="main">
-      <img src="image/portal.png"><img>
+      <img id="portal-image" src="images/portal_shadowed2.png"></img>
       <h1>PEOPLE PORTAL</h1>
-      <h3>Don't be yourself</h3>
-      <h3>Be everyone else</h3>
-      
-      <button id="download-button">GET IT</button>
+      <h3>Don't be yourself.</h3>
+      <h3>Be everyone else.</h3>
+      <a href="#"><img id="appstore-image" src="images/appstore.png"></img></a>
+            
     </div>
     
     <div id="description">
-      <p class="yellow"></p>
-      <p></p>
+      <p id="question">Have you ever wished
+        you had <b>someone else’s</b>
+        digital identity?</p>
+      <p id="info">People Portal is an <b>iPhone app</b> that 
+        <b>simulates the experience</b> of using Twitter 
+        as if you’re signed in from <b>another
+          user account</b> of your choice. </p>
     </div>
 
     <div id="features">
-      <img id="phone" src=""></img>
       <ul id="features-list">
-        <li class="feature">Choose any of the 250+ million Twitter users.</li>
-        <li class="feature">See the same timeline that they see.</li>
-        <li class="feature">Receive the same notifications that they receive.</li>
+        <p class="line"></p>
+        <li class="feature selected">Choose any of the 600+ million Twitter users.</li>
+        <p class="line"></p>
+        <li class="feature">See the same timeline they see.</li>
+        <p class="line"></p>
+        <li class="feature">Receive the same notifications they receive.</li>
+        <p class="line"></p>
       </ul>
-      <p>Live in a future of exchangeable identities, <b>today</b>.</p>
+      <img id="iphone-image" src="images/iphone.png"></img>
+      <p id="final">Live in a future of frictionless identity adoption, <b>today</b>.</p>
+      <a href="#"><img id="appstore-image-end" src="images/appstore.png"></img></a>
     </div>
     
     <footer>
-      People Portal is an artwork
-      by <a href="http://agermanidis.com">Anastasis Germanidis</a>.
-      Write to <a href="mailto:agermanidis@gmail.com">agermanidis@gmail.com</a>
-      with your thoughts.
+      <p class="line"></p>
+      <br/>
+      <br/>
+      <p><b>People Portal</b> is an artwork
+      by <a href="http://agermanidis.com">Anastasis
+          Germanidis</a>.</p>
+      <p>Its source code is freely available on <a href="https://github.com/agermanidis/PeoplePortal">Github</a>.</p>
+      <p>Write
+      to <a href="mailto:agermanidis@gmail.com">agermanidis@gmail.com</a>
+      with your thoughts.</p>
+      <img src="images/portal_shadowed.png"><img>
     </footer>
-
-    <img src="image/portal.png"><img>
   </body>
 </html>

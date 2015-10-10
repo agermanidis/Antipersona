@@ -1,0 +1,167 @@
+@font-face {
+    font-family: MyriadPro;
+    src: url(fonts/MyriadPro-Regular.otf);
+}
+
+@font-face {
+    font-family: MyriadProBold;
+    src: url(fonts/MyriadPro-Bold.otf);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: MyriadPro;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: #fef7ff;
+}
+
+#features {
+    color: #4c1b79;
+}
+
+footer {
+    color: #9c9c9c;
+    font-size: 18px;
+    letter-spacing: 5px;
+    line-height: 0.75em;
+}
+
+#features {
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: #9c9c9c;
+    font-family: MyriadProBold;
+}
+
+ul {
+    list-style: none;
+}
+
+#description {
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    background: black;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#554f9e+0,49042f+100 */
+    background: rgb(85,79,158); /* Old browsers */
+    background: -moz-linear-gradient(45deg,  rgba(85,79,158,1) 0%, rgba(73,4,47,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(85,79,158,1)), color-stop(100%,rgba(73,4,47,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* IE10+ */
+    background: linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#554f9e', endColorstr='#49042f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#description b {
+    font-weight: 900;
+    font-family: MyriadProBold;
+}
+
+#question {
+    margin: 0 auto;
+    color: #ecf336;
+}
+
+#question, #info {
+    width: 730px;
+    padding: 40px;
+}
+
+#info {
+    margin: 0 auto;
+    color: white;
+}
+
+footer img {
+    height: 100px;
+    padding: 20px;
+}
+
+#main {
+    background-image: url("images/portalplaceholder.png");
+    background-size: cover;
+    color: white;
+    text-shadow: 1px 2px black;
+    min-height: 100vh;
+}
+
+#portal-image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 130px;
+}
+
+#appstore-image {
+    width: 230px;
+    margin-top: 100px;
+    box-shadow: 1px 1px 10px #888888;
+}
+
+#main h1 {
+    font-size: 80px;
+    letter-spacing: 5px;
+    margin: 30px;
+}
+
+#main h3 {
+    letter-spacing: 3px;
+    font-size: 45px;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+.line {
+    background: #898989;
+    margin: 20px;
+    width: 350px;
+    height: 1px;
+    margin: 0 auto;
+}
+
+#features-list {
+    float: left;
+    width: 450px;
+    margin-right: -400px;
+    margin-left: 250px;
+    font-size: 22px;
+}
+
+#features {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.feature {
+    margin: 50px auto;
+    width: 250px;
+    cursor: pointer;
+}
+
+#iphone-image {
+    width: 250px;
+    height: 500px;
+}
+
+.selected {
+    font-weight: 900;
+}
+
+#final {
+    font-size: 28px;
+    padding: 20px;
+}
+
+#appstore-image-end {
+    width: 230px;
+}

@@ -19,7 +19,8 @@ Populates our private list with the ids of the Twitter users that the
 Shadowed User is following. This is at most triggered once per
 day. This constraint arises both due to limitations of the Twitter API
 (updating a list too often tends to cause the `lists` API to enter a
-weird state) and to force the person using the app to be more thoughtful about who they want to become.
+weird state) and to force the person using the app to be more
+thoughtful about who they want to become.
 
 - Frequency: at most once a day
 - API call: POST lists/destroy.json
