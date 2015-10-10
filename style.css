@@ -28,7 +28,9 @@ footer {
     color: #9c9c9c;
     font-size: 18px;
     letter-spacing: 5px;
-    line-height: 0.75em;
+    line-height: 1.5em;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #features {
@@ -49,9 +51,6 @@ ul {
     font-size: 40px;
     text-align: center;
     margin: 0;
-    background: black;
-
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#554f9e+0,49042f+100 */
     background: rgb(85,79,158); /* Old browsers */
     background: -moz-linear-gradient(45deg,  rgba(85,79,158,1) 0%, rgba(73,4,47,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(85,79,158,1)), color-stop(100%,rgba(73,4,47,1))); /* Chrome,Safari4+ */
@@ -105,6 +104,7 @@ footer img {
 #appstore-image {
     width: 230px;
     margin-top: 100px;
+    margin-bottom: 30px;
     box-shadow: 1px 1px 10px #888888;
 }
 
@@ -185,7 +185,30 @@ footer img {
     }
 
     100% {
-        display: block ; 
+        display: block;
         opacity: 1;
     }
 }
+
+@media only screen and (max-device-width: 600px) {
+    #question, #info {
+        width: 80%;
+    }
+
+    #features-list {
+        float: none;
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        margin-top: 50px;
+    }
+
+    .feature {
+        width: 70%;
+    }
+
+    .line {
+        width: 70%;
+    }
+}
+
