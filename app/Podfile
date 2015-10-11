@@ -1,0 +1,15 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+# use_frameworks!
+
+target 'PeoplePortal' do
+  use_frameworks!
+  pod 'Async', :git => 'https://github.com/duemunk/Async.git'
+
+end
+
+target 'PeoplePortalTests' do
+
+end
+

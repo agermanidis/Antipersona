@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0B35941BC9F21B0004B7E8 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35931BC9F21B0004B7E8 /* Worker.swift */; };
+		4F0B35971BC9F61D0004B7E8 /* TimelineConstructionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35961BC9F61D0004B7E8 /* TimelineConstructionWorker.swift */; };
+		4F0B35991BC9FDE00004B7E8 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35981BC9FDE00004B7E8 /* Buffer.swift */; };
+		4F0B359B1BCA06AF0004B7E8 /* ShadowedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B359A1BCA06AF0004B7E8 /* ShadowedUser.swift */; };
+		4F64E5E61BCA0C8F008380A4 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E51BCA0C8F008380A4 /* Tweet.swift */; };
+		4F64E5E81BCA1FF3008380A4 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E71BCA1FF3008380A4 /* Notification.swift */; };
+		4F64E5EA1BCA20C5008380A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E91BCA20C5008380A4 /* Constants.swift */; };
+		4F64E5EC1BCA2474008380A4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5EB1BCA2474008380A4 /* Session.swift */; };
 		4FC3CB2A1BC6EB7B00349E5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */; };
 		4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB2B1BC6EB7B00349E5E /* ViewController.swift */; };
 		4FC3CB2F1BC6EB7B00349E5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB2D1BC6EB7B00349E5E /* Main.storyboard */; };
 		4FC3CB311BC6EB7B00349E5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB301BC6EB7B00349E5E /* Images.xcassets */; };
 		4FC3CB341BC6EB7B00349E5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB321BC6EB7B00349E5E /* LaunchScreen.xib */; };
 		4FC3CB401BC6EB7B00349E5E /* PeoplePortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */; };
+		E9D1D7676E9AC136AC9FD915 /* Pods_PeoplePortal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0D467B4FE7940138D5EC90 /* Pods_PeoplePortal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F0B35931BC9F21B0004B7E8 /* Worker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		4F0B35961BC9F61D0004B7E8 /* TimelineConstructionWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineConstructionWorker.swift; sourceTree = "<group>"; };
+		4F0B35981BC9FDE00004B7E8 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
+		4F0B359A1BCA06AF0004B7E8 /* ShadowedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowedUser.swift; sourceTree = "<group>"; };
+		4F64E5E51BCA0C8F008380A4 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		4F64E5E71BCA1FF3008380A4 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		4F64E5E91BCA20C5008380A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4F64E5EB1BCA2474008380A4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		4FC3CB241BC6EB7B00349E5E /* PeoplePortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplePortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC3CB281BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +53,9 @@
 		4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeoplePortalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC3CB3E1BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePortalTests.swift; sourceTree = "<group>"; };
+		782881734F98C74E3FFC9ECF /* Pods-PeoplePortal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplePortal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal.debug.xcconfig"; sourceTree = "<group>"; };
+		843D76E98556CD64AC4C0110 /* Pods-PeoplePortal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplePortal.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal.release.xcconfig"; sourceTree = "<group>"; };
+		ED0D467B4FE7940138D5EC90 /* Pods_PeoplePortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplePortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D1D7676E9AC136AC9FD915 /* Pods_PeoplePortal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +77,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D8373938505808FABE428F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				782881734F98C74E3FFC9ECF /* Pods-PeoplePortal.debug.xcconfig */,
+				843D76E98556CD64AC4C0110 /* Pods-PeoplePortal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4F0B35951BC9F5F50004B7E8 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				4F0B35961BC9F61D0004B7E8 /* TimelineConstructionWorker.swift */,
+			);
+			name = Workers;
+			sourceTree = "<group>";
+		};
+		4F64E5ED1BCA2782008380A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F64E5E51BCA0C8F008380A4 /* Tweet.swift */,
+				4F64E5E71BCA1FF3008380A4 /* Notification.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		4FC3CB1B1BC6EB7B00349E5E = {
 			isa = PBXGroup;
 			children = (
 				4FC3CB261BC6EB7B00349E5E /* PeoplePortal */,
 				4FC3CB3C1BC6EB7B00349E5E /* PeoplePortalTests */,
 				4FC3CB251BC6EB7B00349E5E /* Products */,
+				1D8373938505808FABE428F7 /* Pods */,
+				B2F355566A4069A01167DE9D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */,
+				4F0B35931BC9F21B0004B7E8 /* Worker.swift */,
+				4F0B35981BC9FDE00004B7E8 /* Buffer.swift */,
+				4F64E5E91BCA20C5008380A4 /* Constants.swift */,
+				4F64E5ED1BCA2782008380A4 /* Model */,
+				4F0B359A1BCA06AF0004B7E8 /* ShadowedUser.swift */,
+				4F64E5EB1BCA2474008380A4 /* Session.swift */,
+				4F0B35951BC9F5F50004B7E8 /* Workers */,
 				4FC3CB2B1BC6EB7B00349E5E /* ViewController.swift */,
 				4FC3CB2D1BC6EB7B00349E5E /* Main.storyboard */,
 				4FC3CB301BC6EB7B00349E5E /* Images.xcassets */,
@@ -112,6 +168,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B2F355566A4069A01167DE9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED0D467B4FE7940138D5EC90 /* Pods_PeoplePortal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FC3CB431BC6EB7B00349E5E /* Build configuration list for PBXNativeTarget "PeoplePortal" */;
 			buildPhases = (
+				9F05E5D088D8ED9AB00ACC10 /* Check Pods Manifest.lock */,
 				4FC3CB201BC6EB7B00349E5E /* Sources */,
 				4FC3CB211BC6EB7B00349E5E /* Frameworks */,
 				4FC3CB221BC6EB7B00349E5E /* Resources */,
+				52E8B063653E5302CF034F71 /* Embed Pods Frameworks */,
+				92F9EA101C0EF2AD0CDE3D37 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,13 +274,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52E8B063653E5302CF034F71 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92F9EA101C0EF2AD0CDE3D37 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F05E5D088D8ED9AB00ACC10 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4FC3CB201BC6EB7B00349E5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F64E5EC1BCA2474008380A4 /* Session.swift in Sources */,
 				4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */,
+				4F0B359B1BCA06AF0004B7E8 /* ShadowedUser.swift in Sources */,
+				4F0B35941BC9F21B0004B7E8 /* Worker.swift in Sources */,
+				4F64E5E61BCA0C8F008380A4 /* Tweet.swift in Sources */,
+				4F64E5E81BCA1FF3008380A4 /* Notification.swift in Sources */,
+				4F0B35971BC9F61D0004B7E8 /* TimelineConstructionWorker.swift in Sources */,
+				4F0B35991BC9FDE00004B7E8 /* Buffer.swift in Sources */,
 				4FC3CB2A1BC6EB7B00349E5E /* AppDelegate.swift in Sources */,
+				4F64E5EA1BCA20C5008380A4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +461,7 @@
 		};
 		4FC3CB441BC6EB7B00349E5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 782881734F98C74E3FFC9ECF /* Pods-PeoplePortal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PeoplePortal/Info.plist;
@@ -348,6 +472,7 @@
 		};
 		4FC3CB451BC6EB7B00349E5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 843D76E98556CD64AC4C0110 /* Pods-PeoplePortal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PeoplePortal/Info.plist;
@@ -409,6 +534,7 @@
 				4FC3CB451BC6EB7B00349E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FC3CB461BC6EB7B00349E5E /* Build configuration list for PBXNativeTarget "PeoplePortalTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +543,7 @@
 				4FC3CB481BC6EB7B00349E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

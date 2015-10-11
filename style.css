@@ -25,7 +25,7 @@ body {
 }
 
 footer {
-    color: #9c9c9c;
+    color: #949292;
     font-size: 18px;
     letter-spacing: 5px;
     line-height: 1.5em;
@@ -39,7 +39,7 @@ footer {
 }
 
 footer a {
-    color: #9c9c9c;
+    color: #949292;
     font-family: MyriadProBold;
 }
 
@@ -122,7 +122,7 @@ footer img {
 }
 
 .line {
-    background: #898989;
+    background: rgba(137, 137, 137, 0.61);
     margin: 20px;
     width: 350px;
     height: 1px;
@@ -211,4 +211,3 @@ footer img {
         width: 70%;
     }
 }
-

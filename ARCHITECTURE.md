@@ -1,4 +1,4 @@
-# Timeline
+# How Shadowing Works
 
 To reconstruct the timeline for the Shadowed User, we create a
 private list that contains all the users that user follows. Then the
@@ -11,29 +11,32 @@ protected users).
 Multiple workers are timed to retrieve different data about the Twitter
 user that's being shadowed. The frequency of calls is such that the
 [API rate limits](https://dev.twitter.com/rest/public/rate-limits) are
-guaranteed to never be reached.
+never reached.
 
 ### TimelineConstructionWorker
 
-Populates our private list with the ids of the Twitter users that the
-Shadowed User is following. This is at most triggered once per
+This worker is triggered when the user chooses to shadow a new Twitter
+account. It populates our private list with the ids of the Twitter users that the
+Shadowed User is following. This is at most triggered once pern
 day. This constraint arises both due to limitations of the Twitter API
-(updating a list too often tends to cause the `lists` API to enter a
-weird state) and to force the person using the app to be more
-thoughtful about who they want to become.
+(updating a list often causes the `lists` API to enter a
+weird undocumented state where you can't add anyone to a list)
+and to force the person using the app to be more thoughtful about who
+they want to become.
 
-- Frequency: at most once a day
+- Frequency: at most once a day, user-initiated
 - API call: POST lists/destroy.json
 - Parameters:
   * list_id=[old_list_id]
 
-- Frequency: at most once a day
+Followed by:
+
 - API call: POST lists/create
 - Parameters:
   * name=peopleportal
   * mode=private
 
-^ set current_list_id to the list created 
+Followed by:
 
 - Frequency: at most once a day
 - API call: POST lists/members/create_all
@@ -45,7 +48,7 @@ thoughtful about who they want to become.
 
 Populates the Shadowed User's timeline.
 
-- Frequency: every minute
+- Frequency: every 60s
 - API call: GET lists/statuses
 - Parameters:
   * list_id=[current_list_id]
@@ -55,7 +58,7 @@ Populates the Shadowed User's timeline.
 
 Populates the view of Shadowed User's own tweets.
 
-- Frequency: every minute
+- Frequency: every 60s
 - API call: GET statuses/user_timeline
 - Parameters:
   * list_id=[current_user_id]
