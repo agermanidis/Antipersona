@@ -11,13 +11,6 @@ import UIKit
 class ShadowedUser : NSObject {
     var workers = [Worker]()
     
-    var homeTimeline = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
-    var notifications = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
-    var userTimeline = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
-    
-    var following = Buffer(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
-    var followers = Buffer(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
-    
     var username : String?
     var profileDescription : String?
     var profilePictureUrl : String?
@@ -27,12 +20,19 @@ class ShadowedUser : NSObject {
     var userId : Int
     var ctime : NSDate
     
-    init(userId : Int) {
+    var homeTimeline = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
+    var notifications = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
+    var userTimeline = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
+    
+    var following = Buffer(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
+    var followers = Buffer(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
+    
+    init(userId:Int) {
         self.ctime = NSDate()
         self.userId = userId
     }
     
-    init(userId : Int, ctime : NSDate) {
+    init(userId:Int, ctime:NSDate) {
         self.ctime = ctime
         self.userId = userId
     }
@@ -41,6 +41,8 @@ class ShadowedUser : NSObject {
     
     func start() {
         // start workers
+        
+        
     }
 
     func startBackgroundMode() {
@@ -56,10 +58,19 @@ class ShadowedUser : NSObject {
     }
     
     func serialize() -> Dict {
-        return Dict()
+        var ret = Dict()
+        
+        ret["userId"] = userId
+        if profileDescription != nil { ret["profileDescription"] = profileDescription! }
+
+//        ret["userTimeline"] = (userTimeline.freeze() as [Tweet]).map({$0.serialize()})
+//        ret["homeTimeline"] = homeTimeline.freeze().map({$0.serialize()})
+//        ret["notifications"] = notifications.freeze().map({$0.serialize()})
+
+        return ret
     }
     
-    static func deserialize(dict : Dict) -> ShadowedUser {
+    static func deserialize(dict:Dict) -> ShadowedUser {
         var user = ShadowedUser(userId: dict["userId"] as! Int)
 
         for (key, value) in dict {

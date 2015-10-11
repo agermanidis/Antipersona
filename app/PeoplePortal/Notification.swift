@@ -9,11 +9,11 @@
 import UIKit
 
 class Notification: NSObject {
-    static func deserialize(serialized : Dict) -> Notification {
+    static func deserialize(serialized:Dict) -> Notification {
         return Notification()
     }
     
-    static func serialize() -> Dict {
+    func serialize() -> Dict {
         return Dict()
     }
 }

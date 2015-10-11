@@ -13,5 +13,7 @@ class Constants {
     static let USER_LIST_BUFFER_CAPACITY = 5000
 
     static let TWITTER_CONSUMER_KEY = ""
-    static let TWITTER_CONSUMER_SECRET = ""   
+    static let TWITTER_CONSUMER_SECRET = ""
+    
+    
 }

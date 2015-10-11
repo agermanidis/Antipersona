@@ -28,7 +28,7 @@ class Session {
         defaults.setObject(serialize(), forKey: "session")
     }
     
-    static func deserialize(dict : Dict) -> Session {
+    static func deserialize(dict:Dict) -> Session {
         let session = Session()
         session.notificationsEnabled = dict["notificationsEnabled"] as! Bool
         session.shadowedUser = ShadowedUser.deserialize(dict["user"] as! Dict)
