@@ -17,6 +17,7 @@ extension NSDate {
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         return formatter.stringFromDate(self)
     }
+    
     static func fromString(s:String) -> NSDate {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSX"
@@ -25,4 +26,9 @@ extension NSDate {
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         return formatter.dateFromString(s)!
     }
+    
+    func daysDiff(date:NSDate) -> Int {
+        return NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: date, toDate: self, options: []).day
+    }
+
 }

@@ -11,17 +11,17 @@ import UIKit
 class Tweet {
     var tweetId : Int?
     var ctime : NSDate?
-    var favoriteCount : Int?
-    var retweetCount : Int?
     var text : String?
     var user : User?
+    var favoriteCount : Int?
+    var retweetCount : Int?
     
     static func deserialize(serialized:Dict) -> Tweet {
-        var ret = Tweet()
+        let ret = Tweet()
         ret.tweetId = serialized["id"] as? Int
-        ret.ctime = NSDate.fromString(serialized["ctime"] as! String)
-        ret.favoriteCount = serialized["favoriteCount"] as? Int
-        ret.retweetCount = serialized["retweetCount"] as? Int
+        ret.ctime = NSDate.fromString(serialized["created_at"] as! String)
+        ret.favoriteCount = serialized["favorite_count"] as? Int
+        ret.retweetCount = serialized["retweet_count"] as? Int
         ret.text = serialized["text"] as? String
         ret.user = User.deserialize(serialized["user"] as! Dict)
         return ret
@@ -30,9 +30,9 @@ class Tweet {
     func serialize() -> Dict {
         var ret = Dict()
         ret["id"] = tweetId!
-        ret["ctime"] = ctime!.toString()
-        ret["favoriteCount"] = favoriteCount!
-        ret["retweetCount"] = retweetCount!
+        ret["created_at"] = ctime!.toString()
+        ret["favourites_count"] = favoriteCount!
+        ret["retweet_count"] = retweetCount!
         ret["text"] = text!
         ret["user"] = user!.serialize()
         return ret

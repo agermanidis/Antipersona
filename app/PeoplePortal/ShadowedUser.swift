@@ -14,9 +14,7 @@ class ShadowedUser : NSObject {
     var username : String?
     var profileDescription : String?
     var profilePictureUrl : String?
-
     var currentListId : Int?
-    
     var userId : Int
     var ctime : NSDate
     
@@ -37,11 +35,14 @@ class ShadowedUser : NSObject {
         self.userId = userId
     }
     
+    func canSwitch() -> Bool {
+        return NSDate().daysDiff(ctime) > 0
+    }
+    
     var started = false
     
     func start() {
         // start workers
-        
         
     }
 
@@ -71,7 +72,7 @@ class ShadowedUser : NSObject {
     }
     
     static func deserialize(dict:Dict) -> ShadowedUser {
-        var user = ShadowedUser(userId: dict["userId"] as! Int)
+        let user = ShadowedUser(userId: dict["userId"] as! Int)
 
         for (key, value) in dict {
             switch key {
@@ -98,6 +99,8 @@ class ShadowedUser : NSObject {
                 let notificationsObjects = value as! [Dict]
                 let notifications = notificationsObjects.map({ Notification.deserialize($0) })
                 user.notifications = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY, items: notifications)
+                
+            //...
                 
             case "profilePictureUrl":
                 user.profilePictureUrl = value as? String

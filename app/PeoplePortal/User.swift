@@ -15,12 +15,16 @@ class User: NSObject {
     var profileImageUrl : String?
     var verified : Bool?
     
+    func isShadowedUser() -> Bool {
+        return userId == Session.shared.shadowedUser?.userId
+    }
+    
     static func deserialize(serialized:Dict) -> User {
-        var ret = User()
+        let ret = User()
         ret.userId = serialized["id"] as? Int
         ret.name = serialized["name"] as? String
-        ret.screenName = serialized["screenName"] as? String
-        ret.profileImageUrl = serialized["profileImageUrl"] as? String
+        ret.screenName = serialized["screen_name"] as? String
+        ret.profileImageUrl = serialized["profile_image_url"] as? String
         ret.verified = serialized["verified"] as? Bool
         return ret
     }
@@ -29,8 +33,8 @@ class User: NSObject {
         var ret = Dict()
         ret["id"] = userId!
         ret["name"] = name!
-        ret["screenName"] = screenName!
-        ret["profileImageUrl"] = profileImageUrl!
+        ret["screen_name"] = screenName!
+        ret["profile_image_url"] = profileImageUrl!
         ret["verified"] = verified!
         return ret
     }

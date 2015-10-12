@@ -15,6 +15,37 @@
 		4F64E5E81BCA1FF3008380A4 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E71BCA1FF3008380A4 /* Notification.swift */; };
 		4F64E5EA1BCA20C5008380A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E91BCA20C5008380A4 /* Constants.swift */; };
 		4F64E5EC1BCA2474008380A4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5EB1BCA2474008380A4 /* Session.swift */; };
+		4F64E5F11BCACD1A008380A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5F01BCACD1A008380A4 /* User.swift */; };
+		4F64E5F31BCACE80008380A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5F21BCACE80008380A4 /* Extensions.swift */; };
+		4F64E6141BCAD405008380A4 /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5F51BCAD405008380A4 /* Dictionary+Swifter.swift */; };
+		4F64E6151BCAD405008380A4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F64E5F61BCAD405008380A4 /* Info.plist */; };
+		4F64E6161BCAD405008380A4 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5F71BCAD405008380A4 /* JSON.swift */; };
+		4F64E6171BCAD405008380A4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F64E5F81BCAD405008380A4 /* Launch Screen.storyboard */; };
+		4F64E6181BCAD405008380A4 /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5F91BCAD405008380A4 /* NSURL+Swifter.swift */; };
+		4F64E6191BCAD405008380A4 /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5FA1BCAD405008380A4 /* String+Swifter.swift */; };
+		4F64E61A1BCAD405008380A4 /* Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5FD1BCAD405008380A4 /* Swifter.swift */; };
+		4F64E61B1BCAD405008380A4 /* SwifterAccountsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5FE1BCAD405008380A4 /* SwifterAccountsClient.swift */; };
+		4F64E61C1BCAD405008380A4 /* SwifterAppOnlyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5FF1BCAD405008380A4 /* SwifterAppOnlyClient.swift */; };
+		4F64E61D1BCAD405008380A4 /* SwifterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6001BCAD405008380A4 /* SwifterAuth.swift */; };
+		4F64E61E1BCAD405008380A4 /* SwifterClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6011BCAD405008380A4 /* SwifterClientProtocol.swift */; };
+		4F64E61F1BCAD405008380A4 /* SwifterCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6021BCAD405008380A4 /* SwifterCredential.swift */; };
+		4F64E6201BCAD405008380A4 /* SwifterFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6031BCAD405008380A4 /* SwifterFavorites.swift */; };
+		4F64E6211BCAD405008380A4 /* SwifterFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6041BCAD405008380A4 /* SwifterFollowers.swift */; };
+		4F64E6221BCAD405008380A4 /* SwifterHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6051BCAD405008380A4 /* SwifterHelp.swift */; };
+		4F64E6231BCAD405008380A4 /* SwifterHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6061BCAD405008380A4 /* SwifterHTTPRequest.swift */; };
+		4F64E6241BCAD405008380A4 /* SwifterLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6071BCAD405008380A4 /* SwifterLists.swift */; };
+		4F64E6251BCAD405008380A4 /* SwifterMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6081BCAD405008380A4 /* SwifterMessages.swift */; };
+		4F64E6261BCAD405008380A4 /* SwifterOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6091BCAD405008380A4 /* SwifterOAuthClient.swift */; };
+		4F64E6271BCAD405008380A4 /* SwifterPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E60A1BCAD405008380A4 /* SwifterPlaces.swift */; };
+		4F64E6281BCAD405008380A4 /* SwifterSavedSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E60B1BCAD405008380A4 /* SwifterSavedSearches.swift */; };
+		4F64E6291BCAD405008380A4 /* SwifterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E60C1BCAD405008380A4 /* SwifterSearch.swift */; };
+		4F64E62A1BCAD405008380A4 /* SwifterSpam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E60D1BCAD405008380A4 /* SwifterSpam.swift */; };
+		4F64E62B1BCAD405008380A4 /* SwifterStreaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E60E1BCAD405008380A4 /* SwifterStreaming.swift */; };
+		4F64E62C1BCAD405008380A4 /* SwifterSuggested.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E60F1BCAD405008380A4 /* SwifterSuggested.swift */; };
+		4F64E62D1BCAD405008380A4 /* SwifterTimelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6101BCAD405008380A4 /* SwifterTimelines.swift */; };
+		4F64E62E1BCAD405008380A4 /* SwifterTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6111BCAD405008380A4 /* SwifterTrends.swift */; };
+		4F64E62F1BCAD405008380A4 /* SwifterTweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6121BCAD405008380A4 /* SwifterTweets.swift */; };
+		4F64E6301BCAD405008380A4 /* SwifterUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E6131BCAD405008380A4 /* SwifterUsers.swift */; };
 		4FC3CB2A1BC6EB7B00349E5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */; };
 		4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB2B1BC6EB7B00349E5E /* ViewController.swift */; };
 		4FC3CB2F1BC6EB7B00349E5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB2D1BC6EB7B00349E5E /* Main.storyboard */; };
@@ -43,6 +74,39 @@
 		4F64E5E71BCA1FF3008380A4 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		4F64E5E91BCA20C5008380A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4F64E5EB1BCA2474008380A4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		4F64E5F01BCACD1A008380A4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4F64E5F21BCACE80008380A4 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4F64E5F51BCAD405008380A4 /* Dictionary+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swifter.swift"; sourceTree = "<group>"; };
+		4F64E5F61BCAD405008380A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F64E5F71BCAD405008380A4 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		4F64E5F81BCAD405008380A4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4F64E5F91BCAD405008380A4 /* NSURL+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Swifter.swift"; sourceTree = "<group>"; };
+		4F64E5FA1BCAD405008380A4 /* String+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swifter.swift"; sourceTree = "<group>"; };
+		4F64E5FB1BCAD405008380A4 /* Swifter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swifter-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F64E5FC1BCAD405008380A4 /* Swifter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swifter.h; sourceTree = "<group>"; };
+		4F64E5FD1BCAD405008380A4 /* Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swifter.swift; sourceTree = "<group>"; };
+		4F64E5FE1BCAD405008380A4 /* SwifterAccountsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAccountsClient.swift; sourceTree = "<group>"; };
+		4F64E5FF1BCAD405008380A4 /* SwifterAppOnlyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAppOnlyClient.swift; sourceTree = "<group>"; };
+		4F64E6001BCAD405008380A4 /* SwifterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAuth.swift; sourceTree = "<group>"; };
+		4F64E6011BCAD405008380A4 /* SwifterClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterClientProtocol.swift; sourceTree = "<group>"; };
+		4F64E6021BCAD405008380A4 /* SwifterCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterCredential.swift; sourceTree = "<group>"; };
+		4F64E6031BCAD405008380A4 /* SwifterFavorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterFavorites.swift; sourceTree = "<group>"; };
+		4F64E6041BCAD405008380A4 /* SwifterFollowers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterFollowers.swift; sourceTree = "<group>"; };
+		4F64E6051BCAD405008380A4 /* SwifterHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterHelp.swift; sourceTree = "<group>"; };
+		4F64E6061BCAD405008380A4 /* SwifterHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterHTTPRequest.swift; sourceTree = "<group>"; };
+		4F64E6071BCAD405008380A4 /* SwifterLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterLists.swift; sourceTree = "<group>"; };
+		4F64E6081BCAD405008380A4 /* SwifterMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterMessages.swift; sourceTree = "<group>"; };
+		4F64E6091BCAD405008380A4 /* SwifterOAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterOAuthClient.swift; sourceTree = "<group>"; };
+		4F64E60A1BCAD405008380A4 /* SwifterPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterPlaces.swift; sourceTree = "<group>"; };
+		4F64E60B1BCAD405008380A4 /* SwifterSavedSearches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSavedSearches.swift; sourceTree = "<group>"; };
+		4F64E60C1BCAD405008380A4 /* SwifterSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSearch.swift; sourceTree = "<group>"; };
+		4F64E60D1BCAD405008380A4 /* SwifterSpam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSpam.swift; sourceTree = "<group>"; };
+		4F64E60E1BCAD405008380A4 /* SwifterStreaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterStreaming.swift; sourceTree = "<group>"; };
+		4F64E60F1BCAD405008380A4 /* SwifterSuggested.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSuggested.swift; sourceTree = "<group>"; };
+		4F64E6101BCAD405008380A4 /* SwifterTimelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterTimelines.swift; sourceTree = "<group>"; };
+		4F64E6111BCAD405008380A4 /* SwifterTrends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterTrends.swift; sourceTree = "<group>"; };
+		4F64E6121BCAD405008380A4 /* SwifterTweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterTweets.swift; sourceTree = "<group>"; };
+		4F64E6131BCAD405008380A4 /* SwifterUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterUsers.swift; sourceTree = "<group>"; };
 		4FC3CB241BC6EB7B00349E5E /* PeoplePortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplePortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC3CB281BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +117,7 @@
 		4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeoplePortalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC3CB3E1BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePortalTests.swift; sourceTree = "<group>"; };
+		4FFB01CC1BCB8A540025206F /* PeoplePortal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeoplePortal-Bridging-Header.h"; sourceTree = "<group>"; };
 		782881734F98C74E3FFC9ECF /* Pods-PeoplePortal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplePortal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal.debug.xcconfig"; sourceTree = "<group>"; };
 		843D76E98556CD64AC4C0110 /* Pods-PeoplePortal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplePortal.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal.release.xcconfig"; sourceTree = "<group>"; };
 		ED0D467B4FE7940138D5EC90 /* Pods_PeoplePortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplePortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,9 +163,48 @@
 			isa = PBXGroup;
 			children = (
 				4F64E5E51BCA0C8F008380A4 /* Tweet.swift */,
+				4F64E5F01BCACD1A008380A4 /* User.swift */,
 				4F64E5E71BCA1FF3008380A4 /* Notification.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		4F64E5F41BCAD405008380A4 /* Swifter */ = {
+			isa = PBXGroup;
+			children = (
+				4F64E5F51BCAD405008380A4 /* Dictionary+Swifter.swift */,
+				4F64E5F61BCAD405008380A4 /* Info.plist */,
+				4F64E5F71BCAD405008380A4 /* JSON.swift */,
+				4F64E5F81BCAD405008380A4 /* Launch Screen.storyboard */,
+				4F64E5F91BCAD405008380A4 /* NSURL+Swifter.swift */,
+				4F64E5FA1BCAD405008380A4 /* String+Swifter.swift */,
+				4F64E5FB1BCAD405008380A4 /* Swifter-Bridging-Header.h */,
+				4F64E5FC1BCAD405008380A4 /* Swifter.h */,
+				4F64E5FD1BCAD405008380A4 /* Swifter.swift */,
+				4F64E5FE1BCAD405008380A4 /* SwifterAccountsClient.swift */,
+				4F64E5FF1BCAD405008380A4 /* SwifterAppOnlyClient.swift */,
+				4F64E6001BCAD405008380A4 /* SwifterAuth.swift */,
+				4F64E6011BCAD405008380A4 /* SwifterClientProtocol.swift */,
+				4F64E6021BCAD405008380A4 /* SwifterCredential.swift */,
+				4F64E6031BCAD405008380A4 /* SwifterFavorites.swift */,
+				4F64E6041BCAD405008380A4 /* SwifterFollowers.swift */,
+				4F64E6051BCAD405008380A4 /* SwifterHelp.swift */,
+				4F64E6061BCAD405008380A4 /* SwifterHTTPRequest.swift */,
+				4F64E6071BCAD405008380A4 /* SwifterLists.swift */,
+				4F64E6081BCAD405008380A4 /* SwifterMessages.swift */,
+				4F64E6091BCAD405008380A4 /* SwifterOAuthClient.swift */,
+				4F64E60A1BCAD405008380A4 /* SwifterPlaces.swift */,
+				4F64E60B1BCAD405008380A4 /* SwifterSavedSearches.swift */,
+				4F64E60C1BCAD405008380A4 /* SwifterSearch.swift */,
+				4F64E60D1BCAD405008380A4 /* SwifterSpam.swift */,
+				4F64E60E1BCAD405008380A4 /* SwifterStreaming.swift */,
+				4F64E60F1BCAD405008380A4 /* SwifterSuggested.swift */,
+				4F64E6101BCAD405008380A4 /* SwifterTimelines.swift */,
+				4F64E6111BCAD405008380A4 /* SwifterTrends.swift */,
+				4F64E6121BCAD405008380A4 /* SwifterTweets.swift */,
+				4F64E6131BCAD405008380A4 /* SwifterUsers.swift */,
+			);
+			path = Swifter;
 			sourceTree = "<group>";
 		};
 		4FC3CB1B1BC6EB7B00349E5E = {
@@ -126,7 +230,9 @@
 		4FC3CB261BC6EB7B00349E5E /* PeoplePortal */ = {
 			isa = PBXGroup;
 			children = (
+				4F64E5F41BCAD405008380A4 /* Swifter */,
 				4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */,
+				4F64E5F21BCACE80008380A4 /* Extensions.swift */,
 				4F0B35931BC9F21B0004B7E8 /* Worker.swift */,
 				4F0B35981BC9FDE00004B7E8 /* Buffer.swift */,
 				4F64E5E91BCA20C5008380A4 /* Constants.swift */,
@@ -139,6 +245,7 @@
 				4FC3CB301BC6EB7B00349E5E /* Images.xcassets */,
 				4FC3CB321BC6EB7B00349E5E /* LaunchScreen.xib */,
 				4FC3CB271BC6EB7B00349E5E /* Supporting Files */,
+				4FFB01CC1BCB8A540025206F /* PeoplePortal-Bridging-Header.h */,
 			);
 			path = PeoplePortal;
 			sourceTree = "<group>";
@@ -223,7 +330,9 @@
 		4FC3CB1C1BC6EB7B00349E5E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Anastasis Germanidis";
 				TargetAttributes = {
 					4FC3CB231BC6EB7B00349E5E = {
@@ -259,8 +368,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F64E6151BCAD405008380A4 /* Info.plist in Resources */,
 				4FC3CB2F1BC6EB7B00349E5E /* Main.storyboard in Resources */,
 				4FC3CB341BC6EB7B00349E5E /* LaunchScreen.xib in Resources */,
+				4F64E6171BCAD405008380A4 /* Launch Screen.storyboard in Resources */,
 				4FC3CB311BC6EB7B00349E5E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,16 +438,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F64E6201BCAD405008380A4 /* SwifterFavorites.swift in Sources */,
 				4F64E5EC1BCA2474008380A4 /* Session.swift in Sources */,
+				4F64E61F1BCAD405008380A4 /* SwifterCredential.swift in Sources */,
+				4F64E6161BCAD405008380A4 /* JSON.swift in Sources */,
+				4F64E6231BCAD405008380A4 /* SwifterHTTPRequest.swift in Sources */,
+				4F64E61D1BCAD405008380A4 /* SwifterAuth.swift in Sources */,
 				4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */,
 				4F0B359B1BCA06AF0004B7E8 /* ShadowedUser.swift in Sources */,
+				4F64E6291BCAD405008380A4 /* SwifterSearch.swift in Sources */,
+				4F64E62A1BCAD405008380A4 /* SwifterSpam.swift in Sources */,
+				4F64E6281BCAD405008380A4 /* SwifterSavedSearches.swift in Sources */,
+				4F64E62D1BCAD405008380A4 /* SwifterTimelines.swift in Sources */,
+				4F64E6251BCAD405008380A4 /* SwifterMessages.swift in Sources */,
 				4F0B35941BC9F21B0004B7E8 /* Worker.swift in Sources */,
+				4F64E6191BCAD405008380A4 /* String+Swifter.swift in Sources */,
+				4F64E6261BCAD405008380A4 /* SwifterOAuthClient.swift in Sources */,
+				4F64E62F1BCAD405008380A4 /* SwifterTweets.swift in Sources */,
 				4F64E5E61BCA0C8F008380A4 /* Tweet.swift in Sources */,
+				4F64E6211BCAD405008380A4 /* SwifterFollowers.swift in Sources */,
+				4F64E62C1BCAD405008380A4 /* SwifterSuggested.swift in Sources */,
+				4F64E6271BCAD405008380A4 /* SwifterPlaces.swift in Sources */,
+				4F64E6241BCAD405008380A4 /* SwifterLists.swift in Sources */,
+				4F64E6301BCAD405008380A4 /* SwifterUsers.swift in Sources */,
 				4F64E5E81BCA1FF3008380A4 /* Notification.swift in Sources */,
+				4F64E62E1BCAD405008380A4 /* SwifterTrends.swift in Sources */,
 				4F0B35971BC9F61D0004B7E8 /* TimelineConstructionWorker.swift in Sources */,
+				4F64E61A1BCAD405008380A4 /* Swifter.swift in Sources */,
+				4F64E61E1BCAD405008380A4 /* SwifterClientProtocol.swift in Sources */,
+				4F64E62B1BCAD405008380A4 /* SwifterStreaming.swift in Sources */,
+				4F64E5F31BCACE80008380A4 /* Extensions.swift in Sources */,
 				4F0B35991BC9FDE00004B7E8 /* Buffer.swift in Sources */,
+				4F64E6181BCAD405008380A4 /* NSURL+Swifter.swift in Sources */,
 				4FC3CB2A1BC6EB7B00349E5E /* AppDelegate.swift in Sources */,
 				4F64E5EA1BCA20C5008380A4 /* Constants.swift in Sources */,
+				4F64E6141BCAD405008380A4 /* Dictionary+Swifter.swift in Sources */,
+				4F64E5F11BCACD1A008380A4 /* User.swift in Sources */,
+				4F64E61B1BCAD405008380A4 /* SwifterAccountsClient.swift in Sources */,
+				4F64E61C1BCAD405008380A4 /* SwifterAppOnlyClient.swift in Sources */,
+				4F64E6221BCAD405008380A4 /* SwifterHelp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +539,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -464,9 +605,13 @@
 			baseConfigurationReference = 782881734F98C74E3FFC9ECF /* Pods-PeoplePortal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PeoplePortal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeoplePortal/PeoplePortal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -475,9 +620,12 @@
 			baseConfigurationReference = 843D76E98556CD64AC4C0110 /* Pods-PeoplePortal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PeoplePortal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeoplePortal/PeoplePortal-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -485,16 +633,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = PeoplePortalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeoplePortal.app/PeoplePortal";
 			};
@@ -504,12 +650,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PeoplePortalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeoplePortal.app/PeoplePortal";
 			};

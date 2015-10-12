@@ -37,7 +37,7 @@ class Session {
     
     static func retrieve() -> Session {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let retrieved = defaults.dictionaryForKey("session") as? Dict
+        let retrieved = defaults.dictionaryForKey("session")
         if retrieved != nil {
             return deserialize(retrieved!)
         } else {
