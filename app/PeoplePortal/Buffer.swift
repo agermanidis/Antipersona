@@ -11,6 +11,12 @@ import UIKit
 class Buffer {
     var items : NSMutableArray
     var capacity : Int
+    var count : Int {
+        return items.count
+    }
+    var last : AnyObject? {
+        return items.lastObject
+    }
     
     init(capacity:Int) {
         self.items = NSMutableArray(capacity: capacity)

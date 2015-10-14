@@ -17,3 +17,4 @@ class Notification: NSObject {
         return Dict()
     }
 }
+

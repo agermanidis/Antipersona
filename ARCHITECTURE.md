@@ -13,11 +13,11 @@ user that's being shadowed. The frequency of calls is such that the
 [API rate limits](https://dev.twitter.com/rest/public/rate-limits) are
 never reached.
 
-### TimelineConstructionWorker
+### ListWorker
 
 This worker is triggered when the user chooses to shadow a new Twitter
 account. It populates our private list with the ids of the Twitter users that the
-Shadowed User is following. This is at most triggered once pern
+Shadowed User is following. This is at most triggered once per
 day. This constraint arises both due to limitations of the Twitter API
 (updating a list often causes the `lists` API to enter a
 weird undocumented state where you can't add anyone to a list)
@@ -53,6 +53,7 @@ Populates the Shadowed User's timeline.
 - Parameters:
   * list_id=[current_list_id]
   * count=200
+  * since_id=[last_id_in_current_timeline]
 
 ### ProfileWorker
 

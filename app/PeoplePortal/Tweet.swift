@@ -27,6 +27,17 @@ class Tweet {
         return ret
     }
     
+    static func deserializeJSON(serialized:Dictionary<String, JSON>) -> Tweet {
+        let ret = Tweet()
+        ret.tweetId = serialized["id"]!.integer
+        ret.ctime = NSDate.fromString(serialized["created_at"]!.string
+        ret.favoriteCount = serialized["favorite_count"]!.integer
+        ret.retweetCount = serialized["retweet_count"]!.integer
+            ret.text = serialized["text"]!.string
+        ret.user = User.deserializeJSON(serialized["user"]!.object)
+        return ret
+    }
+    
     func serialize() -> Dict {
         var ret = Dict()
         ret["id"] = tweetId!

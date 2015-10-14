@@ -9,7 +9,6 @@
 import UIKit
 
 protocol Worker {
-    var frequency : Int { get set }
-    var loopCount : Int { get }
-    func loop()
+    var runCount : Int { get }
+    func run()
 }

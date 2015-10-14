@@ -30,5 +30,20 @@ extension NSDate {
     func daysDiff(date:NSDate) -> Int {
         return NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: date, toDate: self, options: []).day
     }
-
 }
+
+extension Array {
+    func splitByN(partSize:Int) -> [[Any]] {
+        let n_parts = Int(ceil(Double(self.count)/Double(partSize)))
+        var ret:[[Any]] = []
+        for i in 0..<n_parts {
+            var part:[Any] = []
+            for j in partSize*i..<min(self.count, partSize*(i+1)) {
+                part.append(self[j])
+            }
+            ret.append(part)
+        }
+        return ret
+    }
+}
+

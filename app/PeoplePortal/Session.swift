@@ -8,11 +8,33 @@
 
 import UIKit
 
+struct TwitterCredentials {
+    var accessToken : String
+    var accessSecret : String
+}
+
 class Session {
     static let shared = Session.retrieve()
     
-    var shadowedUser : ShadowedUser?
-    var notificationsEnabled = true
+    var swifter : Swifter?
+
+    var credentials : TwitterCredentials? {
+        didSet {
+            save()
+            
+            self.swifter = Swifter(consumerKey: Constants.TWITTER_CONSUMER_KEY, consumerSecret: Constants.TWITTER_CONSUMER_SECRET, oauthToken: credentials!.accessToken, oauthTokenSecret: credentials!.accessSecret)            
+        }
+    }
+    var shadowedUser : ShadowedUser? {
+        didSet {
+            save()
+        }
+    }
+    var notificationsEnabled = true {
+        didSet {
+            save()
+        }
+    }
     
     func serialize() -> Dict {
         var ret = Dict()
@@ -20,10 +42,13 @@ class Session {
             ret["user"] = serializedUser
         }
         ret["notificationsEnabled"] = notificationsEnabled
+        ret["accessToken"] = credentials?.accessToken
+        ret["accessSecret"] = credentials?.accessSecret
         return ret
     }
     
     func save() {
+        print("Saving session...")
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(serialize(), forKey: "session")
     }
@@ -32,10 +57,16 @@ class Session {
         let session = Session()
         session.notificationsEnabled = dict["notificationsEnabled"] as! Bool
         session.shadowedUser = ShadowedUser.deserialize(dict["user"] as! Dict)
+        let accessToken = dict["accessToken"] as? String
+        let accessSecret = dict["accessSecret"] as? String
+        if accessToken != nil && accessSecret != nil {
+            session.credentials = TwitterCredentials(accessToken: accessToken!, accessSecret: accessSecret!)
+        }
         return session
     }
     
     static func retrieve() -> Session {
+        print("Receiving session")
         let defaults = NSUserDefaults.standardUserDefaults()
         let retrieved = defaults.dictionaryForKey("session")
         if retrieved != nil {

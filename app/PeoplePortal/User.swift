@@ -29,6 +29,16 @@ class User: NSObject {
         return ret
     }
     
+    static func deserializeJSON(serialized:Dictionary<String, JSON>) -> User {
+        let ret = User()
+        ret.userId = serialized["id"]!.integer
+        ret.name = serialized["name"]!.string
+        ret.screenName = serialized["screen_name"]!.string
+        ret.profileImageUrl = serialized["profile_image_url"]!.string
+        ret.verified = serialized["verified"]!.boolValue
+        return ret
+    }
+    
     func serialize() -> Dict {
         var ret = Dict()
         ret["id"] = userId!

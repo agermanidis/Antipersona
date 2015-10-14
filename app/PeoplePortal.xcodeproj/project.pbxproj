@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F0B35941BC9F21B0004B7E8 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35931BC9F21B0004B7E8 /* Worker.swift */; };
-		4F0B35971BC9F61D0004B7E8 /* TimelineConstructionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35961BC9F61D0004B7E8 /* TimelineConstructionWorker.swift */; };
+		4F0B35971BC9F61D0004B7E8 /* ListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35961BC9F61D0004B7E8 /* ListWorker.swift */; };
 		4F0B35991BC9FDE00004B7E8 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B35981BC9FDE00004B7E8 /* Buffer.swift */; };
 		4F0B359B1BCA06AF0004B7E8 /* ShadowedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B359A1BCA06AF0004B7E8 /* ShadowedUser.swift */; };
 		4F64E5E61BCA0C8F008380A4 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E51BCA0C8F008380A4 /* Tweet.swift */; };
@@ -52,6 +52,8 @@
 		4FC3CB311BC6EB7B00349E5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB301BC6EB7B00349E5E /* Images.xcassets */; };
 		4FC3CB341BC6EB7B00349E5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC3CB321BC6EB7B00349E5E /* LaunchScreen.xib */; };
 		4FC3CB401BC6EB7B00349E5E /* PeoplePortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */; };
+		4FFB01D11BCEB0B40025206F /* TimelineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB01D01BCEB0B40025206F /* TimelineWorker.swift */; settings = {ASSET_TAGS = (); }; };
+		4FFB01D31BCEB7600025206F /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB01D21BCEB7600025206F /* ProfileWorker.swift */; settings = {ASSET_TAGS = (); }; };
 		E9D1D7676E9AC136AC9FD915 /* Pods_PeoplePortal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0D467B4FE7940138D5EC90 /* Pods_PeoplePortal.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +69,7 @@
 
 /* Begin PBXFileReference section */
 		4F0B35931BC9F21B0004B7E8 /* Worker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
-		4F0B35961BC9F61D0004B7E8 /* TimelineConstructionWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineConstructionWorker.swift; sourceTree = "<group>"; };
+		4F0B35961BC9F61D0004B7E8 /* ListWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListWorker.swift; sourceTree = "<group>"; };
 		4F0B35981BC9FDE00004B7E8 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
 		4F0B359A1BCA06AF0004B7E8 /* ShadowedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowedUser.swift; sourceTree = "<group>"; };
 		4F64E5E51BCA0C8F008380A4 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -118,6 +120,8 @@
 		4FC3CB3E1BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePortalTests.swift; sourceTree = "<group>"; };
 		4FFB01CC1BCB8A540025206F /* PeoplePortal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeoplePortal-Bridging-Header.h"; sourceTree = "<group>"; };
+		4FFB01D01BCEB0B40025206F /* TimelineWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineWorker.swift; sourceTree = "<group>"; };
+		4FFB01D21BCEB7600025206F /* ProfileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
 		782881734F98C74E3FFC9ECF /* Pods-PeoplePortal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplePortal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal.debug.xcconfig"; sourceTree = "<group>"; };
 		843D76E98556CD64AC4C0110 /* Pods-PeoplePortal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplePortal.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplePortal/Pods-PeoplePortal.release.xcconfig"; sourceTree = "<group>"; };
 		ED0D467B4FE7940138D5EC90 /* Pods_PeoplePortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplePortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +158,9 @@
 		4F0B35951BC9F5F50004B7E8 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				4F0B35961BC9F61D0004B7E8 /* TimelineConstructionWorker.swift */,
+				4F0B35961BC9F61D0004B7E8 /* ListWorker.swift */,
+				4FFB01D01BCEB0B40025206F /* TimelineWorker.swift */,
+				4FFB01D21BCEB7600025206F /* ProfileWorker.swift */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 				4F64E61D1BCAD405008380A4 /* SwifterAuth.swift in Sources */,
 				4FC3CB2C1BC6EB7B00349E5E /* ViewController.swift in Sources */,
 				4F0B359B1BCA06AF0004B7E8 /* ShadowedUser.swift in Sources */,
+				4FFB01D11BCEB0B40025206F /* TimelineWorker.swift in Sources */,
 				4F64E6291BCAD405008380A4 /* SwifterSearch.swift in Sources */,
 				4F64E62A1BCAD405008380A4 /* SwifterSpam.swift in Sources */,
 				4F64E6281BCAD405008380A4 /* SwifterSavedSearches.swift in Sources */,
@@ -463,9 +470,10 @@
 				4F64E6301BCAD405008380A4 /* SwifterUsers.swift in Sources */,
 				4F64E5E81BCA1FF3008380A4 /* Notification.swift in Sources */,
 				4F64E62E1BCAD405008380A4 /* SwifterTrends.swift in Sources */,
-				4F0B35971BC9F61D0004B7E8 /* TimelineConstructionWorker.swift in Sources */,
+				4F0B35971BC9F61D0004B7E8 /* ListWorker.swift in Sources */,
 				4F64E61A1BCAD405008380A4 /* Swifter.swift in Sources */,
 				4F64E61E1BCAD405008380A4 /* SwifterClientProtocol.swift in Sources */,
+				4FFB01D31BCEB7600025206F /* ProfileWorker.swift in Sources */,
 				4F64E62B1BCAD405008380A4 /* SwifterStreaming.swift in Sources */,
 				4F64E5F31BCACE80008380A4 /* Extensions.swift in Sources */,
 				4F0B35991BC9FDE00004B7E8 /* Buffer.swift in Sources */,

@@ -10,11 +10,12 @@ import UIKit
 
 class ShadowedUser : NSObject {
     var workers = [Worker]()
-    
-    var username : String?
+    var currentListId : String?
+
+    var name : String?
+    var screenName : String?
     var profileDescription : String?
     var profilePictureUrl : String?
-    var currentListId : Int?
     var userId : Int
     var ctime : NSDate
     
@@ -62,12 +63,11 @@ class ShadowedUser : NSObject {
         var ret = Dict()
         
         ret["userId"] = userId
-        if profileDescription != nil { ret["profileDescription"] = profileDescription! }
-
-//        ret["userTimeline"] = (userTimeline.freeze() as [Tweet]).map({$0.serialize()})
-//        ret["homeTimeline"] = homeTimeline.freeze().map({$0.serialize()})
-//        ret["notifications"] = notifications.freeze().map({$0.serialize()})
-
+        ret["screenName"] = screenName
+        ret["name"] = name
+        ret["profileDescription"] = profileDescription
+//        ret["userTimeline"] = userTimeline.freeze().map({ Tweet.)
+        
         return ret
     }
     
@@ -79,8 +79,17 @@ class ShadowedUser : NSObject {
             case "userId":
                 user.userId = value as! Int
                 
-            case "username":
-                user.username = value as? String
+            case "screenName":
+                user.screenName = value as? String
+                
+            case "name":
+                user.name = value as? String
+                
+            case "profileDescription":
+                user.profileDescription = value as? String
+        
+            case "profilePictureUrl":
+                user.profilePictureUrl = value as? String
                 
             case "profileDescription":
                 user.profileDescription = value as? String
@@ -100,15 +109,9 @@ class ShadowedUser : NSObject {
                 let notifications = notificationsObjects.map({ Notification.deserialize($0) })
                 user.notifications = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY, items: notifications)
                 
-            //...
-                
-            case "profilePictureUrl":
-                user.profilePictureUrl = value as? String
-                
             default:
                 continue
             }
-            
         }
         
         return user
