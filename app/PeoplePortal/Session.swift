@@ -20,16 +20,23 @@ class Session {
 
     var credentials : TwitterCredentials? {
         didSet {
+            self.swifter = Swifter(
+                consumerKey: Constants.TWITTER_CONSUMER_KEY,
+                consumerSecret: Constants.TWITTER_CONSUMER_SECRET,
+                oauthToken: credentials!.accessToken,
+                oauthTokenSecret: credentials!.accessSecret
+            )
+
             save()
-            
-            self.swifter = Swifter(consumerKey: Constants.TWITTER_CONSUMER_KEY, consumerSecret: Constants.TWITTER_CONSUMER_SECRET, oauthToken: credentials!.accessToken, oauthTokenSecret: credentials!.accessSecret)            
         }
     }
+
     var shadowedUser : ShadowedUser? {
         didSet {
             save()
         }
     }
+
     var notificationsEnabled = true {
         didSet {
             save()

@@ -32,7 +32,15 @@ class ListWorker: Worker {
         }
     }
     
-    func run() {
+    func startBackgroundMode() {
+        
+    }
+    
+    func stop() {
+//        timer?.invalidate()
+    }
+    
+    func start() {
         let user = Session.shared.shadowedUser!
         let swifter = Session.shared.swifter!
         let oldListId = user.currentListId!

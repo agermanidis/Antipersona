@@ -16,6 +16,7 @@ class ShadowedUser : NSObject {
     var screenName : String?
     var profileDescription : String?
     var profilePictureUrl : String?
+    var profileColor : String?
     var userId : Int
     var ctime : NSDate
     
@@ -43,31 +44,41 @@ class ShadowedUser : NSObject {
     var started = false
     
     func start() {
-        // start workers
-        
+        workers.forEach({ $0.start() })
     }
 
     func startBackgroundMode() {
-        // start background workers
+        workers.forEach({ $0.startBackgroundMode() })
     }
     
     func stop() {
-        // stop
+        workers.forEach({ $0.stop() })
     }
 
     func ready() -> Bool {
-        return workers.filter({$0.loopCount == 0}).count == 0
+        return workers.filter({ $0.runCount == 0 }).count == 0
+    }
+    
+    func profileReady() -> Bool {
+        for worker in workers {
+            if worker.dynamicType == ProfileWorker.self {
+                return worker.runCount > 0
+            }
+        }
+        return false
     }
     
     func serialize() -> Dict {
         var ret = Dict()
-        
         ret["userId"] = userId
         ret["screenName"] = screenName
         ret["name"] = name
         ret["profileDescription"] = profileDescription
-//        ret["userTimeline"] = userTimeline.freeze().map({ Tweet.)
-        
+        ret["homeTimeline"] = (homeTimeline.freeze() as! [Tweet]).map({ $0.serialize() })
+        ret["notifications"] = (notifications.freeze() as! [Notification]).map({ $0.serialize() })
+        ret["userTimeline"] = (userTimeline.freeze() as! [Tweet]).map({ $0.serialize() })
+        ret["following"] = (following.freeze() as! [User]).map({ $0.serialize() })
+        ret["followers"] = (followers.freeze() as! [User]).map({ $0.serialize() })
         return ret
     }
     

@@ -14,8 +14,12 @@ class TimelineWorker: Worker {
     var runCount = 0
     var timer : NSTimer?
     
-    func run() {
+    func start() {
         timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "getLatestStatuses", userInfo: nil, repeats: true)
+    }
+    
+    func startBackgroundMode() {
+        
     }
     
     func stop() {

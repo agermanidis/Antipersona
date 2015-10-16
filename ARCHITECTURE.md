@@ -53,7 +53,7 @@ Populates the Shadowed User's timeline.
 - Parameters:
   * list_id=[current_list_id]
   * count=200
-  * since_id=[last_id_in_current_timeline]
+  * since_id=[last_id_in_current_home_timeline]
 
 ### ProfileWorker
 
@@ -64,6 +64,7 @@ Populates the view of Shadowed User's own tweets.
 - Parameters:
   * list_id=[current_user_id]
   * count=200
+  * since_id=[last_id_in_current_user_timeline]
 
 ### MentionsWorker
 

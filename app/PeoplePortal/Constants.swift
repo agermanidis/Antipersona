@@ -14,6 +14,4 @@ class Constants {
 
     static let TWITTER_CONSUMER_KEY = ""
     static let TWITTER_CONSUMER_SECRET = ""
-    
-    
 }

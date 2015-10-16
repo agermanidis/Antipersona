@@ -10,5 +10,7 @@ import UIKit
 
 protocol Worker {
     var runCount : Int { get }
-    func run()
+    func start()
+    func startBackgroundMode()
+    func stop()
 }

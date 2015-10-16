@@ -33,6 +33,12 @@ extension NSDate {
 }
 
 extension Array {
+    func forEach(doThis: (element: Element) -> Void) {
+        for e in self {
+            doThis(element: e)
+        }
+    }
+    
     func splitByN(partSize:Int) -> [[Any]] {
         let n_parts = Int(ceil(Double(self.count)/Double(partSize)))
         var ret:[[Any]] = []
