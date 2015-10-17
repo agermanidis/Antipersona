@@ -9,26 +9,41 @@
 import UIKit
 
 class UserSearchTableViewController: UITableViewController, UISearchBarDelegate {
-    var searchResults : [User] = []
-    var searchQuery : String = ""
-    var searchMode : Bool {
+    var searchResults: [User] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var searchQuery: String = "" {
+        didSet {
+            self.searchCountdown()
+        }
+    }
+    var defaultResults: [User] {
+        get {
+            return Session.shared.following ?? []
+        }
+    }
+    var searchMode: Bool {
         get {
             return searchQuery.characters.count > 0
         }
     }
-
+    var tableResults: [User] {
+        get {
+            if searchMode {
+                return searchResults
+            } else {
+                return defaultResults
+            }            
+        }
+    }
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         searchBar.delegate = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,57 +54,60 @@ class UserSearchTableViewController: UITableViewController, UISearchBarDelegate 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+        return tableResults.count
+    }    
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UserSearchCell", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserSearchCell", forIndexPath: indexPath) as! UserTableViewCell
+        let user = tableResults[indexPath.row]
+        cell.loadWithUser(user)
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchMode {
+            return nil
+        } else {
+            return "Following"
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchQuery = searchText
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    func performSearch() {
+        Session.shared.swifter?.getUsersSearchWithQuery(searchQuery, page: 0, count: 20, includeEntities: false, success: {
+            users in
+            
+            self.searchResults = users!.map({ User.deserializeJSON($0.object!) })
+            
+            }, failure: {
+                error in
+           
+        })
     }
-    */
+
+    var debounceTimer: NSTimer?
+    func searchCountdown() {
+        if searchQuery.characters.count == 0 {
+            return 
+        }
+        if let timer = debounceTimer {
+            timer.invalidate()
+        }
+        debounceTimer = NSTimer(timeInterval: 2.0, target: self, selector: Selector("performSearch"), userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(debounceTimer!, forMode: "NSDefaultRunLoopMode")
+    }
 
     /*
     // MARK: - Navigation
@@ -100,20 +118,4 @@ class UserSearchTableViewController: UITableViewController, UISearchBarDelegate 
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.text = ""
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        Session.shared.swifter?.getUsersSearchWithQuery(searchText, page: 0, count: 100, includeEntities: false, success: {
-//            
-//            users in
-//
-//            
-//            }, failure: {
-//                
-//        })
-    }
-    
 }

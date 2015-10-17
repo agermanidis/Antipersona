@@ -1,9 +1,10 @@
 platform :ios, '8.0'
 use_frameworks!
+pod 'Async', :git => 'https://github.com/duemunk/Async.git'
+pod 'SDWebImage', '~>3.7'
 
 target 'PeoplePortal' do
-  pod 'Async', :git => 'https://github.com/duemunk/Async.git'
-  pod 'SDWebImage', '~>3.7'
+  
 end
 
 target 'PeoplePortalTests' do

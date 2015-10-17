@@ -10,15 +10,15 @@ import UIKit
 
 class ShadowedUser : NSObject {
     var workers = [Worker]()
-    var currentListId : String?
+    var currentListId: String?
 
-    var name : String?
-    var screenName : String?
-    var profileDescription : String?
-    var profilePictureUrl : String?
-    var profileColor : String?
-    var userId : Int
-    var ctime : NSDate
+    var name: String?
+    var screenName: String?
+    var profileDescription: String?
+    var profilePictureUrl: String?
+    var profileColor: String?
+    var userId: Int
+    var ctime: NSDate
     
     var homeTimeline = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
     var notifications = Buffer(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
@@ -27,12 +27,12 @@ class ShadowedUser : NSObject {
     var following = Buffer(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
     var followers = Buffer(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
     
-    init(userId:Int) {
+    init(userId: Int) {
         self.ctime = NSDate()
         self.userId = userId
     }
     
-    init(userId:Int, ctime:NSDate) {
+    init(userId: Int, ctime: NSDate) {
         self.ctime = ctime
         self.userId = userId
     }
@@ -82,7 +82,7 @@ class ShadowedUser : NSObject {
         return ret
     }
     
-    static func deserialize(dict:Dict) -> ShadowedUser {
+    static func deserialize(dict: Dict) -> ShadowedUser {
         let user = ShadowedUser(userId: dict["userId"] as! Int)
 
         for (key, value) in dict {

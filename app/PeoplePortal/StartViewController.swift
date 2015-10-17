@@ -39,7 +39,6 @@ class StartViewController: UIViewController {
                     accessToken: accessToken,
                     accessSecret: accessSecret
             )
-            
         },
         failure: {
             (error: NSError) in

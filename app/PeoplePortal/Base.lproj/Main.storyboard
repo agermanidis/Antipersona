@@ -70,7 +70,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserSearchCell" rowHeight="86" id="EAI-zh-l86">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserSearchCell" rowHeight="86" id="EAI-zh-l86" customClass="UserTableViewCell" customModule="PeoplePortal" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EAI-zh-l86" id="Cz1-hb-hTo">
@@ -94,6 +94,11 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="name" destination="HqD-Yv-S9i" id="Pkb-ia-Ft2"/>
+                                    <outlet property="profilePicture" destination="b87-iv-Gax" id="kQb-AC-he6"/>
+                                    <outlet property="screenName" destination="wPj-AM-COk" id="JAt-iy-ebK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

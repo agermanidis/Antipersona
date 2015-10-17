@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 struct TwitterCredentials {
     var accessToken : String
@@ -16,22 +17,33 @@ struct TwitterCredentials {
 class Session {
     static let shared = Session.retrieve()
     
-    var swifter : Swifter?
+    var swifter: Swifter?
+    
+    var me: User?
+    var following: [User]?
 
-    var credentials : TwitterCredentials? {
+    var credentials: TwitterCredentials? {
         didSet {
-            self.swifter = Swifter(
-                consumerKey: Constants.TWITTER_CONSUMER_KEY,
-                consumerSecret: Constants.TWITTER_CONSUMER_SECRET,
-                oauthToken: credentials!.accessToken,
-                oauthTokenSecret: credentials!.accessSecret
-            )
+            if credentials != nil {
+                self.swifter = Swifter(
+                    consumerKey: Constants.TWITTER_CONSUMER_KEY,
+                    consumerSecret: Constants.TWITTER_CONSUMER_SECRET,
+                    oauthToken: credentials!.accessToken,
+                    oauthTokenSecret: credentials!.accessSecret
+                )
+                retrieveUserInfo()
+                retrieveFollowing()
+                
+            } else {
+                self.swifter = nil
+                self.me = nil
+            }
 
             save()
         }
     }
 
-    var shadowedUser : ShadowedUser? {
+    var shadowedUser: ShadowedUser? {
         didSet {
             save()
         }
@@ -40,6 +52,29 @@ class Session {
     var notificationsEnabled = true {
         didSet {
             save()
+        }
+    }
+    
+    func retrieveUserInfo() {
+        Async.background {
+            self.swifter?.getAccountVerifyCredentials(true, skipStatus: false, success: {
+                (userInfo) in
+            
+                self.me = User.deserializeJSON(userInfo!)
+            
+            }, failure: nil)
+        }
+    }
+
+    func retrieveFollowing() {
+        Async.background {
+            self.swifter?.getFriendsIDsWithID(String(self.me?.userId), cursor: nil, stringifyIDs: false, count: 1000, success: {
+                ids, previousCursor, nextCursor in
+                
+
+                // .....
+                
+                }, failure: nil)
         }
     }
     
@@ -55,12 +90,14 @@ class Session {
     }
     
     func save() {
-        print("Saving session...")
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(serialize(), forKey: "session")
+        Async.background {
+            print("Saving session...")
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(self.serialize(), forKey: "session")
+        }
     }
     
-    static func deserialize(dict:Dict) -> Session {
+    static func deserialize(dict: Dict) -> Session {
         let session = Session()
         session.notificationsEnabled = dict["notificationsEnabled"] as! Bool
         session.shadowedUser = ShadowedUser.deserialize(dict["user"] as! Dict)

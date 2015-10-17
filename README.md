@@ -1,7 +1,6 @@
 # WORK-IN-PROGRESS
 
-<img src="images/screenshot1.png"></img>
-<img src="images/screenshot2.png"></img>
+<img src="images/appicon.png" style="border-radius:20px;"></img>
 
 # [PeoplePortal](http://peopleportal.co)
 
