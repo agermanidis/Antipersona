@@ -1,5 +1,3 @@
-# WORK-IN-PROGRESS
-
 <img src="images/appicon.png" style="border-radius:20px;"></img>
 
 # [PeoplePortal](http://peopleportal.co)
