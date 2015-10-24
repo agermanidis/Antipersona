@@ -8,23 +8,26 @@
 
 import UIKit
 
-class Buffer {
-    var items : NSMutableArray
+class Buffer<T> {
+    var items:[T] = []
     var capacity : Int
     var count : Int {
         return items.count
     }
-    var last : AnyObject? {
-        return items.lastObject
+    var first : T? {
+        return items.first
+    }
+    var last : T? {
+        return items.last
     }
     
     init(capacity:Int) {
-        self.items = NSMutableArray(capacity: capacity)
+        self.items = []
         self.capacity = capacity
     }
     
-    init(capacity:Int, items:NSArray) {
-        self.items = NSMutableArray(capacity: capacity)
+    init(capacity:Int, items:[T]) {
+        self.items = []
         self.capacity = capacity
         for item in items {
             self.add(item)
@@ -32,21 +35,28 @@ class Buffer {
     }
     
     func empty() {
-        self.items = NSMutableArray(capacity: capacity)
+        self.items = []
     }
     
     func atCapacity() -> Bool {
         return self.items.count == self.capacity
     }
     
-    func add(item:AnyObject) {
+    func add(item:T) {
         if items.count == capacity {
-            items.removeObjectAtIndex(0)
+            items.removeAtIndex(0)
         }
-        items.addObject(item)
+        items.append(item)
     }
     
-    func freeze() -> [AnyObject]? {
-        return Array(items)
+    func replace(var items: [T]) {
+        empty()
+        for item in items {
+            items.append(item)
+        }
+    }
+    
+    func reverse() {
+        items = items.reverse()
     }
 }

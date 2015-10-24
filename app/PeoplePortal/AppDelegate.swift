@@ -17,8 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        var viewControllerName: String
+        
+        switch Session.shared.userProgress {
+        case .Initial:
+            viewControllerName = "InitialView"
+        case .Selection:
+            viewControllerName = "SelectionView"
+        case .Shadowing:
+            viewControllerName = "MainView"
+        }
+        
+        let vc = storyboard.instantiateViewControllerWithIdentifier(viewControllerName)
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
         
         return true
     }

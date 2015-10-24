@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4FC3CB231BC6EB7B00349E5E"
-               BuildableName = "PeoplePortal.app"
+               BuildableName = "People Portal.app"
                BlueprintName = "PeoplePortal"
                ReferencedContainer = "container:PeoplePortal.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FC3CB231BC6EB7B00349E5E"
-            BuildableName = "PeoplePortal.app"
+            BuildableName = "People Portal.app"
             BlueprintName = "PeoplePortal"
             ReferencedContainer = "container:PeoplePortal.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FC3CB231BC6EB7B00349E5E"
-            BuildableName = "PeoplePortal.app"
+            BuildableName = "People Portal.app"
             BlueprintName = "PeoplePortal"
             ReferencedContainer = "container:PeoplePortal.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FC3CB231BC6EB7B00349E5E"
-            BuildableName = "PeoplePortal.app"
+            BuildableName = "People Portal.app"
             BlueprintName = "PeoplePortal"
             ReferencedContainer = "container:PeoplePortal.xcodeproj">
          </BuildableReference>

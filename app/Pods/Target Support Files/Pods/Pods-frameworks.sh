@@ -84,10 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/ActiveLabel.framework"
   install_framework "Pods/Async.framework"
+  install_framework "Pods/DateTools.framework"
+  install_framework "Pods/DynamicColor.framework"
   install_framework "Pods/SDWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/ActiveLabel.framework"
   install_framework "Pods/Async.framework"
+  install_framework "Pods/DateTools.framework"
+  install_framework "Pods/DynamicColor.framework"
   install_framework "Pods/SDWebImage.framework"
 fi

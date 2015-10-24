@@ -1,13 +1,23 @@
-#### Swift 2.0 (Xcode 7.0)
-There is a [bug](http://www.openradar.me/22437691) in Swift 2.0 that messes with chaining, so use this [fork](https://github.com/johncoates/Async) by [@johncoates](https://github.com/JohnCoates)
+### This is a forked version of [duemunk/Async](https://github.com/duemunk/Async) that works under XCode 7 GM
+The main fork of Async currently crashes when chaining blocks on XCode 7 GM. This forked version adds an Objective-C helper class, QDispatch, to fix that. This is a temporary measure until the crashing bug is fixed and Async can be pure Swift again.
 
-#### Swift 2.1 (Xcode 7.1)
-Use [this branch](https://github.com/duemunk/Async/tree/feature/Swift_2.1).
+To replace the current version of Async with this one:
 
----
+* Replace your current **Async.swift** with the one from this project
+* Add **QDispatch.m**, **QDispatch.h** to your project
+* Add **#import "QDispatch.h"** to your Objective-C bridging header
+
+Or use Cocoapods :
+
+```ruby
+pod 'Async', :git => 'https://github.com/JohnCoates/Async.git'
+```
+
+
+Thanks to eskimo for his post with example code [https://forums.developer.apple.com/message/50963](https://forums.developer.apple.com/message/50963)
 
 # Async 
-[![](http://img.shields.io/badge/OS%20X-10.10%2B-blue.svg)]() [![](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)]() [![](http://img.shields.io/badge/Swift-1.2-blue.svg)]() [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) [![CocoaPods compatible](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://github.com/CocoaPods/CocoaPods) [![](http://img.shields.io/badge/operator_overload-guilty-red.svg)](https://gist.github.com/duemunk/61e45932dbb1a2ca0954)
+[![](http://img.shields.io/badge/OS%20X-10.10%2B-blue.svg)]() [![](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)]() [![](http://img.shields.io/badge/Swift-2.0-blue.svg)]() [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) [![CocoaPods compatible](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://github.com/CocoaPods/CocoaPods) [![](http://img.shields.io/badge/operator_overload-nope-green.svg)](https://gist.github.com/duemunk/61e45932dbb1a2ca0954)
 
 Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch ([GCD](https://developer.apple.com/library/prerelease/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/index.html))
 
@@ -147,7 +157,7 @@ dispatch_block_notify(_previousBlock, dispatchQueueForChainingBlock, _chainingBl
 The syntax part of the chaining works by having class methods on the `Async` object e.g. `Async.main {}` which returns a struct. The struct has matching methods e.g. `theStruct.main {}`.
 
 ### Known bugs
-Modern GCD queues don't work as expected in the iOS Simulator. See issues [13](https://github.com/duemunk/Async/issues/13), [22](https://github.com/duemunk/Async/issues/22).
+The moderne GCD queues doesn't work as expected on iOS Simulator. See issues [13](https://github.com/duemunk/Async/issues/13), [22](https://github.com/duemunk/Async/issues/22).
 
 ### Known improvements
 The ```dispatch_block_t``` can't be extended. Workaround used: Wrap ```dispatch_block_t``` in a struct that takes the block as a property.

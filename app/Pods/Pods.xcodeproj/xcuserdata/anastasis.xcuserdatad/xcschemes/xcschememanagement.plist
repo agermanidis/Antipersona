@@ -4,7 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ActiveLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Async.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DateTools.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DynamicColor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6C6015AA988306FE12A787505B3A84CE</key>
+		<key>08F6A5AF8E89681F880EB03F167AACB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75AE815F3424E6C335E252D44D5B92B0</key>
+		<key>2649339071F30A1433BE1BBF6451C44D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7622C0F3324B5DFB042956C7834A496C</key>
+		<key>52FE562998077C39FC928C11F3F3AAF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>78058DE7CF7C9F9AE8D367AF8E9FD237</key>
+		<key>A009A37E1B07E8B211DC05EA01A6D3F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C308F6320E4C2CE92B65BDF9337119B3</key>
+		<key>AFEDA8059B169E4068B6DCC4D2F0B0E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC46C388A0538786A7D99AA6C6D10A1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5FFCAFB2CEAE32F544FC15630F89490</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F12B7DBAC6017B8E2862BA92058BF591</key>
 		<dict>
 			<key>primary</key>
 			<true/>

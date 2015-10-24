@@ -16,7 +16,8 @@ class UserTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        profilePicture.layer.cornerRadius = 5.0
+        layoutMargins = UIEdgeInsetsZero
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -26,8 +27,8 @@ class UserTableViewCell: UITableViewCell {
     }
 
     func loadWithUser(user: User) {
-        self.profilePicture.sd_setImageWithURL(NSURL(string: user.profileImageUrl!))
-        self.name.text = user.name
-        self.screenName.text = user.screenName
+        profilePicture.sd_setImageWithURL(NSURL(string: user.profileImageUrl!))
+        name.text = user.name
+        screenName.text = "@\(user.screenName!)"
     }
 }

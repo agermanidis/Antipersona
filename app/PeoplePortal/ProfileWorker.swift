@@ -9,44 +9,48 @@
 import UIKit
 
 class ProfileWorker: Worker {
-    let timeInterval = 60.0
-    
-    var runCount = 0
-    var timer : NSTimer?
-    
-    func start() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "getLatestStatuses", userInfo: nil, repeats: true)
+    override func frequency() -> NSTimeInterval? {
+        return 120.0
     }
     
-    func startBackgroundMode() {
-        
+    override func backgroundFrequency() -> NSTimeInterval? {
+        return 240.0
     }
     
-    func stop() {
-        timer?.invalidate()
-    }
-    
-    func getLatestStatuses() {
-        let user = Session.shared.shadowedUser!
+    override func runOnce() {
+        print("getting statuses ")
+        let shadowedUser = Session.shared.shadowedUser!
         let swifter = Session.shared.swifter!
-        let userId = String(user.userId)
-        let lastTweet = user.userTimeline.last as? Tweet
+        let lastTweet = shadowedUser.userTimeline.first
+        let uid = shadowedUser.user.userIdString!
         
-        var sinceID:String? = nil
+        var sinceID: String? = nil
         if lastTweet != nil {
-            sinceID = String(lastTweet?.tweetId)
+            sinceID = String(lastTweet!.tweetId!)
         }
         
-        swifter.getStatusesUserTimelineWithUserID(userId, count: 200, sinceID: sinceID, maxID: nil, trimUser: false, contributorDetails: false, includeEntities: false, success: {
+        swifter.getStatusesUserTimelineWithUserID(uid, count: 200, sinceID: sinceID, maxID: nil, trimUser: false, contributorDetails: false, includeEntities: false, success: {
             statuses in
+            
+            print("adding statuses")
             
             for status in statuses! {
                 let tweet = Tweet.deserializeJSON(status.object!)
-                user.userTimeline.add(tweet)
+                if !shadowedUser.userTimeline.items.contains(tweet) {
+                    shadowedUser.userTimeline.add(tweet)
+                }
             }
+            
+            shadowedUser.userTimeline.items.sortInPlace()
+            shadowedUser.userTimeline.reverse()
+            
             self.runCount += 1
 
-            }, failure: nil)
+            }, failure: {
+                error in
+                
+                print("ERROR: \(error)")
+        })
     }
 
 }

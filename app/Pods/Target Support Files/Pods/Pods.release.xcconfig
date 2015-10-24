@@ -1,8 +1,9 @@
 EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/R.swift"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/Async.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SDWebImage.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "Async" -framework "SDWebImage"
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/ActiveLabel.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Async.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/DateTools.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/DynamicColor.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SDWebImage.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/R.swift"
+OTHER_LDFLAGS = $(inherited) -framework "ActiveLabel" -framework "Async" -framework "DateTools" -framework "DynamicColor" -framework "SDWebImage"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods
 PODS_ROOT = ${SRCROOT}/Pods

@@ -1,24 +1,36 @@
 PODS:
+  - ActiveLabel (0.2.2)
   - Async (1.3.1)
+  - DateTools (1.7.0)
+  - DynamicColor (2.0.0)
+  - R.swift (0.10.0)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
 
 DEPENDENCIES:
-  - Async (from `https://github.com/duemunk/Async.git`)
+  - ActiveLabel
+  - Async (from `https://github.com/johncoates/Async`)
+  - DateTools
+  - DynamicColor (~> 2.0.0)
+  - R.swift
   - SDWebImage (~> 3.7)
 
 EXTERNAL SOURCES:
   Async:
-    :git: https://github.com/duemunk/Async.git
+    :git: https://github.com/johncoates/Async
 
 CHECKOUT OPTIONS:
   Async:
-    :commit: c211a1474ca3481ea2fddba4d2e3d81766ac89c7
-    :git: https://github.com/duemunk/Async.git
+    :commit: 23d9de3675f8357e7ad7d4c8b8b7d7caf9b73570
+    :git: https://github.com/johncoates/Async
 
 SPEC CHECKSUMS:
-  Async: 88b7eb5cb6d28771e05f0405d48fa4778e804d34
+  ActiveLabel: cecbc4ddf9f798bbacfa361960c9ccaeadb9d6e1
+  Async: 2aaa4263645846a8ea1c5829067fb2f8e694af36
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  DynamicColor: bd4ccde8466ccbf0dd40900aa8be93a5ea482724
+  R.swift: 35b88417f9f9ef7f5f9af4ec775df5e38fa1565a
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
 
 COCOAPODS: 0.39.0

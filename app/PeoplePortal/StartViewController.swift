@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import SafariServices
 
 class StartViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
     
+    var swifter : Swifter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.swifter = Swifter(
+            consumerKey: Constants.TWITTER_CONSUMER_KEY,
+            consumerSecret: Constants.TWITTER_CONSUMER_SECRET
+        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,26 +31,41 @@ class StartViewController: UIViewController {
     }
 
     func authorize() {
-        // show loading indicator
-
-        let swifter = Swifter(
-            consumerKey: Constants.TWITTER_CONSUMER_KEY,
-            consumerSecret: Constants.TWITTER_CONSUMER_SECRET
-        )
+        let url = NSURL(string: "swifter://success")!
         
-        swifter.authorizeAppOnlyWithSuccess({
-            (credentials: SwifterCredential.OAuthAccessToken?, response: NSURLResponse) in
-
-            let accessToken = credentials!.key
-            let accessSecret = credentials!.secret
-            Session.shared.credentials = TwitterCredentials(
-                    accessToken: accessToken,
-                    accessSecret: accessSecret
-            )
-        },
-        failure: {
-            (error: NSError) in
-            self.errorMessage.text = "You have not given permission to access Twitter"
+        let failureHandler: ((NSError) -> Void) = {
+            error in
+            print(error)
+        }
+        
+        self.swifter!.authorizeWithCallbackURL(url, success: { (accessToken, response) -> Void in
+            print(accessToken)
+            
+//            self.fetchTwitterHomeStream()
+            }, failure: failureHandler,
+            openQueryURL: { (url) -> Void in
+                if #available(iOS 9.0, *) {
+                    let webView = SFSafariViewController(URL: url)
+//                    webView.delegate = self
+                    self.presentViewController(webView, animated: true, completion: nil)
+                } else {
+                    // Fallback on earlier versions
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }, closeQueryURL: { () -> Void in
+                self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
         })
     }
+    
+    @IBAction func startButtonPressed(sender: AnyObject) {
+        authorize()
+    }
+    
+    @available(iOS 9.0, *)
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        NSNotificationCenter.defaultCenter().removeObserver(self.swifter!, name: "SwifterCallbackNotificationName", object: nil)
+//        controller.dismissViewControllerAnimated(true, completion: nil)
+        print("authorized")
+    }
+    
 }

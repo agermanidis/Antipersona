@@ -1,10 +1,15 @@
 platform :ios, '8.0'
 use_frameworks!
-pod 'Async', :git => 'https://github.com/duemunk/Async.git'
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'Async', :git => 'https://github.com/johncoates/Async'
 pod 'SDWebImage', '~>3.7'
+pod 'DynamicColor', '~> 2.0.0'
+pod 'R.swift'
+pod 'DateTools'
+pod 'ActiveLabel'
 
 target 'PeoplePortal' do
-  
+
 end
 
 target 'PeoplePortalTests' do

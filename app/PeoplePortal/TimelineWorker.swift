@@ -9,43 +9,51 @@
 import UIKit
 
 class TimelineWorker: Worker {
-    let timeInterval = 60.0
-    
-    var runCount = 0
-    var timer : NSTimer?
-    
-    func start() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "getLatestStatuses", userInfo: nil, repeats: true)
+    override func frequency() -> NSTimeInterval? {
+        return 15.0
     }
     
-    func startBackgroundMode() {
-        
+    override func backgroundFrequency() -> NSTimeInterval? {
+        return 240.0
     }
     
-    func stop() {
-        timer?.invalidate()
+    override func runOnce() {
+        getLatestStatuses()
     }
     
     func getLatestStatuses() {
-        let user = Session.shared.shadowedUser!
+        print("getting latest statuses")
+        
+        let shadowedUser = Session.shared.shadowedUser!
         let swifter = Session.shared.swifter!
-        let listId = user.currentListId!
-        let userId = String(user.userId)
-        let lastTweet = user.userTimeline.last as? Tweet
+        let listId = shadowedUser.listId!
+        let userId = String(shadowedUser.user.userId)
+        let lastTweet = shadowedUser.userTimeline.first
        
         var sinceID:String? = nil
         if lastTweet != nil {
-            sinceID = String(lastTweet?.tweetId)
+            sinceID = String(lastTweet!.tweetId!)
         }
 
         swifter.getListsStatusesWithListID(listId, ownerID: userId, sinceID: sinceID, maxID: nil, count: 200, includeEntities: false, includeRTs: true, success: {
             statuses in
-
+            
             for status in statuses! {
                 let tweet = Tweet.deserializeJSON(status.object!)
-                user.homeTimeline.add(tweet)
+                if !shadowedUser.homeTimeline.items.contains(tweet) {
+                    shadowedUser.homeTimeline.add(tweet)
+                }
             }
+            
+            shadowedUser.homeTimeline.items.sortInPlace()
+            shadowedUser.homeTimeline.reverse()
+            
             self.runCount += 1
-        }, failure: nil)
+            }, failure: {
+                error in
+                
+                print("error: \(error)")
+                
+        })
     }
 }
