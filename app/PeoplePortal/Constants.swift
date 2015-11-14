@@ -11,7 +11,7 @@ import UIKit
 class Constants {
     static let TIMELINE_BUFFER_CAPACITY = 200
     static let USER_LIST_BUFFER_CAPACITY = 5000
-    static let NOTIFICATIONS_BUFFER_CAPACITY = 20
+    static let NOTIFICATIONS_BUFFER_CAPACITY = 1000
 
     static let TWITTER_CONSUMER_KEY = "HuvDs7e1SyDwIbLXW8KyOx9I1"
     static let TWITTER_CONSUMER_SECRET = "ZjoV5vukXzwL0TPY8YmRh3DjiDd6zv3kEPCpeVx7TC9c9ETwTQ"
@@ -24,4 +24,6 @@ class Constants {
     static let FOLLOWERS_BUTTON_TAG = 1
     
     static let SWITCH_HOURS_MINIMUM = 24
+    
+    static let UNSEEN_NOTIFICATION_BACKGROUND = UIColor(red: 227.0/255.0, green: 232.0/255.0, blue: 243.0/255.0, alpha: 1.0)
 }

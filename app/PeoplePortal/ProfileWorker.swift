@@ -17,7 +17,7 @@ class ProfileWorker: Worker {
         return 240.0
     }
     
-    override func runOnce() {
+    override func run() {
         print("getting statuses ")
         let shadowedUser = Session.shared.shadowedUser!
         let swifter = Session.shared.swifter!
@@ -33,7 +33,6 @@ class ProfileWorker: Worker {
             statuses in
             
             print("adding statuses")
-            
             for status in statuses! {
                 let tweet = Tweet.deserializeJSON(status.object!)
                 if !shadowedUser.userTimeline.items.contains(tweet) {

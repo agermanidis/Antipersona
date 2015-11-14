@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Tweet: Comparable {
+class Tweet: Comparable, Hashable {
     var tweetId: Int?
     var ctime: NSDate?
     var text: String?
@@ -69,6 +69,10 @@ class Tweet: Comparable {
     
     func calculateCellHeight(font: UIFont, width: CGFloat) -> CGFloat {
         return NSString(string: text!).boundingRectWithSize(CGSize(width: width, height: CGFloat(NSIntegerMax)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil).size.height
+    }
+    
+    var hashValue: Int {
+        return self.tweetId ?? 0
     }
 }
 

@@ -16,17 +16,17 @@ class FollowersWorker: Worker {
     var users = [User]()
 
     override func frequency() -> NSTimeInterval? {
-        return 60.0
-    }
-    
-    override func backgroundFrequency() -> NSTimeInterval? {
         return 120.0
     }
     
-    override func runOnce() {
+    override func backgroundFrequency() -> NSTimeInterval? {
+        return 440.0
+    }
+    
+    override func run() {
         let shadowedUser = Session.shared.shadowedUser!
         requestsCount = 0
-        totalRequests = min(5, Int(ceil(Double(shadowedUser.user.followerCount!) / 200.0)))
+        totalRequests = min(1, Int(ceil(Double(shadowedUser.user.followerCount!) / 200.0)))
         print("Total Requests = \(totalRequests)")
         makeNextRequest()
     }
@@ -41,17 +41,16 @@ class FollowersWorker: Worker {
             }
         }
         
-        if newUsers.count > 0 && runCount > 0 {
+        if newUsers.count > 0 && shadowedUser.followers.items.count > 0 {
             print("There are \(newUsers.count) new users")
             let notification: Notification = Notification()
             notification.type = Constants.NOTIFICATION_TYPE_FOLLOW
             notification.users = newUsers
             shadowedUser.notifications.add(notification)
+            shadowedUser.notificationAdded(notification)
         }
         
-        for newUser in newUsers {
-            shadowedUser.followers.add(newUser)
-        }
+        shadowedUser.followers.items = self.users
         
         self.runCount += 1
     }
@@ -64,14 +63,14 @@ class FollowersWorker: Worker {
 
         Session.shared.swifter?.getFollowersListWithID(
             userId,
-            cursor: currentCursor,
+            cursor: nil,
             count: 200,
             skipStatus: true,
             includeUserEntities: true,
             success: {
                 users, previousCursor, nextCursor in
                 
-                self.currentCursor = nextCursor
+//                self.currentCursor = nextCursor
                 self.requestsCount += 1
 
                 for user in users! {
@@ -89,6 +88,8 @@ class FollowersWorker: Worker {
             }, failure: {
                 error in
                 
+                print("FriendsWorker failed: \(error)")
+
         })
     }
 }

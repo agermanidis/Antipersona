@@ -31,7 +31,7 @@ class ListWorker: Worker {
         }
     }
     
-    override func runOnce() {
+    override func run() {
         let shadowedUser = Session.shared.shadowedUser!
         let swifter = Session.shared.swifter!
         let uid = String(shadowedUser.user.userId!)
@@ -45,7 +45,7 @@ class ListWorker: Worker {
             swifter.postListsCreateWithName("PeoplePortal", publicMode: false, description: "PeoplePortal List", success: {
                 response in
                 
-                let listId = response?["id_str"]?.string
+                let listId = response!["id_str"]!.string!
                 shadowedUser.listId = listId
                 print("new list id is ", listId)
                 

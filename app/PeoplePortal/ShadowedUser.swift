@@ -26,11 +26,13 @@ func ==(lhs: WorkerCheck, rhs: WorkerCheck) -> Bool {
 
 class ShadowedUser : NSObject {
     var workers: [Worker] = [
+//        CleanupWorker(),
         ListWorker(),
         ProfileWorker(),
         FriendsWorker(),
         FollowersWorker(),
-        TimelineWorker()
+        TimelineWorker(),
+        MentionsWorker()
     ]
     
     var continuousWorkers: [Worker] {
@@ -53,6 +55,7 @@ class ShadowedUser : NSObject {
     var userTimeline = Buffer<Tweet>(capacity: Constants.TIMELINE_BUFFER_CAPACITY)
     
     var notifications = Buffer<Notification>(capacity: Constants.NOTIFICATIONS_BUFFER_CAPACITY)
+    var mentions = Buffer<Tweet>(capacity: Constants.NOTIFICATIONS_BUFFER_CAPACITY)
     
     var following = Buffer<User>(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
     var followers = Buffer<User>(capacity: Constants.USER_LIST_BUFFER_CAPACITY)
@@ -85,6 +88,7 @@ class ShadowedUser : NSObject {
     }
     
     func load() {
+        print("loading")
         Async.main {
             self.loadCheckTimer = NSTimer.scheduledTimerWithTimeInterval(
                 0.5,
@@ -141,13 +145,15 @@ class ShadowedUser : NSObject {
             let date = check.startTime
             let callback = check.callback
             var success = true
-            for worker in workers {
-                if worker.lastRunTime == nil {
-                    success = false
-                    continue
-                }
-                if worker.lastRunTime!.isEarlierThan(date) && date.secondsAgo() < checkTimeout {
-                    success = false
+            if date.secondsAgo() < checkTimeout {
+                for worker in workers {
+                    if worker.lastRunTime == nil {
+                        success = false
+                        continue
+                    }
+                    if worker.lastRunTime!.isEarlierThan(date) {
+                        success = false
+                    }
                 }
             }
             if success {
@@ -168,6 +174,26 @@ class ShadowedUser : NSObject {
         }
     }
     
+    func waitForAllWorkers(callback: Callback) {
+        let check = WorkerCheck(
+            workers: continuousWorkers,
+            startTime: NSDate(),
+            callback: callback
+        )
+        checks.insert(check)
+        workers.forEach({$0.run()})
+        
+        if checkTimer == nil {
+            checkTimer = NSTimer.scheduledTimerWithTimeInterval(
+                0.5,
+                target: self,
+                selector: "checkLoop",
+                userInfo: nil,
+                repeats: true
+            )
+        }
+    }
+    
     func waitForWorkers(workerTypes: [Worker.Type], callback: () -> ()) {
         let workers = workerTypes.map({getWorker($0)!})
         let check = WorkerCheck(
@@ -176,7 +202,7 @@ class ShadowedUser : NSObject {
             callback: callback
         )
         checks.insert(check)
-        workers.forEach({$0.runOnce()})
+        workers.forEach({$0.run()})
         
         if checkTimer == nil {
             checkTimer = NSTimer.scheduledTimerWithTimeInterval(
@@ -199,11 +225,18 @@ class ShadowedUser : NSObject {
     }
 
     func start() {
-        continuousWorkers.forEach({ $0.start() })
+        print("Entering foreground mode")
+        Async.background {
+            self.continuousWorkers.forEach({ $0.start() })
+
+        }
     }
     
     func startBackgroundMode() {
-        continuousWorkers.forEach({ $0.startBackgroundMode() })
+        print("Entering background mode")
+        Async.main {
+            self.continuousWorkers.forEach({ $0.startBackgroundMode() })
+        }
     }
     
     func stop() {
@@ -225,6 +258,37 @@ class ShadowedUser : NSObject {
     
     func hoursSinceSwitch() -> Int {
         return NSDate().hoursDiff(ctime)
+    }
+    
+    func notificationAdded(notification: Notification) {
+        for callback in notificationCallbacks {
+            callback()
+        }
+        if Session.shared.notificationsEnabled {            
+            print("trigger notification")
+            Utils.fireNotification(notification)
+        }
+    }
+    
+    func markAllAsSeen() {
+        notifications.items.forEach({$0.seen = true})
+    }
+    
+    var numberOfUnseenNotifications: Int {
+        var count = 0
+        for notification in notifications.items.reverse() {
+            if notification.seen {
+                break
+            }
+            count += 1
+        }
+        return count
+    }
+    
+    typealias Callback = () -> ()
+    var notificationCallbacks = [Callback]()
+    func onNotificationsChanged(callback: Callback) {
+        notificationCallbacks.append(callback)
     }
     
     func serialize() -> Dict {

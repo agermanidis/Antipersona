@@ -51,4 +51,32 @@ class Utils {
             alpha: CGFloat(1.0)
         )
     }
+    
+    static func createUserAttributedString(name: String) -> NSAttributedString {
+        let attrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Medium", size: 16)!]
+        return  NSAttributedString(string: name, attributes: attrs)
+    }
+    
+    static func regularAttributedString(content: String) -> NSAttributedString {
+        let attrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 16)!]
+        return NSAttributedString(string: content, attributes: attrs)
+    }
+    
+    static func badgeText(n: Int) -> String? {
+        var badgeText: String? = nil
+        if n > 100 {
+            badgeText = "100+"
+        } else if n > 0 {
+            badgeText = "\(n)"
+        }
+        return badgeText
+    }
+    
+    static func fireNotification(notification: Notification) {
+        let localNotification: UILocalNotification = UILocalNotification()
+        localNotification.alertAction = nil
+        localNotification.alertBody = notification.text
+        localNotification.fireDate = NSDate()
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }    
 }

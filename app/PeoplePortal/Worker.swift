@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class Worker: NSObject {
     enum Mode {
@@ -39,9 +40,10 @@ class Worker: NSObject {
         stop()
         print("\(self.dynamicType) started running")
         if frequency() == nil {
-            runOnce()
+            runOnBackground()
         } else {
-            timer = NSTimer.scheduledTimerWithTimeInterval(frequency()!, target: self, selector: "runOnce", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(frequency()!, target: self, selector: "runOnBackground", userInfo: nil, repeats: true)
+            timer?.fire()
         }
         mode = .Started
     }
@@ -51,9 +53,10 @@ class Worker: NSObject {
         stop()
         print("\(self.dynamicType) started running on the background")
         if backgroundFrequency() == nil {
-            runOnce()
+            runOnBackground()
         } else {
-            timer = NSTimer.scheduledTimerWithTimeInterval(frequency()!, target: self, selector: "runOnce", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(frequency()!, target: self, selector: "runOnBackground", userInfo: nil, repeats: true)
+            timer?.fire()
         }
         mode = .StartedInBackground
     }
@@ -65,7 +68,13 @@ class Worker: NSObject {
         mode = .Stopped
     }
     
-    func runOnce() {
+    func run() {
         assert(false == true, "Method not implemented")
+    }
+    
+    func runOnBackground() {
+        Async.background {
+            self.run()
+        }
     }
 }

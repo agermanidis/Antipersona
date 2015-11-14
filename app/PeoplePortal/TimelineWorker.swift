@@ -10,32 +10,22 @@ import UIKit
 
 class TimelineWorker: Worker {
     override func frequency() -> NSTimeInterval? {
-        return 15.0
+        return 30.0
     }
     
     override func backgroundFrequency() -> NSTimeInterval? {
         return 240.0
     }
     
-    override func runOnce() {
-        getLatestStatuses()
-    }
-    
-    func getLatestStatuses() {
+    override func run() {
         print("getting latest statuses")
         
         let shadowedUser = Session.shared.shadowedUser!
         let swifter = Session.shared.swifter!
         let listId = shadowedUser.listId!
         let userId = String(shadowedUser.user.userId)
-        let lastTweet = shadowedUser.userTimeline.first
-       
-        var sinceID:String? = nil
-        if lastTweet != nil {
-            sinceID = String(lastTweet!.tweetId!)
-        }
 
-        swifter.getListsStatusesWithListID(listId, ownerID: userId, sinceID: sinceID, maxID: nil, count: 200, includeEntities: false, includeRTs: true, success: {
+        swifter.getListsStatusesWithListID(listId, ownerID: userId, sinceID: nil, maxID: nil, count: 200, includeEntities: false, includeRTs: true, success: {
             statuses in
             
             for status in statuses! {
