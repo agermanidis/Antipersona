@@ -57,6 +57,10 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var loadingIndicator: UIActivityIndicatorView?
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -116,14 +120,26 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     func retrieveFollowing() {
         Async.background {
             print("Retrieving following")
-            Session.shared.swifter?.getFriendsListWithID(String(300084023), cursor: nil, count: 200, success: {
+            if Session.shared.following != nil {
+                print("It's cached")
+                
+                Async.main {
+                    self.defaultResults = Session.shared.following!
+                    self.loadingIndicator?.stopAnimating()
+
+                }
+                return
+            }
+        Session.shared.swifter?.getFriendsListWithID(String(300084023), cursor: nil, count: 200, success: {
                 users, previousCursor, nextCursor in
                 
                 print("count of users")
                 print(users!.count)
                 
                 self.loadingIndicator?.stopAnimating()
-                self.defaultResults = users!.map({ User.deserializeJSON($0.object!) })
+                let following = users!.map({ User.deserializeJSON($0.object!) })
+                self.defaultResults = following
+                Session.shared.following = following
                 
                 }, failure: nil)
         }
@@ -239,30 +255,18 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     func scrollViewDidScroll(scrollView: UIScrollView) {
         searchBar.endEditing(true)
     }
-    
-    func transitionToMain() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MainView")
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
-    
+        
+    var selectedUser: User?
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
-        hud.mode = .Indeterminate
-        let result = tableResults[indexPath.row]
-        hud.labelText = "Becoming @\(result.screenName!)"
-        Async.background {
-            Session.shared.become(result) {
-                Async.main {
-                    hud.hide(false)
-                    
-                    Session.shared.save()
-                    self.transitionToMain()
-                }
-                
-            }
+        self.selectedUser = tableResults[indexPath.row] 
+        self.performSegueWithIdentifier("SearchToBecoming", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SearchToBecoming" {
+            let dest = segue.destinationViewController as! BecomingViewController
+            dest.user = selectedUser
         }
-        
     }
 }

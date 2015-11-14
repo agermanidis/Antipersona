@@ -276,5 +276,3 @@ public extension qos_class_t {
 	}
 }
 
-// Make qos_class_t equatable
-extension qos_class_t: Equatable {}

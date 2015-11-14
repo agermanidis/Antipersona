@@ -19,9 +19,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var profileBackgroundView: UIImageView!
     
     override func viewWillAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarHidden = true
-//        UIApplication.sharedApplication().statusBarStyle = .LightContent
-        navigationController?.navigationBarHidden = true
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
+        if tableView.contentOffset.y > 250.0 {
+            UIApplication.sharedApplication().statusBarHidden = false
+            navigationController?.navigationBarHidden = false
+            
+        } else {
+            UIApplication.sharedApplication().statusBarHidden = false
+            navigationController?.navigationBarHidden = true
+        }
     }
     
     @IBAction func followingButtonPressed(sender: AnyObject) {
@@ -55,8 +62,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
-        let nib = UINib(nibName: "TweetCellView", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "TweetCell")
+        let tweetCellViewNib = UINib(nibName: "TweetCellView", bundle: nil)
+        tableView.registerNib(tweetCellViewNib, forCellReuseIdentifier: "TweetCell")
+        
+        let retweetCellViewNib = UINib(nibName: "RetweetCellView", bundle: nil)
+        tableView.registerNib(retweetCellViewNib, forCellReuseIdentifier: "RetweetCell")
         
         let shadowedUser = Session.shared.shadowedUser!
         let user = shadowedUser.user
@@ -102,6 +112,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         adaptNavTextColor()
+        
+        updateNotificationsButton()
     }
     
     private func imageLayerForGradientBackground() -> UIImage {
@@ -123,8 +135,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func refresh() {
         Session.shared.shadowedUser?.waitForWorkers([ProfileWorker.self]) {
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
+            Async.main {
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -139,17 +153,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
         let tweet = tweets[indexPath.row]
+        var reuseIdentifier = "TweetCell"
+        if tweet.isRetweet() {
+            reuseIdentifier = "RetweetCell"
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TweetTableViewCell
         cell.loadWithTweet(tweet)
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let tweet = tweets[indexPath.row]
-        let textHeight = tweet.calculateCellHeight(UIFont.systemFontOfSize(15), width: tableView.frame.size.width-100.0)
-        return textHeight + 92
-        
+        var textHeight = tweet.calculateCellHeight(UIFont.systemFontOfSize(16), width: tableView.frame.size.width-80)
+        if tweet.isRetweet() {
+            textHeight += 15
+        }
+        return textHeight + 80
     }
 
     @IBAction func switchButtonPressed(sender: AnyObject) {
@@ -158,7 +178,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if hoursSinceSwitch < 0 {
             let alertController = UIAlertController(title: "Unable to Switch", message:
                 "Sorry, you cannot become someone else so quickly. Please wait \(Constants.SWITCH_HOURS_MINIMUM-hoursSinceSwitch) more hours.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default,handler: nil))
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
@@ -191,15 +211,68 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print("scroll offset: \(tableView.contentOffset)")
         if tableView.contentOffset.y > 250.0 {
             UIApplication.sharedApplication().statusBarHidden = false
             navigationController?.navigationBarHidden = false
+            adaptNavTextColor()
             
         } else {
-            UIApplication.sharedApplication().statusBarHidden = true
+            UIApplication.sharedApplication().statusBarHidden = false
             navigationController?.navigationBarHidden = true
+            UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         }
     }
+    
+    @IBOutlet weak var notificationsButton: UIButton!
+    @IBOutlet weak var notificationsBarButton: UIBarButtonItem!
+    
+    func updateNotificationsButton() {
+        if Session.shared.notificationsEnabled {
+            notificationsButton.setImage(UIImage(named: "notifications_enabled"), forState: .Normal)
+            notificationsBarButton.image = UIImage(named: "notifications_enabled_bar_button")
+            
+        } else {
+            notificationsButton.setImage(UIImage(named: "notifications_disabled"), forState: .Normal)
+            notificationsBarButton.image = UIImage(named: "notifications_disabled_bar_button")
 
+        }
+    }
+    
+    @IBAction func notificationsButtonPressed(sender: AnyObject) {
+        var headerMessage: String?
+        var actionMessage: String?
+        
+        if Session.shared.notificationsEnabled {
+            headerMessage = "Notifications are currently enabled."
+            actionMessage = "Disable notifications"
+
+        } else {
+            headerMessage = "Notifications are currently disabled."
+            actionMessage = "Enable notifications"
+
+        }
+        
+        let menu = UIAlertController(title: nil, message: headerMessage, preferredStyle: .ActionSheet)
+
+        let changeAction = UIAlertAction(title: actionMessage, style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Change")
+            Session.shared.notificationsEnabled = !Session.shared.notificationsEnabled
+            self.updateNotificationsButton()
+
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+        })
+
+        menu.addAction(changeAction)
+        menu.addAction(cancelAction)
+        
+        self.presentViewController(menu, animated: true, completion: {
+        })
+    }
+    
 }

@@ -17,6 +17,7 @@ class UserTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         profilePicture.layer.cornerRadius = 5.0
+        profilePicture.layer.masksToBounds = true
         layoutMargins = UIEdgeInsetsZero
     }
 

@@ -16,17 +16,17 @@ class FriendsWorker: Worker {
     var users = [User]()
     
     override func frequency() -> NSTimeInterval? {
-        return 60.0
-    }
-    
-    override func backgroundFrequency() -> NSTimeInterval? {
         return 120.0
     }
     
-    override func runOnce() {
+    override func backgroundFrequency() -> NSTimeInterval? {
+        return 440.0
+    }
+    
+    override func run() {
         let shadowedUser = Session.shared.shadowedUser!
         requestsCount = 0
-        totalRequests = min(5, Int(ceil(Double(shadowedUser.user.followerCount!) / 200.0)))
+        totalRequests = min(2, Int(ceil(Double(shadowedUser.user.friendCount!) / 200.0)))
         print("Total Requests = \(totalRequests)")
         makeNextRequest()
     }
@@ -45,6 +45,8 @@ class FriendsWorker: Worker {
             success: {
                 users, previousCursor, nextCursor in
                 
+                print("response count: \(users!.count)")
+                
                 self.currentCursor = nextCursor
                 self.requestsCount += 1
                 
@@ -57,12 +59,14 @@ class FriendsWorker: Worker {
                         self.makeNextRequest()
                     } else {
                         self.runCount += 1
-                        shadowedUser.following.replace(self.users)
+                        shadowedUser.following.items = self.users
                     }
                 }
                 
             }, failure: {
                 error in
+                
+                print("FriendsWorker failed: \(error)")
                 
         })
     }

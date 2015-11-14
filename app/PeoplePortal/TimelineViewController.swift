@@ -45,8 +45,12 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "TweetCellView", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "TweetCell")
+        let tweetCellViewNib = UINib(nibName: "TweetCellView", bundle: nil)
+        tableView.registerNib(tweetCellViewNib, forCellReuseIdentifier: "TweetCell")
+        
+        let retweetCellViewNib = UINib(nibName: "RetweetCellView", bundle: nil)
+        tableView.registerNib(retweetCellViewNib, forCellReuseIdentifier: "RetweetCell")
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.scrollsToTop = true
@@ -96,17 +100,24 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         return tweets.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let tweet = tweets[indexPath.row]
-        let textHeight = tweet.calculateCellHeight(UIFont.systemFontOfSize(15), width: tableView.frame.size.width-100.0)
-        return textHeight + 92
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
         let tweet = tweets[indexPath.row]
+        var reuseIdentifier = "TweetCell"
+        if tweet.isRetweet() {
+            reuseIdentifier = "RetweetCell"
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TweetTableViewCell
         cell.loadWithTweet(tweet)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let tweet = tweets[indexPath.row]
+        var textHeight = tweet.calculateCellHeight(UIFont.systemFontOfSize(16), width: tableView.frame.size.width-80)
+        if tweet.isRetweet() {
+            textHeight += 15
+        }
+        return textHeight + 80
     }
 
 }

@@ -32,9 +32,7 @@ class User: Equatable {
         return nil
     }
     var protected: Bool?
-    
     var cachedProfileBanner: UIImage?
-
     var userColor: UIColor?
 
     func calculateColor() {

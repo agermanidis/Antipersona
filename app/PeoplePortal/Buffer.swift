@@ -8,7 +8,10 @@
 
 import UIKit
 
+
 class Buffer<T> {
+    typealias BufferCallback = (Buffer<T>) -> ()
+
     var items:[T] = []
     var capacity : Int
     var count : Int {
@@ -36,6 +39,7 @@ class Buffer<T> {
     
     func empty() {
         self.items = []
+        triggerCallbacks()
     }
     
     func atCapacity() -> Bool {
@@ -47,6 +51,7 @@ class Buffer<T> {
             items.removeAtIndex(0)
         }
         items.append(item)
+        triggerCallbacks()
     }
     
     func replace(var items: [T]) {
@@ -54,9 +59,22 @@ class Buffer<T> {
         for item in items {
             items.append(item)
         }
+        triggerCallbacks()
     }
     
     func reverse() {
         items = items.reverse()
+        triggerCallbacks()
+    }
+    
+    var callbacks = [BufferCallback?]()
+    func onChange(callback: BufferCallback?) {
+        callbacks.append(callback)
+    }
+    
+    func triggerCallbacks() {
+        for callback in callbacks {
+            callback?(self)
+        }
     }
 }

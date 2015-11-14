@@ -23,6 +23,7 @@ class Session {
     
     var userProgress: UserProgress {
         get {
+            return .Initial
             if self.credentials != nil {
                 if self.shadowedUser != nil {
                     return .Shadowing
@@ -92,6 +93,7 @@ class Session {
                 consumerSecret: Constants.TWITTER_CONSUMER_SECRET
             )
             self.me = nil
+            self.following = nil
         }
     }
 
@@ -100,13 +102,14 @@ class Session {
         if let serializedUser = shadowedUser?.serialize() {
             ret["user"] = serializedUser
         }
+        ret["following"] = following?.map({$0.serialize()})
         ret["notificationsEnabled"] = notificationsEnabled
         ret["accessToken"] = credentials?.accessToken
         ret["accessSecret"] = credentials?.accessSecret
         return ret
     }
     
-    func save() {
+    func save() {        
         Async.background {
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setObject(self.serialize(), forKey: "session")
@@ -115,10 +118,11 @@ class Session {
     }
     
     func become(user: User, callback: () -> ()) {
+        print("BECOMING")
         let cb = {
             self.shadowedUser = ShadowedUser(user: user)
             self.shadowedUser!.onLoad(callback)
-            print("Becoming \(user.name)")
+            print("Becoming \(user.name!)")
             self.shadowedUser!.load()
         }
 
@@ -135,14 +139,14 @@ class Session {
         if dict["user"] != nil {
             session.shadowedUser = ShadowedUser.deserialize(dict["user"] as! Dict)
         }
+        if dict["following"] != nil {
+            session.following = (dict["following"] as! [Dict]).map({User.deserialize($0)})
+        }
         let accessToken = dict["accessToken"] as? String
         let accessSecret = dict["accessSecret"] as? String
         if accessToken != nil && accessSecret != nil {
             session.credentials = TwitterCredentials(accessToken: accessToken!, accessSecret: accessSecret!)
-        } else {
-            session.credentials = TwitterCredentials(accessToken: "300084023-ZISvfOd936lliVih87BgCEmMP96obCSA5H5QR0zM", accessSecret: "xZXMPa3IpIHgFbp8I1x2jJenLaFVHYM4WTQ9aIljH1s5V")
         }
-        
         return session
     }
     
@@ -150,13 +154,10 @@ class Session {
         print("Receiving session")
         let defaults = NSUserDefaults.standardUserDefaults()
         let retrieved = defaults.dictionaryForKey("session")
-        
         if retrieved != nil {
             return deserialize(retrieved!)
         } else {
-            let ret = Session()
-            ret.credentials = TwitterCredentials(accessToken: "300084023-ZISvfOd936lliVih87BgCEmMP96obCSA5H5QR0zM", accessSecret: "xZXMPa3IpIHgFbp8I1x2jJenLaFVHYM4WTQ9aIljH1s5V")
-            return ret
+            return Session()
         }
     }
 }

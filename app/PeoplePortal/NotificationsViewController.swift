@@ -25,7 +25,8 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     var notifications: [Notification] {
         get {
-            return Session.shared.shadowedUser!.notifications.items
+            let items = Array(Session.shared.shadowedUser!.notifications.items.reverse())
+            return Array(items[0..<min(items.count, 20)])
         }
     }
     
@@ -52,10 +53,14 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController!.tabBarItem.badgeValue = Utils.badgeText(0)
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+    }
+    
     override func viewDidAppear(animated: Bool) {
-        Async.main {
-            self.tableView.reloadData()
-        }
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        self.tableView.reloadData()
     }
     
     private func imageLayerForGradientBackground() -> UIImage {
@@ -78,7 +83,10 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageLabel.text = footerMessage
+        let tweetCellViewNib = UINib(nibName: "TweetCellView", bundle: nil)
+        tableView.registerNib(tweetCellViewNib, forCellReuseIdentifier: "TweetCell")
+        
+//        messageLabel.text = footerMessage
         tableView.dataSource = self
         tableView.delegate = self
         tableView.scrollsToTop = true
@@ -96,21 +104,80 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
-//        let tweet = tweets[indexPath.row]
-//        cell.loadWithTweet(tweet)
-        return cell
+        let notification = notifications[indexPath.row]
+
+        if notification.isFollow() {
+            let cell = tableView.dequeueReusableCellWithIdentifier("FollowCell", forIndexPath: indexPath) as! FollowNotificationTableViewCell
+            cell.loadWithNotification(notification)
+            if !notification.seen {
+                cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                notification.seen = true
+            } else {
+                cell.backgroundColor = UIColor.whiteColor()
+            }
+            return cell
+        } else if notification.isMention() {
+            let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
+            cell.loadWithTweet(notification.tweet!)
+            if !notification.seen {
+                cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                notification.seen = true
+            } else {
+                cell.backgroundColor = UIColor.whiteColor()
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("RetweetCell", forIndexPath: indexPath) as! RetweetNotificationTableViewCell
+            cell.loadWithNotification(notification)
+            if !notification.seen {
+                cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                notification.seen = true
+            } else {
+                cell.backgroundColor = UIColor.whiteColor()
+            }
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return notifications.count
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let notification = notifications[indexPath.row]
+        if notification.isFollow() {
+            return FollowNotificationTableViewCell.calculateCellHeight(notification)
+            
+        } else if notification.isMention() {
+            let textHeight = notification.tweet!.calculateCellHeight(UIFont.systemFontOfSize(16), width: tableView.frame.size.width-75)
+            return textHeight + 80
+        
+        } else {
+            return RetweetNotificationTableViewCell.calculateCellHeight(notification)
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
+    
+    @IBOutlet weak var footerView: UIView!
+    
+    func update() {
+        self.navigationController!.tabBarItem.badgeValue = Utils.badgeText(0)
+        self.refreshControl?.endRefreshing()
+        self.tableView.reloadData()
+    }
 
     func refresh() {
-        //
+        Session.shared.shadowedUser?.waitForWorkers([MentionsWorker.self]) {
+            Async.main {
+                
+                self.update()
+            }
+        }
     }
 }

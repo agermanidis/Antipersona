@@ -11,13 +11,18 @@ import SafariServices
 
 class StartViewController: UIViewController {
 
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
     
-    var swifter : Swifter?
+    var swifter: Swifter?
+    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startButton.layer.borderWidth = 3
+        startButton.layer.borderColor = UIColor(hexString: "#E8F4F2").CGColor
+        startButton.layer.cornerRadius = 5
+
         
         self.swifter = Swifter(
             consumerKey: Constants.TWITTER_CONSUMER_KEY,
@@ -44,21 +49,31 @@ class StartViewController: UIViewController {
 //            self.fetchTwitterHomeStream()
             }, failure: failureHandler,
             openQueryURL: { (url) -> Void in
-                if #available(iOS 9.0, *) {
-                    let webView = SFSafariViewController(URL: url)
+                let webView = SFSafariViewController(URL: url)
 //                    webView.delegate = self
-                    self.presentViewController(webView, animated: true, completion: nil)
-                } else {
-                    // Fallback on earlier versions
-                    UIApplication.sharedApplication().openURL(url)
-                }
+                self.presentViewController(webView, animated: true, completion: nil)
             }, closeQueryURL: { () -> Void in
                 self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
         })
     }
     
     @IBAction func startButtonPressed(sender: AnyObject) {
-        authorize()
+//        authorize()
+        
+        // no accounts
+        // no access
+        
+        self.transitionToSearch()
+    }
+    
+    func transitionToSearch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("SelectionView")
+        let window = UIApplication.sharedApplication().delegate?.window!!
+        
+        UIView.transitionWithView(window!, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            window!.rootViewController = vc
+            }, completion: nil)
     }
     
     @available(iOS 9.0, *)
@@ -68,4 +83,9 @@ class StartViewController: UIViewController {
         print("authorized")
     }
     
+    func showError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 }
