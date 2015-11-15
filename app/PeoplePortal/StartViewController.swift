@@ -8,12 +8,12 @@
 
 import UIKit
 import SafariServices
+import Accounts
+import Async
 
-class StartViewController: UIViewController {
 
+class StartViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet weak var errorMessage: UILabel!
-    
-    var swifter: Swifter?
     @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
@@ -22,12 +22,6 @@ class StartViewController: UIViewController {
         startButton.layer.borderWidth = 3
         startButton.layer.borderColor = UIColor(hexString: "#E8F4F2").CGColor
         startButton.layer.cornerRadius = 5
-
-        
-        self.swifter = Swifter(
-            consumerKey: Constants.TWITTER_CONSUMER_KEY,
-            consumerSecret: Constants.TWITTER_CONSUMER_SECRET
-        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,27 +37,25 @@ class StartViewController: UIViewController {
             print(error)
         }
         
-        self.swifter!.authorizeWithCallbackURL(url, success: { (accessToken, response) -> Void in
-            print(accessToken)
+        Session.shared.swifter!.authorizeWithCallbackURL(url, success: { (accessToken, response) -> Void in
+            Session.shared.credentials = TwitterCredentials(
+                accessToken: accessToken!.key,
+                accessSecret: accessToken!.secret
+            )
             
-//            self.fetchTwitterHomeStream()
             }, failure: failureHandler,
             openQueryURL: { (url) -> Void in
                 let webView = SFSafariViewController(URL: url)
-//                    webView.delegate = self
+                webView.delegate = self
                 self.presentViewController(webView, animated: true, completion: nil)
             }, closeQueryURL: { () -> Void in
+                print("close query url")
                 self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
         })
     }
     
     @IBAction func startButtonPressed(sender: AnyObject) {
-//        authorize()
-        
-        // no accounts
-        // no access
-        
-        self.transitionToSearch()
+        authorize()
     }
     
     func transitionToSearch() {
@@ -78,14 +70,45 @@ class StartViewController: UIViewController {
     
     @available(iOS 9.0, *)
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        NSNotificationCenter.defaultCenter().removeObserver(self.swifter!, name: "SwifterCallbackNotificationName", object: nil)
-//        controller.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(Session.shared.swifter!, name: "SwifterCallbackNotificationName", object: nil)
+        controller.dismissViewControllerAnimated(true, completion: nil)
         print("authorized")
     }
     
-    func showError(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
+    func selectTwitterAccountDialog(accounts: [ACAccount]) {
+        let menu = UIAlertController(title: nil, message: "Select a Twitter account", preferredStyle: .ActionSheet)
+        
+        for account in accounts {
+            let accountAction = UIAlertAction(title: "@\(account.username)", style: .Default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                self.loginWithAccount(account)
+            })
+            menu.addAction(accountAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+        })
+        
+        menu.addAction(cancelAction)
+        
+        self.presentViewController(menu, animated: true, completion: {
+        })
     }
+    
+    func loginWithAccount(account: ACAccount) {
+        print("logging in with \(account.username)")
+        Session.shared.twitterAccountIdentifier = account.identifier
+    }
+    
+    func showError(title: String, message: String) {
+        Async.main {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    
 }

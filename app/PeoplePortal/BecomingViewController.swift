@@ -175,7 +175,6 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
             }, completion: nil)
     }
     
-    
     /*
     // MARK: - Navigation
 

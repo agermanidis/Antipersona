@@ -11,7 +11,7 @@ are able to see the same timeline that they see and receive the
 same notifications (for follows, mentions, and retweets) that they
 receive.
 
-
+Live in the future of frictionless identity adoption, today.
 
 See `ARCHITECTURE.md` for more details on the architecture of the app.
 

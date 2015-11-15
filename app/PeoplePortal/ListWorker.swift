@@ -57,7 +57,12 @@ class ListWorker: Worker {
                     repeats: true
                 )
 
-                }, failure: nil)
+                }, failure: {
+                    err in
+                    
+                    print("Error creating list: \(err)")
+                    
+            })
             })
     }
     

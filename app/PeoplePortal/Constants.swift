@@ -13,8 +13,8 @@ class Constants {
     static let USER_LIST_BUFFER_CAPACITY = 5000
     static let NOTIFICATIONS_BUFFER_CAPACITY = 1000
 
-    static let TWITTER_CONSUMER_KEY = "HuvDs7e1SyDwIbLXW8KyOx9I1"
-    static let TWITTER_CONSUMER_SECRET = "ZjoV5vukXzwL0TPY8YmRh3DjiDd6zv3kEPCpeVx7TC9c9ETwTQ"
+    static let TWITTER_CONSUMER_KEY = "LAFxdex9rnVzBC9FiA9fArBqT"
+    static let TWITTER_CONSUMER_SECRET = "HjYiWvGDOvr5oEiqH01bG4mPN3fsjw9UKr3zO9qGuJefBDChMV"
     
     static let NOTIFICATION_TYPE_MENTION = 0
     static let NOTIFICATION_TYPE_RETWEET = 1

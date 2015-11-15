@@ -175,7 +175,6 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     func refresh() {
         Session.shared.shadowedUser?.waitForWorkers([MentionsWorker.self]) {
             Async.main {
-                
                 self.update()
             }
         }

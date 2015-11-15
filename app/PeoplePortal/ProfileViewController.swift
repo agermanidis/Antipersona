@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let shadowedUser = Session.shared.shadowedUser!
         let user = shadowedUser.user
         
-        Async.main {
+        Async.main {            
             shadowedUser.start()
         }
         
@@ -175,9 +175,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func switchButtonPressed(sender: AnyObject) {
         let shadowedUser = Session.shared.shadowedUser!
         let hoursSinceSwitch = shadowedUser.hoursSinceSwitch()
-        if hoursSinceSwitch < 0 {
+        if hoursSinceSwitch < Constants.SWITCH_HOURS_MINIMUM {
             let alertController = UIAlertController(title: "Unable to Switch", message:
-                "Sorry, you cannot become someone else so quickly. Please wait \(Constants.SWITCH_HOURS_MINIMUM-hoursSinceSwitch) more hours.", preferredStyle: .Alert)
+                "Sorry, you cannot become someone else so quickly. You need to wait \(Constants.SWITCH_HOURS_MINIMUM-hoursSinceSwitch) more hours.", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             return

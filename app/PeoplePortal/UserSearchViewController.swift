@@ -120,28 +120,33 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     func retrieveFollowing() {
         Async.background {
             print("Retrieving following")
+            
             if Session.shared.following != nil {
                 print("It's cached")
                 
                 Async.main {
                     self.defaultResults = Session.shared.following!
                     self.loadingIndicator?.stopAnimating()
-
                 }
+                
                 return
             }
-        Session.shared.swifter?.getFriendsListWithID(String(300084023), cursor: nil, count: 200, success: {
-                users, previousCursor, nextCursor in
-                
-                print("count of users")
-                print(users!.count)
-                
-                self.loadingIndicator?.stopAnimating()
-                let following = users!.map({ User.deserializeJSON($0.object!) })
-                self.defaultResults = following
-                Session.shared.following = following
-                
-                }, failure: nil)
+            
+            Session.shared.retrieveUserInfo {
+                Session.shared.swifter?.getFriendsListWithID(Session.shared.me!.userIdString!, cursor: nil, count: 200, success: {
+                    users, previousCursor, nextCursor in
+                    
+                    print("count of users")
+                    print(users!.count)
+                    
+                    self.loadingIndicator?.stopAnimating()
+                    let following = users!.map({ User.deserializeJSON($0.object!) })
+                    self.defaultResults = following
+                    Session.shared.following = following
+                    
+                    }, failure: nil)
+            }
+            
         }
     }
     

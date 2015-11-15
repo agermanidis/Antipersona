@@ -8,6 +8,7 @@
 
 import UIKit
 import Async
+import Accounts
 
 struct TwitterCredentials {
     var accessToken : String
@@ -23,7 +24,6 @@ class Session {
     
     var userProgress: UserProgress {
         get {
-            return .Initial
             if self.credentials != nil {
                 if self.shadowedUser != nil {
                     return .Shadowing
@@ -34,14 +34,35 @@ class Session {
         }
     }
     
+    var baseViewForProgress: String {
+        get {
+            switch(userProgress) {
+            case .Initial:
+                return "InitialView"
+            case .Selection:
+                return "SelectionView"
+            default:
+                return "MainView"
+            }
+        }
+    }
+    
     static let shared = Session.retrieve()
     
     var me: User?
+    
     var following: [User]?
     
     var swifter: Swifter?
 
     var credentials: TwitterCredentials? {
+        didSet {
+            refreshSwifter()
+            save()
+        }
+    }
+    
+    var twitterAccountIdentifier: String? {
         didSet {
             refreshSwifter()
             save()
@@ -60,12 +81,13 @@ class Session {
         }
     }
     
-    func retrieveUserInfo() {
+    func retrieveUserInfo(cb: (() -> ())?) {
         Async.background {
             self.swifter?.getAccountVerifyCredentials(true, skipStatus: false, success: {
                 (userInfo) in
                 self.me = User.deserializeJSON(userInfo!)
-            }, failure: nil)
+                cb?()
+                }, failure: nil)
         }
     }
     
@@ -78,6 +100,8 @@ class Session {
     }
     
     func refreshSwifter() {
+        print("refreshing swifter with \(self.twitterAccountIdentifier)")
+        
         if self.credentials != nil {
             self.swifter = Swifter(
                 consumerKey: Constants.TWITTER_CONSUMER_KEY,
@@ -85,8 +109,8 @@ class Session {
                 oauthToken: credentials!.accessToken,
                 oauthTokenSecret: credentials!.accessSecret
             )
-            retrieveUserInfo()
-            
+            retrieveUserInfo(nil)
+
         } else {
             self.swifter = Swifter(
                 consumerKey: Constants.TWITTER_CONSUMER_KEY,
@@ -106,6 +130,10 @@ class Session {
         ret["notificationsEnabled"] = notificationsEnabled
         ret["accessToken"] = credentials?.accessToken
         ret["accessSecret"] = credentials?.accessSecret
+        if let serializedUser = self.me?.serialize() {
+            ret["me"] = serializedUser
+        }
+
         return ret
     }
     
@@ -136,8 +164,12 @@ class Session {
     static func deserialize(dict: Dict) -> Session {
         let session = Session()
         session.notificationsEnabled = dict["notificationsEnabled"] as! Bool
+        
         if dict["user"] != nil {
             session.shadowedUser = ShadowedUser.deserialize(dict["user"] as! Dict)
+            if session.shadowedUser?.listId == nil {
+                session.shadowedUser = nil
+            }
         }
         if dict["following"] != nil {
             session.following = (dict["following"] as! [Dict]).map({User.deserialize($0)})
@@ -146,6 +178,8 @@ class Session {
         let accessSecret = dict["accessSecret"] as? String
         if accessToken != nil && accessSecret != nil {
             session.credentials = TwitterCredentials(accessToken: accessToken!, accessSecret: accessSecret!)
+        } else {
+            session.credentials = nil
         }
         return session
     }
@@ -160,4 +194,14 @@ class Session {
             return Session()
         }
     }
+    
+    func transitionToSearch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("SelectionView")
+        let window = UIApplication.sharedApplication().delegate?.window!!
+        UIView.transitionWithView(window!, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            window!.rootViewController = vc
+            }, completion: nil)
+    }
+
 }

@@ -42,7 +42,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PEOPLE PORTAL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMu-Km-1v1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="PEOPLE PORTAL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMu-Km-1v1">
                                 <rect key="frame" x="134" y="131" width="348" height="285"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="57"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -73,9 +73,6 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="1" height="1"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="39" y="428" width="323" height="48"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="We will not post anything on your behalf." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHH-Ig-rQY">
                                 <rect key="frame" x="118" y="429" width="364" height="24"/>
@@ -133,12 +130,12 @@
                                 <exclude reference="B2F-t6-vXr"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="HIJ-fU-ThV"/>
+                                <exclude reference="eRr-l5-wSY"/>
                                 <exclude reference="10B-P4-GJe"/>
                                 <exclude reference="5Nd-6I-dBr"/>
                                 <exclude reference="gJF-js-DWu"/>
                                 <exclude reference="wVO-Ic-zWa"/>
-                                <exclude reference="HIJ-fU-ThV"/>
-                                <exclude reference="eRr-l5-wSY"/>
                                 <exclude reference="fZo-nj-bJP"/>
                             </mask>
                         </variation>
@@ -149,12 +146,12 @@
                                 <include reference="B2F-t6-vXr"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="HIJ-fU-ThV"/>
+                                <include reference="eRr-l5-wSY"/>
                                 <include reference="10B-P4-GJe"/>
                                 <include reference="5Nd-6I-dBr"/>
                                 <include reference="gJF-js-DWu"/>
                                 <include reference="wVO-Ic-zWa"/>
-                                <include reference="HIJ-fU-ThV"/>
-                                <include reference="eRr-l5-wSY"/>
                                 <include reference="fZo-nj-bJP"/>
                             </mask>
                         </variation>

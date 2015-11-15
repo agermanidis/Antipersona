@@ -155,7 +155,6 @@ footer img {
 #features {
     padding-top: 50px;
     padding-bottom: 50px;
-
     color: #dbdadc;
 }
 
@@ -167,6 +166,7 @@ footer img {
     margin: 50px auto;
     width: 250px;
     cursor: pointer;
+    font-size: 25px;
 }
 
 .feature.selected {
@@ -180,14 +180,16 @@ footer img {
 }
 
 .screenshot {
-    width: 250px;
-    height: 500px;
+    width: 300px;
+    height: 600px;
     display: none;
 }
 
 #final {
     font-size: 28px;
     padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #appstore-image-end {

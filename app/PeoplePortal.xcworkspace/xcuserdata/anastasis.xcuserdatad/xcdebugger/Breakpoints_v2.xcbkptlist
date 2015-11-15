@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PeoplePortal/StartViewController.swift"
-            timestampString = "469183329.261793"
+            timestampString = "469237619.126241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "transitionToSearch()"
             landmarkType = "5">
          </BreakpointContent>

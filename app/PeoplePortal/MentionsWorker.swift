@@ -80,8 +80,8 @@ class MentionsWorker: Worker {
                 let notification = Notification()
                 notification.type = Constants.NOTIFICATION_TYPE_MENTION
                 notification.tweet = mention
-                notification.ctime = mention.ctime!
-//                notification.ctime = NSDate()
+//                notification.ctime = mention.ctime!
+                notification.ctime = NSDate()
                 notifications.add(notification)
                 shadowedUser.notificationAdded(notification)
             }
