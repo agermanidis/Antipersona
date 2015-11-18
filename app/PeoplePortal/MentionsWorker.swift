@@ -106,8 +106,8 @@ class MentionsWorker: Worker {
                 notification.type = Constants.NOTIFICATION_TYPE_RETWEET
                 notification.tweet = original
                 notification.otherTweets = otherTweets
-                notification.ctime = otherTweets[0].ctime
-//                notification.ctime = NSDate()
+//                notification.ctime = otherTweets[0].ctime
+                notification.ctime = NSDate()
                 notifications.add(notification)
                 shadowedUser.notificationAdded(notification)
             }

@@ -22,7 +22,7 @@ class ListWorker: Worker {
             swifter.postListsMembersCreateWithListID(user.listId!, userIDs: next as [String], includeEntities: false, skipStatus: false, success: {
                 (response) -> Void in
 
-                print("Added %d items", next.count)
+                print("Added \(next.count) items")
 
                 }, failure: nil)
         } else {

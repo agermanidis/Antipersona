@@ -152,7 +152,7 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func becomeButtonPressed(sender: AnyObject) {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: false)
         hud.mode = .Indeterminate
-        hud.labelText = "Becoming @\(user!.screenName!)"
+//        hud.labelText = "Becoming @\(user!.screenName!)"
         Session.shared.become(user!) {
             Async.main {
                 hud.hide(false)

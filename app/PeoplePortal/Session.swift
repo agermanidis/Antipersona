@@ -100,7 +100,7 @@ class Session {
     }
     
     func refreshSwifter() {
-        print("refreshing swifter with \(self.twitterAccountIdentifier)")
+        print("refreshing swifter")
         
         if self.credentials != nil {
             self.swifter = Swifter(
@@ -180,6 +180,7 @@ class Session {
             session.credentials = TwitterCredentials(accessToken: accessToken!, accessSecret: accessSecret!)
         } else {
             session.credentials = nil
+            session.refreshSwifter()
         }
         return session
     }
@@ -191,7 +192,9 @@ class Session {
         if retrieved != nil {
             return deserialize(retrieved!)
         } else {
-            return Session()
+            let session = Session()
+            session.refreshSwifter()
+            return session
         }
     }
     

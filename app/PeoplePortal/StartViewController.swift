@@ -42,6 +42,7 @@ class StartViewController: UIViewController, SFSafariViewControllerDelegate {
                 accessToken: accessToken!.key,
                 accessSecret: accessToken!.secret
             )
+            self.transitionToSearch()
             
             }, failure: failureHandler,
             openQueryURL: { (url) -> Void in
@@ -72,7 +73,6 @@ class StartViewController: UIViewController, SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
         NSNotificationCenter.defaultCenter().removeObserver(Session.shared.swifter!, name: "SwifterCallbackNotificationName", object: nil)
         controller.dismissViewControllerAnimated(true, completion: nil)
-        print("authorized")
     }
     
     func selectTwitterAccountDialog(accounts: [ACAccount]) {

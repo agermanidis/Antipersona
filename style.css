@@ -38,7 +38,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5f5fc1', end
 }
 
 footer {
-    color: #949292;
+    color: #D2D2D2;
     font-size: 18px;
     letter-spacing: 5px;
     line-height: 1.5em;
@@ -52,7 +52,7 @@ footer {
 }
 
 footer a {
-    color: #949292;
+    color: #E7E8FF;
     font-family: MyriadProBold;
 }
 
@@ -100,8 +100,8 @@ footer img {
 }
 
 #main {
-    background-image: url("images/test.gif");
-    background-size: 100% 150%;
+    background-image: url("images/portal_bg.gif");
+    background-size: 100% 130%;
     background-repeat: no-repeat;
     color: white;
     text-shadow: 1px 2px black;
@@ -141,15 +141,15 @@ footer img {
     width: 350px;
     height: 1px;
     margin: 0 auto;
+    opacity: 0.5;
 }
 
 #features-list {
-    float: left;
     width: 450px;
     margin-right: -400px;
     margin-left: 250px;
     font-size: 22px;
-    margin-top: 3px;
+    margin-top: 30px;
 }
 
 #features {
@@ -165,7 +165,6 @@ footer img {
 .feature {
     margin: 50px auto;
     width: 250px;
-    cursor: pointer;
     font-size: 25px;
 }
 
@@ -181,8 +180,6 @@ footer img {
 
 .screenshot {
     width: 300px;
-    height: 600px;
-    display: none;
 }
 
 #final {
@@ -213,9 +210,36 @@ footer img {
     }
 }
 
-@media only screen and (max-device-width: 600px) {
+
+video {
+    width: 267px;
+    height: 585px;
+    position: absolute;
+    margin-left: 17px;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.screenshot {
+    position: absolute;
+}
+
+#demo {
+    display: inline;
+}
+
+
+@media only screen and (max-device-width: 800px) {
+    #description {
+        width: 100%;
+    }
+
     #question, #info {
-        width: 80%;
+        width: 90%;
+        font-size: 30px;
+        padding: 0;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 
     #features-list {
@@ -232,5 +256,78 @@ footer img {
 
     .line {
         width: 70%;
+    }
+
+    #main h1 {
+        font-size: 50px;
+    }
+
+    #main h3 {
+        font-size: 30px;
+    }
+
+    #appstore-image {
+        margin-top: 30px;
+    }
+
+    #final {
+        font-size: 25px;
+        padding: 10px;
+    }
+
+    #features-list {
+        display: none;
+    }
+
+    #portal-image {
+        width: 100px;
+    }
+
+    footer {
+        font-size: 15px;
+    }
+
+    #main {
+        min-height: inherit;
+    }
+
+    video {
+        margin-left: -283px
+    }
+}
+
+@media only screen and (max-device-width: 500px) {
+    #question, #info {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 25px;
+    }
+
+    #main {
+        min-height: 100vh;
+    }
+
+    .screenshot {
+        position: static;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    #question, #info {
+        width: 90%;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #features-list {
+        display: none;
+    }
+
+    .screenshot {
+        position: static;
+    }
+
+    video {
+        margin-left: -283px
     }
 }

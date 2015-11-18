@@ -207,6 +207,8 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
             
             }, failure: {
                 error in
+                
+                print("search error: \(error)")
            
         })
     }
