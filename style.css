@@ -173,13 +173,23 @@ footer img {
 }
 
 .screenshot.selected {
-    -webkit-animation-duration: 1.5s;
-    -webkit-animation-name: fadeInFromNone;
-    display: inline;
+    //-webkit-animation-duration: 1.5s;
+    //-webkit-animation-name: fadeInFromNone;
+    
+    opacity: 1;
+}
+
+.screenshot-container, .screenshot {
+    
+    width: 300px;
 }
 
 .screenshot {
-    width: 300px;
+    opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 #final {
@@ -211,6 +221,8 @@ footer img {
 }
 
 
+
+
 video {
     width: 267px;
     height: 585px;
@@ -220,8 +232,15 @@ video {
     margin-top: 10px;
 }
 
-.screenshot {
+.screenshot-container, .screenshot {
     position: absolute;
+}
+
+.screenshot {
+    width: 265px;
+    margin-left: 17px;
+    margin-top: 68px;
+    height: 470px;
 }
 
 #demo {
@@ -308,6 +327,11 @@ video {
     }
 
     .screenshot {
+        position: absolute;
+        margin-left: -283px;
+    }
+    
+    .screenshot-container {
         position: static;
     }
 }
@@ -324,6 +348,11 @@ video {
     }
 
     .screenshot {
+        position: absolute;
+        margin-left: -283px;
+    }
+
+    .screenshot-container {
         position: static;
     }
 

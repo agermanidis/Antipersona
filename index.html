@@ -35,7 +35,7 @@
       <h1>PEOPLE PORTAL</h1>
       <h3>Don't be yourself.</h3>
       <h3>Be everyone else.</h3>
-      <a href="#"><img id="appstore-image" src="images/appstore.png"></img></a>
+      <img id="appstore-image" src="images/comingsoon.png"></img>
     </div>
     
     <div id="description">
@@ -47,12 +47,10 @@
 
       <div id="features">
         <div id="demo">
-          <img class="screenshot" src="images/iphone_template.png"></img>
-          <video loop autoplay>
-            <source src="reflector.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-
+          <img class="screenshot-container" src="images/iphone_template.png"></img>
+          <img class="screenshot selected" src="http://i.imgur.com/6FhGtY0.png"></img>
+          <img class="screenshot" src="http://i.imgur.com/vWiYcpo.png"></img>
+          <img class="screenshot" src="http://i.imgur.com/hSfF1Ih.jpg"></img>
         </div>
         <ul id="features-list">
           <p class="line"></p>
@@ -64,7 +62,7 @@
           <p class="line"></p>
         </ul>
         <p id="final">You can now adopt a different identity every day.<br/><br/> Who will you choose to become?</p>
-        <a href="#"><img id="appstore-image-end" src="images/appstore.png"></img></a>
+        <img id="appstore-image-end" src="images/comingsoon.png"></img>
       </div>
 
       <footer>
@@ -79,5 +77,7 @@
     </div>
 
     <script src="jquery.js"></script>
+    <script src="slideshow.js"></script>
+    <script>slideshow("#demo", ".screenshot", 3000);</script>
   </body>
 </html>

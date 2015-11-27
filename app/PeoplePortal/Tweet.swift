@@ -9,7 +9,7 @@
 import UIKit
 
 class Tweet: Comparable, Hashable {
-    var tweetId: Int?
+    var tweetId: Int64?
     var ctime: NSDate?
     var text: String?
     var user: User?
@@ -23,7 +23,7 @@ class Tweet: Comparable, Hashable {
     
     static func deserialize(serialized: Dict) -> Tweet {
         let ret = Tweet()
-        ret.tweetId = serialized["id"] as? Int
+        ret.tweetId = (serialized["id"] as? NSNumber)?.longLongValue
         ret.ctime = NSDate.fromString(serialized["created_at"] as! String)
         ret.favoriteCount = serialized["favorite_count"] as? Int
         ret.retweetCount = serialized["retweet_count"] as? Int
@@ -37,7 +37,7 @@ class Tweet: Comparable, Hashable {
     
     static func deserializeJSON(serialized: Dictionary<String, JSON>) -> Tweet {
         let ret = Tweet()
-        ret.tweetId = serialized["id"]!.integer
+        ret.tweetId = serialized["id"]!.bigInteger
         if serialized["created_at"]!.string != nil {
             ret.ctime = NSDate.fromString(serialized["created_at"]!.string!)
         }
@@ -55,7 +55,7 @@ class Tweet: Comparable, Hashable {
     
     func serialize() -> Dict {
         var ret = Dict()
-        ret["id"] = tweetId!
+        ret["id"] = NSNumber(longLong: tweetId!)
         ret["created_at"] = ctime!.toString()
         ret["favorite_count"] = favoriteCount!
         ret["retweet_count"] = retweetCount!
@@ -72,7 +72,7 @@ class Tweet: Comparable, Hashable {
     }
     
     var hashValue: Int {
-        return self.tweetId ?? 0
+        return self.tweetId?.hashValue ?? 0
     }
 }
 

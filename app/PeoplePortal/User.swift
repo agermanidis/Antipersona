@@ -9,7 +9,7 @@
 import UIKit
 
 class User: Equatable {
-    var userId: Int?
+    var userId: Int64?
     var name: String?
     var screenName: String?
     var profileDescription : String?
@@ -70,7 +70,7 @@ class User: Equatable {
     
     func serialize() -> Dict {
         var ret = Dict()
-        ret["id"] = userId!
+        ret["id"] = NSNumber(longLong: userId!)
         ret["name"] = name!
         ret["screen_name"] = screenName!
         ret["description"] = profileDescription!
@@ -86,7 +86,7 @@ class User: Equatable {
     
     static func deserialize(serialized: Dict) -> User {
         let ret = User()
-        ret.userId = serialized["id"] as? Int
+        ret.userId = (serialized["id"] as? NSNumber)?.longLongValue
         ret.name = serialized["name"] as? String
         ret.screenName = serialized["screen_name"] as? String
         ret.profileDescription = serialized["description"] as? String
@@ -102,7 +102,7 @@ class User: Equatable {
     
     static func deserializeJSON(serialized: Dictionary<String, JSON>) -> User {
         let ret = User()
-        ret.userId = serialized["id"]!.integer
+        ret.userId = serialized["id"]!.bigInteger!
         ret.name = serialized["name"]!.string
         ret.screenName = serialized["screen_name"]!.string
         ret.profileDescription = serialized["description"]!.string

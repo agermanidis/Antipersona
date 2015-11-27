@@ -42,7 +42,7 @@ class CleanupWorker: Worker {
             for list in lists! {
                 let listId = list["id_str"].string!
                 let listName = list["name"].string!
-                let userId = list["user"].object!["id"]!.integer
+                let userId = list["user"].object!["id"]!.bigInteger
                 if listName == "PeoplePortal" && listId != Session.shared.shadowedUser!  .listId && userId == Session.shared.me?.userId {
                     self.queue.append(listId)
                 }

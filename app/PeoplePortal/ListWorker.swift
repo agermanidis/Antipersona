@@ -9,7 +9,7 @@
 import UIKit
 
 class ListWorker: Worker {
-    static let TIME_INTERVAL:Double = 2.0
+    static let TIME_INTERVAL:Double = 1.0
     var queue : [[String]]?
     var requestTimer: NSTimer?
     
@@ -39,7 +39,7 @@ class ListWorker: Worker {
         swifter.getFriendsIDsWithID(uid, cursor: nil, stringifyIDs: nil, count: nil, success: {
             (ids, previousCursor, nextCursor) -> Void in
             
-            let idStrings = ids!.reverse().map({ String($0.integer!) })
+            let idStrings = ids!.reverse().map({ String($0.bigInteger!) })
             self.queue = idStrings.splitByN(100)
             
             swifter.postListsCreateWithName("PeoplePortal", publicMode: false, description: "PeoplePortal List", success: {

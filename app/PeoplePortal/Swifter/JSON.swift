@@ -170,6 +170,17 @@ public enum JSON : Equatable, CustomStringConvertible {
             return nil
         }
     }
+    
+    public var bigInteger : Int64? {
+        switch self {
+        case .JSONNumber(let value):
+            return Int64(value)
+            
+        default:
+            return nil
+        }
+    }
+
 
     public var double : Double? {
         switch self {
