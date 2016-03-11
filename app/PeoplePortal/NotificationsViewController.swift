@@ -13,6 +13,10 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageLabel: UILabel!
     
+    func scrollToTop() {
+        tableView.setContentOffset(CGPointZero, animated: true)
+    }
+    
     var footerMessage: String {
         get {
             if notifications.count > 0 {

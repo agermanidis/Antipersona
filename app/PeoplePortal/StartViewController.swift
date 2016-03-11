@@ -56,7 +56,19 @@ class StartViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     @IBAction func startButtonPressed(sender: AnyObject) {
-        authorize()
+        let reachability: Reachability
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+            if reachability.isReachable() {
+                authorize()
+            } else {
+                showError("No Network Connection", message: "Please make sure you're connected to the internet and try again.")
+            }
+            
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
     }
     
     func transitionToSearch() {

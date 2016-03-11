@@ -13,6 +13,10 @@ import Async
 class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    func scrollToTop() {
+        tableView.setContentOffset(CGPointZero, animated: true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden = false
         navigationController?.navigationBarHidden = false

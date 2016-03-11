@@ -18,6 +18,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileBackgroundView: UIImageView!
     
+    func scrollToTop() {
+        tableView.setContentOffset(CGPointZero, animated: true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
 

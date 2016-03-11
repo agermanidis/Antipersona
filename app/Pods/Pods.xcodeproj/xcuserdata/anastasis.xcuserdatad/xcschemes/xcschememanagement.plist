@@ -8,45 +8,73 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Async.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>DateTools.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>DynamicColor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-PeoplePortal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-PeoplePortalTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>009BFCA1F2C2DBF8D4A1A7A634DE6D15</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>08F6A5AF8E89681F880EB03F167AACB7</key>
 		<dict>
 			<key>primary</key>
@@ -57,12 +85,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>52FE562998077C39FC928C11F3F3AAF2</key>
+		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A009A37E1B07E8B211DC05EA01A6D3F2</key>
+		<key>63E033101E0A16F0C3252085DAA19AE8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9385B7F82DB4DBDAB058A3CFE69558D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +105,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC46C388A0538786A7D99AA6C6D10A1C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D5FFCAFB2CEAE32F544FC15630F89490</key>
+		<key>B55E049A82EEE8CFE7AAF0533ECB7CDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

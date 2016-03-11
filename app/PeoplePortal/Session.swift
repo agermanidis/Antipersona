@@ -81,6 +81,9 @@ class Session {
         }
     }
     
+    var userId: String?
+    var deviceToken: String?
+    
     func retrieveUserInfo(cb: (() -> ())?) {
         Async.background {
             self.swifter?.getAccountVerifyCredentials(true, skipStatus: false, success: {
@@ -163,8 +166,14 @@ class Session {
     
     static func deserialize(dict: Dict) -> Session {
         let session = Session()
-        session.notificationsEnabled = dict["notificationsEnabled"] as! Bool
         
+        if dict["userId"] != nil {
+            session.userId = (dict["userId"] as! String)
+        } else {
+            session.userId = NSUUID().UUIDString
+        }
+
+        session.notificationsEnabled = dict["notificationsEnabled"] as! Bool
         if dict["user"] != nil {
             session.shadowedUser = ShadowedUser.deserialize(dict["user"] as! Dict)
             if session.shadowedUser?.listId == nil {
@@ -172,7 +181,7 @@ class Session {
             }
         }
         if dict["following"] != nil {
-            session.following = (dict["following"] as! [Dict]).map({User.deserialize($0)})
+            session.following = (dict["following"] as! [Dict]).map({ User.deserialize($0) })
         }
         let accessToken = dict["accessToken"] as? String
         let accessSecret = dict["accessSecret"] as? String
@@ -182,6 +191,7 @@ class Session {
             session.credentials = nil
             session.refreshSwifter()
         }
+        
         return session
     }
     
@@ -193,9 +203,17 @@ class Session {
             return deserialize(retrieved!)
         } else {
             let session = Session()
+            session.userId = NSUUID().UUIDString
             session.refreshSwifter()
             return session
         }
+    }
+    
+    func sendUpdate() {
+        print("sending update!!!")
+        print(self.deviceToken!)
+        print(self.userId)
+        API.registerAsUser(self.deviceToken!, userId: self.userId!)
     }
     
     func transitionToSearch() {

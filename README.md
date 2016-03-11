@@ -1,6 +1,6 @@
 <img src="images/appicon.png" width=200></img>
 
-# [People Portal](http://peopleportal.co)
+# [Antipersona](http://antipersona.co)
 
 With the advent of social media, the way we perform our identities has
 drastically changed. Our identity has become something more
@@ -16,7 +16,7 @@ individuality anymore. That the idea of cultivating a singular,
 specific identity has become outdated. Why can’t identities travel across bodies and become a commons, so that everybody can enjoy each identity's unique
 privileges?
 
-People Portal is a radical attempt at redistributing this kind of
+Antipersona is a radical attempt at redistributing this kind of
 “identity wealth.” It is an iPhone app that makes extensive use of the
 Twitter API to simulate the experience of using the platform as if
 you’re  in from any user account of your choice. When you “shadow” a
@@ -28,7 +28,7 @@ Go ahead, try a new identity today. Get a glimpse of the world of
 frictionless identity adoption that awaits us.
 
 See
-[`ARCHITECTURE.md`](https://github.com/agermanidis/PeoplePortal/blob/master/ARCHITECTURE.md)
+[`ARCHITECTURE.md`](https://github.com/agermanidis/Antipersona/blob/master/ARCHITECTURE.md)
 for more details on the way the app uses the Twitter API endpoints.
 
 ### License

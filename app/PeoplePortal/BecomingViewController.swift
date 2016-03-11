@@ -96,14 +96,11 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
             self.activityIndicator.stopAnimating()
 
             self.tweetTableView.hidden = false
-            self.latestTweetLabel.hidden = false
 
             self.tweetTableView.alpha = 0
-            self.latestTweetLabel.alpha = 0
             
             UIView.animateWithDuration(0.5, animations: {
                 self.tweetTableView.alpha = 1
-                self.latestTweetLabel.alpha = 1
             })
             
             Async.main {
@@ -156,7 +153,6 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
         Session.shared.become(user!) {
             Async.main {
                 hud.hide(false)
-                
                 Session.shared.save()
                 Session.shared.shadowedUser!.markAllAsSeen()
                 self.transitionToMain()

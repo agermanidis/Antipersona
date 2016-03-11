@@ -249,9 +249,9 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
         var updatedFrame = self.navigationController!.navigationBar.frame
         // take into account the status bar
         updatedFrame.size.height += 20
-        let color1 = UIColor(red: 108.0/255.0, green: 40.0/255.0, blue: 221.0/255.0, alpha: 1.0).CGColor
-        let color2 = UIColor(red: 67.0/255.0, green: 117.0/255.0, blue: 178.0/255.0, alpha: 1.0).CGColor
-        let layer = CAGradientLayer.gradientLayerForBounds(updatedFrame, colors: [color1, color2])
+        let color1 = UIColor(red: 3.0/255.0, green: 3.0/255.0, blue: 50.0/255.0, alpha: 1.0).CGColor
+        let color2 = UIColor(red: 3.0/255.0, green: 3.0/255.0, blue: 100.0/255.0, alpha: 1.0).CGColor
+        let layer = CAGradientLayer.gradientLayerForBounds(updatedFrame, colors: [color2, color1])
         UIGraphicsBeginImageContext(layer.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()

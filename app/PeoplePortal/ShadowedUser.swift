@@ -27,12 +27,12 @@ func ==(lhs: WorkerCheck, rhs: WorkerCheck) -> Bool {
 class ShadowedUser : NSObject {
     var workers: [Worker] = [
 //        CleanupWorker(),
-        ListWorker(),
         ProfileWorker(),
         FriendsWorker(),
         FollowersWorker(),
-        TimelineWorker(),
-        MentionsWorker()
+        MentionsWorker(),
+        ListWorker(),
+        TimelineWorker()
     ]
     
     var continuousWorkers: [Worker] {
@@ -44,6 +44,39 @@ class ShadowedUser : NSObject {
                 }
             }
             return ret
+        }
+    }
+    
+    var initialProfileLoad : Bool {
+        get {
+            for worker in workers {
+                if worker.dynamicType == FollowersWorker.self {
+                    return worker.runCount > 0
+                }
+            }
+            return false
+        }
+    }
+    
+    var initialNotificationsLoad : Bool {
+        get {
+            for worker in workers {
+                if worker.dynamicType == MentionsWorker.self {
+                    return worker.runCount > 0
+                }
+            }
+            return false
+        }
+    }
+    
+    var initialTimelineLoad : Bool {
+        get {
+            for worker in workers {
+                if worker.dynamicType == TimelineWorker.self {
+                    return worker.runCount > 0
+                }
+            }
+            return false
         }
     }
     
@@ -109,7 +142,11 @@ class ShadowedUser : NSObject {
                 currentWorker!.start()
             } else {
                 loadCheckTimer?.invalidate()
+                
+            }
+            if initialProfileLoad {
                 loadCallback?()
+                loadCallback = nil
             }
         }
     }
@@ -226,10 +263,10 @@ class ShadowedUser : NSObject {
 
     func start() {
         print("Entering foreground mode")
-        Async.background {
-            self.continuousWorkers.forEach({ $0.start() })
-
-        }
+//        Async.background {
+//            self.continuousWorkers.forEach({ $0.start() })
+//
+//        }
     }
     
     func startBackgroundMode() {

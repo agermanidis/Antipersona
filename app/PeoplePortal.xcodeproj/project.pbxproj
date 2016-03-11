@@ -17,6 +17,7 @@
 		4F1E1B851BD8880F00A927D4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1E1B841BD8880F00A927D4 /* Utils.swift */; };
 		4F1E39F71BDC3969005D7A38 /* FollowNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1E39F61BDC3969005D7A38 /* FollowNotificationTableViewCell.swift */; };
 		4F355D611BD1525500751289 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F355D601BD1525500751289 /* UserSearchViewController.swift */; };
+		4F4EF9541C4EA4BE007E976B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4EF9531C4EA4BE007E976B /* API.swift */; };
 		4F64E5E61BCA0C8F008380A4 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E51BCA0C8F008380A4 /* Tweet.swift */; };
 		4F64E5E81BCA1FF3008380A4 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E71BCA1FF3008380A4 /* Notification.swift */; };
 		4F64E5EA1BCA20C5008380A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64E5E91BCA20C5008380A4 /* Constants.swift */; };
@@ -80,6 +81,7 @@
 		4FE887AB1BD5B2B300484B53 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE887AA1BD5B2B300484B53 /* UserTableViewController.swift */; };
 		4FF3E1901BF6F0EA003B0D55 /* BecomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3E18F1BF6F0EA003B0D55 /* BecomingViewController.swift */; };
 		4FF4DC101BDF2079006E91BA /* CleanupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4DC0F1BDF2079006E91BA /* CleanupWorker.swift */; };
+		4FFACC7B1C26DD4800A3CF5B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFACC7A1C26DD4800A3CF5B /* Reachability.swift */; };
 		4FFB01D11BCEB0B40025206F /* TimelineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB01D01BCEB0B40025206F /* TimelineWorker.swift */; };
 		4FFB01D31BCEB7600025206F /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB01D21BCEB7600025206F /* ProfileWorker.swift */; };
 		4FFB01D51BCEC16A0025206F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB01D41BCEC16A0025206F /* StartViewController.swift */; };
@@ -106,6 +108,7 @@
 		4F1E1B841BD8880F00A927D4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4F1E39F61BDC3969005D7A38 /* FollowNotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowNotificationTableViewCell.swift; sourceTree = "<group>"; };
 		4F355D601BD1525500751289 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		4F4EF9531C4EA4BE007E976B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4F64E5E51BCA0C8F008380A4 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		4F64E5E71BCA1FF3008380A4 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		4F64E5E91BCA20C5008380A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -172,18 +175,19 @@
 		4FB5DCD31BD9E6D500A4E7C6 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
 		4FBF587B1BDAD6B30066E134 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		4FBF587D1BDADF1A0066E134 /* MentionsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsWorker.swift; sourceTree = "<group>"; };
-		4FC3CB241BC6EB7B00349E5E /* People Portal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "People Portal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC3CB241BC6EB7B00349E5E /* Antipersona.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antipersona.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC3CB281BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FC3CB2E1BC6EB7B00349E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FC3CB301BC6EB7B00349E5E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4FC3CB331BC6EB7B00349E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeoplePortalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC3CB391BC6EB7B00349E5E /* AntipersonaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AntipersonaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC3CB3E1BC6EB7B00349E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC3CB3F1BC6EB7B00349E5E /* PeoplePortalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePortalTests.swift; sourceTree = "<group>"; };
 		4FE887AA1BD5B2B300484B53 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		4FF3E18F1BF6F0EA003B0D55 /* BecomingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BecomingViewController.swift; sourceTree = "<group>"; };
 		4FF4DC0F1BDF2079006E91BA /* CleanupWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanupWorker.swift; sourceTree = "<group>"; };
+		4FFACC7A1C26DD4800A3CF5B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4FFB01CC1BCB8A540025206F /* PeoplePortal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeoplePortal-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FFB01D01BCEB0B40025206F /* TimelineWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineWorker.swift; sourceTree = "<group>"; };
 		4FFB01D21BCEB7600025206F /* ProfileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
@@ -345,8 +349,8 @@
 		4FC3CB251BC6EB7B00349E5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FC3CB241BC6EB7B00349E5E /* People Portal.app */,
-				4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */,
+				4FC3CB241BC6EB7B00349E5E /* Antipersona.app */,
+				4FC3CB391BC6EB7B00349E5E /* AntipersonaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,7 +362,9 @@
 				4F9123AD1BD34A3B00825F5B /* MBProgressHUD */,
 				4F64E5F41BCAD405008380A4 /* Swifter */,
 				4FC3CB291BC6EB7B00349E5E /* AppDelegate.swift */,
+				4F4EF9531C4EA4BE007E976B /* API.swift */,
 				4F64E5F21BCACE80008380A4 /* Extensions.swift */,
+				4FFACC7A1C26DD4800A3CF5B /* Reachability.swift */,
 				4F0B35931BC9F21B0004B7E8 /* Worker.swift */,
 				4F1E1B841BD8880F00A927D4 /* Utils.swift */,
 				4F0B35981BC9FDE00004B7E8 /* Buffer.swift */,
@@ -448,7 +454,7 @@
 			);
 			name = PeoplePortal;
 			productName = PeoplePortal;
-			productReference = 4FC3CB241BC6EB7B00349E5E /* People Portal.app */;
+			productReference = 4FC3CB241BC6EB7B00349E5E /* Antipersona.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4FC3CB381BC6EB7B00349E5E /* PeoplePortalTests */ = {
@@ -466,7 +472,7 @@
 			);
 			name = PeoplePortalTests;
 			productName = PeoplePortalTests;
-			productReference = 4FC3CB391BC6EB7B00349E5E /* PeoplePortalTests.xctest */;
+			productReference = 4FC3CB391BC6EB7B00349E5E /* AntipersonaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -486,6 +492,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -615,6 +624,7 @@
 				4F64E62D1BCAD405008380A4 /* SwifterTimelines.swift in Sources */,
 				4F64E6251BCAD405008380A4 /* SwifterMessages.swift in Sources */,
 				4FB5DCDB1BD9E6D500A4E7C6 /* NSDate+DateTools.m in Sources */,
+				4F4EF9541C4EA4BE007E976B /* API.swift in Sources */,
 				4F0B35941BC9F21B0004B7E8 /* Worker.swift in Sources */,
 				4F64E6191BCAD405008380A4 /* String+Swifter.swift in Sources */,
 				4FB5DCD91BD9E6D500A4E7C6 /* DTTimePeriodCollection.m in Sources */,
@@ -654,6 +664,7 @@
 				4F64E6141BCAD405008380A4 /* Dictionary+Swifter.swift in Sources */,
 				4F64E5F11BCACD1A008380A4 /* User.swift in Sources */,
 				4F9123B21BD3539800825F5B /* FollowersWorker.swift in Sources */,
+				4FFACC7B1C26DD4800A3CF5B /* Reachability.swift in Sources */,
 				4F64E61B1BCAD405008380A4 /* SwifterAccountsClient.swift in Sources */,
 				4F64E61C1BCAD405008380A4 /* SwifterAppOnlyClient.swift in Sources */,
 				4F64E6221BCAD405008380A4 /* SwifterHelp.swift in Sources */,
@@ -787,11 +798,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PeoplePortal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.People-Portal";
-				PRODUCT_NAME = "People Portal";
+				PRODUCT_NAME = Antipersona;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeoplePortal/PeoplePortal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -804,11 +817,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PeoplePortal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.People-Portal";
-				PRODUCT_NAME = "People Portal";
+				PRODUCT_NAME = Antipersona;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeoplePortal/PeoplePortal-Bridging-Header.h";
 			};
 			name = Release;
@@ -825,7 +840,7 @@
 				INFOPLIST_FILE = PeoplePortalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AntipersonaTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/People Portal.app/People Portal";
 			};
 			name = Debug;
@@ -838,7 +853,7 @@
 				INFOPLIST_FILE = PeoplePortalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.agermanidis.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AntipersonaTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/People Portal.app/People Portal";
 			};
 			name = Release;

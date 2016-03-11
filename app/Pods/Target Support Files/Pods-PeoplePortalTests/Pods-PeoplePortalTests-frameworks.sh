@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PeoplePortalTests/ActiveLabel.framework"
+  install_framework "Pods-PeoplePortalTests/Alamofire.framework"
   install_framework "Pods-PeoplePortalTests/Async.framework"
   install_framework "Pods-PeoplePortalTests/DateTools.framework"
   install_framework "Pods-PeoplePortalTests/DynamicColor.framework"
@@ -92,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PeoplePortalTests/ActiveLabel.framework"
+  install_framework "Pods-PeoplePortalTests/Alamofire.framework"
   install_framework "Pods-PeoplePortalTests/Async.framework"
   install_framework "Pods-PeoplePortalTests/DateTools.framework"
   install_framework "Pods-PeoplePortalTests/DynamicColor.framework"

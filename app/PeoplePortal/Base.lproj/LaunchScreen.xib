@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -12,17 +11,17 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="mr5-Tc-yuG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="antipersona_bg" translatesAutoresizingMaskIntoConstraints="NO" id="mr5-Tc-yuG">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="505"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="mr5-Tc-yuG" secondAttribute="height" multiplier="100:101" id="SYC-SL-POs"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="portal" translatesAutoresizingMaskIntoConstraints="NO" id="mnt-zp-boL">
-                    <rect key="frame" x="195" y="165" width="111" height="170"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pphuman" translatesAutoresizingMaskIntoConstraints="NO" id="mnt-zp-boL">
+                    <rect key="frame" x="153" y="95" width="195" height="316"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="170" id="ENM-GF-C0a"/>
-                        <constraint firstAttribute="width" constant="111" id="PDm-fA-J5Y"/>
+                        <constraint firstAttribute="height" constant="316" id="ENM-GF-C0a"/>
+                        <constraint firstAttribute="width" constant="195" id="PDm-fA-J5Y"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -36,7 +35,7 @@
                 <constraint firstItem="mr5-Tc-yuG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UMN-Ok-GeN"/>
                 <constraint firstItem="mr5-Tc-yuG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VVp-mP-O1X"/>
                 <constraint firstAttribute="trailing" secondItem="mr5-Tc-yuG" secondAttribute="trailing" id="oIX-px-qhB"/>
-                <constraint firstItem="mnt-zp-boL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ogr-EO-9ei"/>
+                <constraint firstItem="mnt-zp-boL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="3" id="ogr-EO-9ei"/>
                 <constraint firstItem="mnt-zp-boL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="usw-Oo-2zn"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -45,7 +44,7 @@
         </view>
     </objects>
     <resources>
-        <image name="launchscreen" width="2048" height="2723"/>
-        <image name="portal" width="159" height="273"/>
+        <image name="antipersona_bg" width="1800" height="3250"/>
+        <image name="pphuman" width="441" height="669"/>
     </resources>
 </document>
