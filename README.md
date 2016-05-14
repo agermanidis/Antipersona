@@ -13,8 +13,9 @@ once.
 
 It might be the case that one identity is not enough to express our
 individuality anymore. That the idea of cultivating a singular,
-specific identity has become outdated. Why can’t identities travel across bodies and become a commons, so that everybody can enjoy each identity's unique
-privileges?
+specific identity has become outdated. In which case the question
+arises: why can’t identities travel across bodies and become a
+commons, so that everybody can enjoy each identity's unique privileges?
 
 Antipersona is a radical attempt at redistributing this kind of
 “identity wealth.” It is an iPhone app that makes extensive use of the

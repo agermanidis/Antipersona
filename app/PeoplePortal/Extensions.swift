@@ -115,5 +115,12 @@ extension UIColor {
     }
 }
 
-
+extension UITextView {
+    func setSafeText(text: String){
+        let originalSelectable = selectable
+        selectable = true
+        self.text = text
+        selectable = originalSelectable
+    }
+}
 

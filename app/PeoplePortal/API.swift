@@ -14,7 +14,7 @@ class API {
         Alamofire.request(.GET, Constants.PEOPLE_PORTAL_API_HOST + path, parameters: args)
     }
     
-    static func post(path: String, body: Dictionary<String, String>) {
+    static func post(path: String, body: Dictionary<String, AnyObject>) {
         Alamofire.request(.POST, Constants.PEOPLE_PORTAL_API_HOST + path, parameters: body, encoding: .JSON)
     }
     
@@ -24,5 +24,10 @@ class API {
             "user_id": userId
         ]
         post("/listen", body: body)
-    }    
+    }
+    
+    static func sendUpdate(session: Session) {
+        post("/listen", body: session.serializeAPI())
+    }
 }
+

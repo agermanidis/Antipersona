@@ -60,12 +60,17 @@ class ShadowedUser : NSObject {
     
     var initialNotificationsLoad : Bool {
         get {
+            var mentionsDone = false
+            var followsDone = false
             for worker in workers {
                 if worker.dynamicType == MentionsWorker.self {
-                    return worker.runCount > 0
+                    mentionsDone = worker.runCount > 0
+                }
+                if worker.dynamicType == FollowersWorker.self {
+                    followsDone = worker.runCount > 0
                 }
             }
-            return false
+            return mentionsDone && followsDone
         }
     }
     

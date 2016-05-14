@@ -127,7 +127,7 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
             reuseIdentifier = "RetweetCell"
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TweetTableViewCell
-        cell.loadWithTweet(tweet)
+        cell.loadWithTweet(tweet, origin: self)
         cell.timeAgoLabel.hidden = true
         return cell
     }
@@ -180,5 +180,4 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
         // Pass the selected object to the new view controller.
     }
     */
-
 }

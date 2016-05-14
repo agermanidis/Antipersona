@@ -40,8 +40,8 @@ class FollowNotificationTableViewCell: UITableViewCell {
     
     static func calculateCellHeight(notification: Notification) -> CGFloat {
         let screenWidth = UIScreen.mainScreen().bounds.size.width
-        let result = notification.attributedText!.boundingRectWithSize(CGSizeMake(screenWidth-80, CGFloat.max), options: [.UsesLineFragmentOrigin, .UsesFontLeading], context: nil).height
-        return 60+result*1.3
+        let result = notification.attributedText!.boundingRectWithSize(CGSizeMake(screenWidth-Constants.CELL_CONTENT_PADDING, CGFloat.max), options: [.UsesLineFragmentOrigin, .UsesFontLeading], context: nil).height
+        return 65+result
     }
 
     func loadWithNotification(notification: Notification) {

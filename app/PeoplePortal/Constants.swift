@@ -28,4 +28,6 @@ class Constants {
     static let UNSEEN_NOTIFICATION_BACKGROUND = UIColor(red: 227.0/255.0, green: 232.0/255.0, blue: 243.0/255.0, alpha: 1.0)
     
     static let PEOPLE_PORTAL_API_HOST = "https://peopleportal-backend.herokuapp.com"
+    
+    static let CELL_CONTENT_PADDING = CGFloat(75)
 }

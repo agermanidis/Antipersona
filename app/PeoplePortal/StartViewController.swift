@@ -28,7 +28,7 @@ class StartViewController: UIViewController, SFSafariViewControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func authorize() {
         let url = NSURL(string: "swifter://success")!
         

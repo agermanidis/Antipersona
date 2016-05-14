@@ -66,15 +66,6 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.addSubview(refreshControl!)
     }
     
-    var refreshControl: UIRefreshControl?
-    
-    func refresh() {
-        Session.shared.shadowedUser?.waitForWorkers([TimelineWorker.self]) {
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
-        }
-    }
-
     private func imageLayerForGradientBackground() -> UIImage {
         var updatedFrame = self.navigationController!.navigationBar.frame
         // take into account the status bar
@@ -88,6 +79,15 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
+    }
+    
+    var refreshControl: UIRefreshControl?
+    
+    func refresh() {
+        Session.shared.shadowedUser?.waitForWorkers([TimelineWorker.self]) {
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,13 +111,13 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             reuseIdentifier = "RetweetCell"
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TweetTableViewCell
-        cell.loadWithTweet(tweet)
+        cell.loadWithTweet(tweet, origin: self)
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let tweet = tweets[indexPath.row]
-        var textHeight = tweet.calculateCellHeight(UIFont.systemFontOfSize(16), width: tableView.frame.size.width-80)
+        var textHeight = tweet.calculateCellHeight(UIFont.systemFontOfSize(15), width: tableView.frame.size.width-Constants.CELL_CONTENT_PADDING)
         if tweet.isRetweet() {
             textHeight += 15
         }

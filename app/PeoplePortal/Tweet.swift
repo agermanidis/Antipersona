@@ -16,9 +16,20 @@ class Tweet: Comparable, Hashable {
     var favoriteCount: Int?
     var retweetCount: Int?
     var retweetedStatus: Tweet?
+    var inReplyToId: Int64?
+    var inReplyTo: Tweet?
+    var replies: [Tweet] = []
+
+    func isItMyRetweet() -> Bool {
+        return Session.shared.shadowedUser?.user.userId == retweetedStatus?.user?.userId
+    }
     
     func isRetweet() -> Bool {
         return retweetedStatus != nil
+    }
+    
+    func isReply() -> Bool {
+        return inReplyTo != nil
     }
     
     static func deserialize(serialized: Dict) -> Tweet {
@@ -32,6 +43,7 @@ class Tweet: Comparable, Hashable {
         if serialized["retweeted_status"] != nil {
             ret.retweetedStatus = Tweet.deserialize(serialized["retweeted_status"] as! Dict)
         }
+        ret.inReplyToId = (serialized["in_reply_to_status_id"] as? NSNumber)?.longLongValue
         return ret
     }
     
@@ -50,6 +62,7 @@ class Tweet: Comparable, Hashable {
         if serialized["retweeted_status"]?.object != nil {
             ret.retweetedStatus = Tweet.deserializeJSON(serialized["retweeted_status"]!.object!)
         }
+        ret.inReplyToId = serialized["in_reply_to_status_id"]!.bigInteger
         return ret
     }
     
@@ -64,6 +77,9 @@ class Tweet: Comparable, Hashable {
         if isRetweet() {
             ret["retweeted_status"] = retweetedStatus!.serialize()
         }
+        if inReplyToId != nil {
+            ret["in_reply_to_status_id"] = NSNumber(longLong: inReplyToId!)
+        }
         return ret
     }
     
@@ -73,6 +89,76 @@ class Tweet: Comparable, Hashable {
     
     var hashValue: Int {
         return self.tweetId?.hashValue ?? 0
+    }
+    
+    func loadOriginal(cb: ()->()) {
+        
+    }
+    
+    func loadReplies(cb: ()->()) {
+        var originalTweet:Tweet = self
+        if isRetweet() {
+            originalTweet = retweetedStatus!
+        }
+        
+        let user = originalTweet.user
+        
+        print("@\(user!.screenName!)")
+        
+        Session.shared.swifter?.getSearchTweetsWithQuery("@\(user!.screenName!)", geocode: nil, lang: nil, locale: nil, resultType: "recent", count: 100, until: nil, sinceID: nil, maxID: nil, includeEntities: nil, callback: nil, success: {
+            statuses, metadata in
+            print("total statuses: \(statuses!.count)")
+            
+            var tweets: [Tweet] = []
+            for status in statuses! {
+                print(status.object!["text"])
+                let deserialized = Tweet.deserializeJSON(status.object!)
+
+                tweets.append(deserialized)
+            }
+            tweets = tweets.filter({
+                print("one: \($0.inReplyToId), two: \(self.tweetId)")
+                return $0.inReplyToId == self.tweetId
+            })
+            
+            self.replies = tweets
+            
+            print("got \(tweets.count) replies")
+            
+            if self.inReplyToId != nil {
+                Session.shared.swifter?.getStatusesShowWithID(String(self.inReplyToId!), count: 1, trimUser: false, includeMyRetweet: false, includeEntities: false, success: {
+                    status in
+                    
+                    let original = Tweet.deserializeJSON(status!)
+                    self.inReplyTo = original
+                    
+                    print("got original")
+                    cb()
+                    
+                    }, failure: {
+                        error in
+                        print(error)
+                })
+            } else {
+                cb()
+            }
+            
+            }, failure: {
+                error2 in
+                print("error2")
+        })
+    }
+    
+    func getConversation() -> [Tweet] {
+        var conversation:[Tweet] = []
+        if self.inReplyTo != nil {
+            conversation.append(self.inReplyTo!)
+        }
+        conversation.append(self)
+        for reply in self.replies {
+            conversation.append(reply)
+        }
+        return conversation
     }
 }
 

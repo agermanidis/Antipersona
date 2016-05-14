@@ -21,12 +21,15 @@ class MainViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         Session.shared.shadowedUser?.onNotificationsChanged({
             self.updateBadge()
+//            self.notificationsVC?.tableView.reloadData()
         })
         self.updateBadge()
 
         timelineVC = (viewControllers![0] as! UINavigationController).visibleViewController as? TimelineViewController
         notificationsVC = (viewControllers![1] as! UINavigationController).visibleViewController as? NotificationsViewController
         profileVC = (viewControllers![2] as! UINavigationController).visibleViewController as? ProfileViewController
+        profileVC?.mainFlag = true
+        profileVC!.user = Session.shared.shadowedUser?.user
         
         currentViewController = profileVC
         

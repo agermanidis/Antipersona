@@ -37,6 +37,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewWillAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarHidden = false
         navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.setBackgroundImage(imageLayerForGradientBackground(), forBarMetrics: UIBarMetrics.Default)
         adaptNavTextColor()
     }
     
@@ -62,8 +63,11 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
+    
+    
     override func viewDidAppear(animated: Bool) {
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+
         self.tableView.reloadData()
     }
     
@@ -87,6 +91,11 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
         let tweetCellViewNib = UINib(nibName: "TweetCellView", bundle: nil)
         tableView.registerNib(tweetCellViewNib, forCellReuseIdentifier: "TweetCell")
         
@@ -95,12 +104,13 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         tableView.delegate = self
         tableView.scrollsToTop = true
         
-        self.navigationController?.navigationBar.setBackgroundImage(imageLayerForGradientBackground(), forBarMetrics: UIBarMetrics.Default)
         
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl!)
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -109,12 +119,23 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let notification = notifications[indexPath.row]
-
+        
+        // hack
+        var canBeHighlighted: Bool
+        if (indexPath.row > 0) {
+            let prev = notifications[indexPath.row-1]
+            canBeHighlighted = prev.seen
+        } else {
+            canBeHighlighted = true
+        }
+        
         if notification.isFollow() {
             let cell = tableView.dequeueReusableCellWithIdentifier("FollowCell", forIndexPath: indexPath) as! FollowNotificationTableViewCell
             cell.loadWithNotification(notification)
             if !notification.seen {
-                cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                if canBeHighlighted {
+                    cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                }
                 notification.seen = true
             } else {
                 cell.backgroundColor = UIColor.whiteColor()
@@ -122,9 +143,11 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         } else if notification.isMention() {
             let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetTableViewCell
-            cell.loadWithTweet(notification.tweet!)
+            cell.loadWithTweet(notification.tweet!, origin: self)
             if !notification.seen {
-                cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                if canBeHighlighted {
+                    cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                }
                 notification.seen = true
             } else {
                 cell.backgroundColor = UIColor.whiteColor()
@@ -134,7 +157,9 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             let cell = tableView.dequeueReusableCellWithIdentifier("RetweetCell", forIndexPath: indexPath) as! RetweetNotificationTableViewCell
             cell.loadWithNotification(notification)
             if !notification.seen {
-                cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                if canBeHighlighted {
+                    cell.backgroundColor = Constants.UNSEEN_NOTIFICATION_BACKGROUND
+                }
                 notification.seen = true
             } else {
                 cell.backgroundColor = UIColor.whiteColor()
@@ -157,7 +182,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             return FollowNotificationTableViewCell.calculateCellHeight(notification)
             
         } else if notification.isMention() {
-            let textHeight = notification.tweet!.calculateCellHeight(UIFont.systemFontOfSize(16), width: tableView.frame.size.width-75)
+            let textHeight = notification.tweet!.calculateCellHeight(UIFont.systemFontOfSize(15), width: tableView.frame.size.width-Constants.CELL_CONTENT_PADDING)
             return textHeight + 80
         
         } else {
@@ -177,9 +202,55 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func refresh() {
-        Session.shared.shadowedUser?.waitForWorkers([MentionsWorker.self]) {
+        Session.shared.shadowedUser?.waitForWorkers([FollowersWorker.self, MentionsWorker.self]) {
             Async.main {
                 self.update()
+            }
+        }
+    }
+    
+
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let notification = notifications[indexPath.row]
+        if notification.isFollow()  {
+            
+            let users = notification.users
+            if users!.count == 1 {
+                let user = users![0]
+                user.loadTimeline({_ in
+                    let vc = self.storyboard!.instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
+                    vc.user = user
+                    self.navigationController!.pushViewController(vc, animated: true)
+                    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)                    
+                })
+                
+            } else {
+                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("UsersList") as! UserTableViewController
+                vc.source = users
+                vc.viewTitle = "Followed by"
+                self.navigationController!.pushViewController(vc, animated: true)
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+            }
+            
+        } else if notification.isRetweet() {
+            let users = notification.otherTweets!.map({$0.user!})
+
+            if users.count == 1 {
+                let user = users[0]
+                user.loadTimeline({_ in 
+                    let vc = self.storyboard!.instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
+                    vc.user = user
+                    self.navigationController!.pushViewController(vc, animated: true)
+                    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                })
+            } else {
+                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("UsersList") as! UserTableViewController
+                vc.source = users
+                vc.viewTitle = "Retweeted by"
+                self.navigationController!.pushViewController(vc, animated: true)
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
         }
     }

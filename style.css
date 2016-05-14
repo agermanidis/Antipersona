@@ -1,362 +1,367 @@
 @font-face {
-    font-family: MyriadPro;
-    src: url(fonts/MyriadPro-Regular.otf);
-}
-
-@font-face {
-    font-family: MyriadProBold;
-    src: url(fonts/MyriadPro-Bold.otf);
-}
-
-html {
-    height: 100%;
+    font-family: AdobeGothicBold;
+    src: url(fonts/AdobeGothicStd-Bold.otf);
 }
 
 body {
-    font-family: MyriadPro;
-    text-align: center;
+    background: #070727;
+    font-family: AdobeGothicBold;
+    color: white;
     margin: 0;
-    padding: 0;
-    background: #fef7ff;
 }
 
-#more-info {
-            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5f5fc1+0,3b0e29+100 */
-background: #5f5fc1; /* Old browsers */
-background: -moz-linear-gradient(top, #5f5fc1 0%, #3b0e29 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5f5fc1), color-stop(100%,#3b0e29)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #5f5fc1 0%,#3b0e29 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #5f5fc1 0%,#3b0e29 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #5f5fc1 0%,#3b0e29 100%); /* IE10+ */
-background: linear-gradient(to bottom, #5f5fc1 0%,#3b0e29 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5f5fc1', endColorstr='#3b0e29',GradientType=0 ); /* IE6-9 */
+h1 {
+    font-size: 60px;
+    font-weight: 300;
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: -30px;
+    text-align: center;
 }
 
-#features {
-    color: #4c1b79;
+#logo {
+    width: 400px;
+}
 
+#subtitle {
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    width: 130%;
+    margin-left: -15%;
+    font-size: 25px;
+    text-align: center;
+    height: 60px;
+}
+
+#title-box {
+    margin-left: 200px;
+}
+
+#title-box {
+    margin-top: 30px;
+    width: 400px;
+}
+
+#avatars-bg img {
+    position: absolute;
+    border-radius: 7px;
+}
+
+#avatars-bg {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 10px;
+    opacity: 0.1;
+    background: url(images/antipersona-bg.gif) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+
+#iphone-container  {
+    position: absolute;
+    right: 300px;
+    top: 50px;
+    width: 320px;
+}
+
+#iphone {
+    width: 320px;
+}
+
+#iphone-vid {
+    position: relative;
+    top: -576px;
+    left: 17px;
+    width: 284px;
+    border: 1px solid gray;
+}
+
+#appstore {
+    width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+    margin: 0 auto;
+    display: block;
+}
+
+#questionmark {
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    font-weight: 100;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+#questionmark-box {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+section {
+    padding: 5px;
+    height: 100%;
+}
+/* section { */
+/*     position: absolute; */
+/*     width: 100%; */
+/*     height: 100%; */
+/*     margin: 0; */
+/*     padding: 0; */
+/* } */
+
+/* #page2 { */
+/*     position: absolute; */
+/*     top: 100%; */
+/* } */
+
+#info-section {
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 15px;
+    padding-top: 10px;
 }
 
 footer {
-    color: #D2D2D2;
-    font-size: 18px;
-    letter-spacing: 5px;
-    line-height: 1.5em;
+    line-height: 1.3em;
     padding-left: 20px;
     padding-right: 20px;
-}
-
-#features {
-    font-size: 30px;
-    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 70px;
+    text-transform: uppercase;
+    color: #F1F1F1;
+    font-size: 13px;
 }
 
 footer a {
     color: #E7E8FF;
-    font-family: MyriadProBold;
 }
 
-ul {
-    list-style: none;
-}
+#info-section  {
+    position: relative;
 
-#description {
-    font-size: 40px;
-    text-align: center;
-    margin: 0;
-    background: rgb(85,79,158); /* Old browsers */
-    background: -moz-linear-gradient(45deg,  rgba(85,79,158,1) 0%, rgba(73,4,47,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(85,79,158,1)), color-stop(100%,rgba(73,4,47,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* IE10+ */
-    background: linear-gradient(45deg,  rgba(85,79,158,1) 0%,rgba(73,4,47,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#554f9e', endColorstr='#49042f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-#description b {
-    font-weight: 900;
-    font-family: MyriadProBold;
-}
-
-#question {
-    margin: 0 auto;
-    color: #ecf336;
-}
-
-#question, #info {
-    width: 730px;
-    padding: 40px;
 }
 
 #info {
-    margin: 0 auto;
-    color: white;
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
 }
 
-footer img {
-    height: 100px;
-    padding: 20px;
-}
-
-#main {
-    background-image: url("images/portal_bg.gif");
-    background-size: 100% 130%;
-    background-repeat: no-repeat;
-    color: white;
-    text-shadow: 1px 2px black;
-    min-height: 100vh;
-}
-
-#portal-image {
-    margin-left: auto;
-    margin-right: auto;
+.break {
+    border: 1px solid white;
+    width: 200px;
+    text-align: center;
     margin-top: 50px;
-    width: 130px;
 }
 
-#appstore-image {
-    width: 230px;
-    margin-top: 100px;
-    margin-bottom: 30px;
-    box-shadow: 1px 1px 10px #888888;
+center {
+    font-size: 20px;
 }
 
-#main h1 {
-    font-size: 80px;
-    letter-spacing: 5px;
-    margin: 30px;
-}
 
-#main h3 {
-    letter-spacing: 3px;
-    font-size: 45px;
-    line-height: 1.5em;
-    margin: 0;
-}
 
-.line {
-    background: rgba(137, 137, 137, 0.61);
-    margin: 20px;
-    width: 350px;
-    height: 1px;
-    margin: 0 auto;
-    opacity: 0.5;
-}
+@media only screen and (max-device-width: 500px) {
+    #logo {
+        width: 50px;
+    }
 
-#features-list {
-    width: 450px;
-    margin-right: -400px;
-    margin-left: 250px;
-    font-size: 22px;
-    margin-top: 30px;
-}
-
-#features {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    color: #dbdadc;
-}
-
-.line {
-    background: white;
-}
-
-.feature {
-    margin: 50px auto;
-    width: 250px;
-    font-size: 25px;
-}
-
-.feature.selected {
-    font-weight: 700;
-}
-
-.screenshot.selected {
-    //-webkit-animation-duration: 1.5s;
-    //-webkit-animation-name: fadeInFromNone;
     
-    opacity: 1;
 }
 
-.screenshot-container, .screenshot {
-    
-    width: 300px;
-}
-
-.screenshot {
-    opacity: 0;
-    -webkit-transition: opacity 1s ease-in-out;
-    -moz-transition: opacity 1s ease-in-out;
-    -o-transition: opacity 1s ease-in-out;
-    transition: opacity 1s ease-in-out;
-}
-
-#final {
-    font-size: 28px;
-    padding: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-#appstore-image-end {
-    width: 230px;
-}
-
-@-webkit-keyframes fadeInFromNone {
-    0% {
-        display:none; 
-        opacity: 0.5;
-    }
-
-    1% {
-        display: block ; 
-        opacity: 0.5;
-    }
-
-    100% {
-        display: block;
-        opacity: 1;
-    }
-}
-
-
-
-
-video {
-    width: 267px;
-    height: 585px;
-    position: absolute;
-    margin-left: 17px;
-    position: absolute;
-    margin-top: 10px;
-}
-
-.screenshot-container, .screenshot {
-    position: absolute;
-}
-
-.screenshot {
-    width: 265px;
-    margin-left: 17px;
-    margin-top: 68px;
-    height: 470px;
-}
-
-#demo {
-    display: inline;
-}
-
-
-@media only screen and (max-device-width: 800px) {
-    #description {
+@media only screen and (max-width: 1300px) {
+    #title-box {
         width: 100%;
-    }
-
-    #question, #info {
-        width: 90%;
-        font-size: 30px;
-        padding: 0;
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-
-    #features-list {
-        float: none;
-        margin: 0;
-        width: 100%;
-        padding: 0;
-        margin-top: 50px;
-    }
-
-    .feature {
-        width: 70%;
-    }
-
-    .line {
-        width: 70%;
-    }
-
-    #main h1 {
-        font-size: 50px;
-    }
-
-    #main h3 {
-        font-size: 30px;
-    }
-
-    #appstore-image {
         margin-top: 30px;
+        margin-left: 0px;
     }
 
-    #final {
-        font-size: 25px;
-        padding: 10px;
+    #logo {
+        margin: 0 auto;
+        display: block;
+        width: 300px;
+        padding-top: 50px;
     }
 
-    #features-list {
+    h1 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    #subtitle {
+        margin-top: 0px;
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #iphone-container {
         display: none;
     }
 
-    #portal-image {
-        width: 100px;
-    }
-
-    footer {
+    #info p {
         font-size: 15px;
     }
 
-    #main {
-        min-height: inherit;
+    #info-section {
+        margin-left: 10%;
+        margin-right: 10%;
     }
 
-    video {
-        margin-left: -283px
+    #info center p {
+        font-size: 17px;
+    }
+
+    #iphone-container {
+        display: none;
     }
 }
 
-@media only screen and (max-device-width: 500px) {
-    #question, #info {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        font-size: 25px;
+@media only screen and (max-width: 700px) {
+    #info-section p {
+        font-size: 13px;
     }
 
-    #main {
-        min-height: 100vh;
+    footer p {
+        font-size: 10px;
     }
 
-    .screenshot {
-        position: absolute;
-        margin-left: -283px;
+    #info-section {
+        margin-left: 5%;
+        margin-right: 5%;
     }
-    
-    .screenshot-container {
-        position: static;
+
+    #info center p {
+        font-size: 16px;
     }
 }
 
-@media only screen and (max-width: 1400px) {
-    #question, #info {
-        width: 90%;
-        padding-left: 5px;
-        padding-right: 5px;
+@media only screen and (max-device-width: 700px) {
+    #info-section p {
+        font-size: 12px;
     }
 
-    #features-list {
+    #info {
+        position: inherit;
+        top: 0%;
+        transform: none;
+    }
+
+    #title-box {
+        width: 100%;
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+
+    #logo {
+        margin: 0 auto;
+        display: block;
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 35px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    #subtitle {
+        margin-top: 0px;
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #iphone-container {
         display: none;
     }
 
-    .screenshot {
-        position: absolute;
-        margin-left: -283px;
+    #questionmark-box {
+        display: none;
     }
 
-    .screenshot-container {
-        position: static;
+    .break {
+        margin-top: 20px;
     }
 
-    video {
-        margin-left: -283px
+    footer {
+        margin-top: 20px;
     }
+
+    section {
+        padding: 0;
+    }
+}
+
+@media only screen and (max-device-width: 375px) {
+    section {
+        padding: 0;
+    }
+    
+    #info p {
+        font-size: 11px;
+    }
+
+    .break {
+        margin-top: 0px;
+    }
+
+    footer {
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-device-width: 320px) {
+    section {
+        padding: 0;
+    }
+
+    #logo {
+        padding-top: 5px;
+    }
+
+    #info p {
+        font-size: 10px;
+    }
+
+    #info center p {
+        font-size: 10px;
+    }
+}
+
+.screenshot {
+    position: relative;
+    width: 282px;
+    top: -576px;
+    left: 18px;
+    border: 1px solid gray;
+    height: 500px;
 }

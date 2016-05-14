@@ -59,6 +59,7 @@ class Session {
         didSet {
             refreshSwifter()
             save()
+            sendUpdate()
         }
     }
     
@@ -72,6 +73,7 @@ class Session {
     var shadowedUser: ShadowedUser? {
         didSet {
             save()
+            sendUpdate()
         }
     }
 
@@ -83,6 +85,8 @@ class Session {
     
     var userId: String?
     var deviceToken: String?
+    
+    var currentUserContext: User?
     
     func retrieveUserInfo(cb: (() -> ())?) {
         Async.background {
@@ -211,9 +215,30 @@ class Session {
     
     func sendUpdate() {
         print("sending update!!!")
-        print(self.deviceToken!)
-        print(self.userId)
-        API.registerAsUser(self.deviceToken!, userId: self.userId!)
+//        print(self.deviceToken!)
+//        print(self.userId)
+//        API.registerAsUser(self.deviceToken!, userId: self.userId!)
+        if self.deviceToken != nil {
+            API.sendUpdate(self)
+        }
+        
+    }
+    
+    func serializeAPI() -> Dictionary<String, AnyObject> {
+        var ret = [
+            "device_token": self.deviceToken!,
+            "user_id": self.userId!,
+        ] as Dictionary<String, AnyObject>
+        
+        if self.shadowedUser?.user.userId != nil {
+            ret["shadow_user_id"] = NSNumber(longLong: self.shadowedUser!.user.userId!)
+        }
+        
+        if self.credentials != nil {
+            ret["access_token"] = credentials!.accessToken
+            ret["access_secret"] = credentials!.accessSecret
+        }
+        return ret
     }
     
     func transitionToSearch() {

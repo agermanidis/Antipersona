@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class User: Equatable {
     var userId: Int64?
@@ -34,7 +35,34 @@ class User: Equatable {
     var protected: Bool?
     var cachedProfileBanner: UIImage?
     var userColor: UIColor?
+    var timeline:[Tweet] = []
+    var following:[User] = []
+    var followers:[User] = []
+    
+    func getTweets() -> [Tweet] {
+        if self.userId == Session.shared.shadowedUser?.user.userId {
+            return Session.shared.shadowedUser!.userTimeline.items
+        } else {
+            return timeline
+        }
+    }
 
+    func getFollowers() -> [User] {
+        if self.userId == Session.shared.shadowedUser?.user.userId {
+            return Session.shared.shadowedUser!.followers.items
+        } else {
+            return followers
+        }
+    }
+    
+    func getFollowing() -> [User] {
+        if self.userId == Session.shared.shadowedUser?.user.userId {
+            return Session.shared.shadowedUser!.following.items
+        } else {
+            return following
+        }
+    }
+    
     func calculateColor() {
         if profileBannerUrl == nil {
             userColor = profileColor
@@ -114,6 +142,86 @@ class User: Equatable {
         ret.followerCount = serialized["followers_count"]!.integer
         ret.protected = serialized["protected"]!.boolValue
         return ret
+    }
+    
+    func loadTimeline(cb:([Tweet])->()) {
+        Async.background {
+            Session.shared.swifter?.getStatusesUserTimelineWithUserID(self.userIdString!, success: {
+                statuses in
+                var tweets:[Tweet] = []
+                for status in statuses! {
+                    let tweet = Tweet.deserializeJSON(status.object!)
+                    tweets.append(tweet)
+                }
+                self.timeline = tweets
+                cb(tweets)
+            })
+        }
+    }
+    
+    func loadFollowing(cb: () -> ()) {
+        if (self.following.count > 0) {
+            cb()
+            return
+        }
+
+        Async.background {
+            print("GETTING FOLLOWING!!")
+            
+            Session.shared.swifter?.getFriendsListWithID(
+                self.userIdString!,
+                cursor: nil,
+                count: 200,
+                skipStatus: true,
+                includeUserEntities: true,
+                success: {
+                    results, previousCursor, nextCursor in
+
+                    print("LLOWING!!")
+
+                    var users:[User] = []
+                    for result in results! {
+                        users.append(User.deserializeJSON(result.object!))
+                    }
+                    self.following = users
+                    cb()
+                    
+                }, failure: {
+                    error in
+                    
+                    print(error)
+            })
+        }
+    }
+    
+    func loadFollowers(cb: () -> ()) {
+        if (self.followers.count > 0) {
+            cb()
+            return
+        }
+        
+        Async.background {
+            print("GETTING FOLLOWERS!!")
+            Session.shared.swifter?.getFollowersListWithID(
+                self.userIdString!,
+                cursor: nil,
+                count: 200,
+                skipStatus: true,
+                includeUserEntities: true,
+                success: {
+                    results, previousCursor, nextCursor in
+                    print("SUCCESS")
+
+                    var users:[User] = []
+                    for result in results! {
+                        users.append(User.deserializeJSON(result.object!))
+                    }
+                    self.followers = users
+                    cb()
+                }, failure: {
+                    error in
+            })
+        }
     }
 }
 

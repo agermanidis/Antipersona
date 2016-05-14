@@ -58,8 +58,12 @@ class MentionsWorker: Worker {
                 tweets.append(Tweet.deserializeJSON(status.object!))
             }
             
-            let mentions: [Tweet] = tweets.filter({!$0.isRetweet()})
-            let retweets: [Tweet] = tweets.filter({$0.isRetweet()})
+            let mentions: [Tweet] = tweets.filter({
+                !$0.isRetweet() && $0.user != user
+            })
+            let retweets: [Tweet] = tweets.filter({
+                $0.isRetweet() && $0.user != user && $0.isItMyRetweet()
+            })
             
             print("Number of mentions: \(mentions.count)")
             print("Number of retweets: \(retweets.count)")
@@ -114,7 +118,7 @@ class MentionsWorker: Worker {
             
             print("grouped retweets count: \(groupedRetweets.count)")
             
-            notifications.items.sortInPlace()
+//            notifications.items.sortInPlace()
 
             self.runCount += 1
             
