@@ -183,6 +183,9 @@ class Session {
             if session.shadowedUser?.listId == nil {
                 session.shadowedUser = nil
             }
+            if session.shadowedUser?.hoursSinceSwitch() >= Constants.SWITCH_HOURS_MINIMUM {
+                session.shadowedUser = nil
+            }
         }
         if dict["following"] != nil {
             session.following = (dict["following"] as! [Dict]).map({ User.deserialize($0) })

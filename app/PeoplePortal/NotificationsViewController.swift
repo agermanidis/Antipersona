@@ -212,6 +212,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.navigationController!.interactivePopGestureRecognizer!.enabled = true
         let notification = notifications[indexPath.row]
         if notification.isFollow()  {
             

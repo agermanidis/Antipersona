@@ -96,6 +96,8 @@ class UserTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let user = source![indexPath.row]
+        self.navigationController!.interactivePopGestureRecognizer!.enabled = true
+
         user.loadTimeline({
             tweets in
             

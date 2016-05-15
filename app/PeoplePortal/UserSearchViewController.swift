@@ -266,7 +266,8 @@ class UserSearchViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedUser: User?
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.selectedUser = tableResults[indexPath.row] 
+        self.navigationController!.interactivePopGestureRecognizer!.enabled = true
+        self.selectedUser = tableResults[indexPath.row]
         self.performSegueWithIdentifier("SearchToBecoming", sender: self)
     }
     

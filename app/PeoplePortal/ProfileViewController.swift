@@ -9,7 +9,7 @@
 import UIKit
 import Async
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
@@ -202,7 +202,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             youAreLabel.hidden = true
 //            notificationsButton.hidden = true
-            switchButton.hidden = true
+//            switchButton.hidden = true
 
             loadBackButton()
         }
@@ -213,13 +213,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         loadUserStuff()
         
-        self.profileInfoView.contentSize = CGSizeMake(self.view.frame.size.width*2, self.profileInfoView.frame.height)
-        scrollViewControl.addTarget(self, action: "changePage", forControlEvents: UIControlEvents.ValueChanged)
+//        self.profileInfoView.contentSize = CGSizeMake(self.view.frame.size.width*2, self.profileInfoView.frame.height)
+//        scrollViewControl.addTarget(self, action: "changePage", forControlEvents: UIControlEvents.ValueChanged)
 
         addProfileInfoRest()
         
         self.profileInfoView.delegate = self
+        
+        navigationController?.interactivePopGestureRecognizer!.delegate = self
     }
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if(navigationController?.viewControllers.count > 1){
+            return true
+        }
+        return false
+    }
+
     
     func peopleOrPerson(n: Int) -> String {
         if n == 1 {
@@ -276,10 +286,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if scrollView == profileInfoView {
-            let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-            scrollViewControl.currentPage = Int(pageNumber)
-        }
+//        if scrollView == profileInfoView {
+//            let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+//            scrollViewControl.currentPage = Int(pageNumber)
+//        }
     }
     
     
@@ -361,7 +371,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func switchButtonPressed(sender: AnyObject) {
         let shadowedUser = Session.shared.shadowedUser!
         let hoursSinceSwitch = shadowedUser.hoursSinceSwitch()
-        if hoursSinceSwitch < -1 {
+        if hoursSinceSwitch < Constants.SWITCH_HOURS_MINIMUM {
             let alertController = UIAlertController(title: "Unable to Switch", message:
                 "Sorry, you cannot become someone else so quickly. You need to wait \(Constants.SWITCH_HOURS_MINIMUM-hoursSinceSwitch) more hours.", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default,handler: nil))
@@ -470,15 +480,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         print("did select!")
-        let tweet = self.tweets[indexPath.row]
-        tweet.loadReplies {
-            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TweetConversation") as! TweetConversationTableViewController
-            vc.mainTweet = tweet
-            vc.conversation = tweet.getConversation()
-            self.navigationController!.pushViewController(vc, animated: true)
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
+//        let tweet = self.tweets[indexPath.row]
+//        tweet.loadReplies {
+//            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TweetConversation") as! TweetConversationTableViewController
+//            vc.mainTweet = tweet
+//            vc.conversation = tweet.getConversation()
+//            self.navigationController!.pushViewController(vc, animated: true)
+//            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        }
     }
 
 }

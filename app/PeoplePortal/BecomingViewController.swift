@@ -23,6 +23,8 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         let tweetCellViewNib = UINib(nibName: "TweetCellView", bundle: nil)
         tweetTableView.registerNib(tweetCellViewNib, forCellReuseIdentifier: "TweetCell")
         
@@ -95,7 +97,12 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.activityIndicator.stopAnimating()
 
-            self.tweetTableView.hidden = false
+            let deviceName = UIDevice.currentDevice().modelName
+            if deviceName != "iPhone 4s" && deviceName != "iPhone 5" && deviceName != "Simulator" {
+                self.tweetTableView.hidden = false
+            } else {
+                self.tweetTableView.hidden = true
+            }
 
             self.tweetTableView.alpha = 0
             
@@ -117,7 +124,10 @@ class BecomingViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if lastTweet != nil { return 1 }
-        else { return 0 }
+        else {
+            self.tweetTableView.hidden = true
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
