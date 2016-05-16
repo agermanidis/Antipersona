@@ -2,31 +2,11 @@
 
 # [Antipersona](http://antipersona.co)
 
-With the advent of social media, the way we perform our identities has
-drastically changed. Our identity has become something more
-well-defined, and much easier to control. At the same time, we have
-grown to feel much closer to other people’s identities through their
-social media feeds, casually scrolling through months of social media
-activity when we meet a new person. There has never been another time
-in history when we lived vicariously through so many other people at
-once.
+Antipersona simulates the experience of using Twitter as if you're signed in from any user account of your choice, providing a window into someone else's social media point-of-view. When you "become" an account on Antipersona, you can see the same timeline they see and receive the same notifications (for follows, mentions, and retweets) they receive, for 24 hours.
 
-It might be the case that one identity is not enough to express our
-individuality anymore. That the idea of cultivating a singular,
-specific identity has become outdated. In which case the question
-arises: why can’t identities travel across bodies and become a
-commons, so that everybody can enjoy each identity's unique privileges?
+The advent of social media has turned our personal identities into discrete entities that we can mold to our wishes. At the same time, it has made us feel closer to other people's identities, enabling us to live a low-resolution version of their lives alongside them day by day.
 
-Antipersona is a radical attempt at redistributing this kind of
-“identity wealth.” It is an iPhone app that makes extensive use of the
-Twitter API to simulate the experience of using the platform as if
-you’re  in from any user account of your choice. When you “shadow” a
-person, you get to see the same timeline that they see and receive the
-same notifications (for follows, mentions, and retweets) that they
-receive throughout the day.
-
-Go ahead, try a new identity today. Get a glimpse of the world of
-frictionless identity adoption that awaits us.
+Perhaps being confined to a single identity is not how we want to exist in the world anymore.  If that's the case, we need to come up with novel social and technological arrangements for sharing identities, turning them into a new kind of commons.
 
 See
 [`ARCHITECTURE.md`](https://github.com/agermanidis/Antipersona/blob/master/ARCHITECTURE.md)
