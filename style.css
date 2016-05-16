@@ -153,6 +153,7 @@ footer {
     padding-right: 20px;
     text-align: center;
     margin-top: 70px;
+    
     text-transform: uppercase;
     color: #F1F1F1;
     font-size: 13px;
@@ -219,10 +220,6 @@ center {
         text-align: center;
         width: 100%;
         margin-left: 0;
-    }
-
-    #iphone-container {
-        display: none;
     }
 
     #info p {
@@ -301,7 +298,14 @@ center {
     }
 
     #iphone-container {
-        display: none;
+        display: block;
+        position: inherit;
+        margin: 50px auto;
+        height: 600px;
+    }
+
+    #head-section {
+        height: auto;
     }
 
     #questionmark-box {
@@ -314,6 +318,7 @@ center {
 
     footer {
         margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     section {
